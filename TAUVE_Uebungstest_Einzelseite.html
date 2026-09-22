@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAUVE Übungstest</title>
+  <style>
+/* style.css - Sachliches, professionelles Design für den TAUVE Übungstest */
+:root {
+  --primary: #1e3a8a;          /* Dezentes Dienstblau */
+  --primary-hover: #2563eb;
+  --primary-subtle: #1e293b;
+  
+  --bg-main: #0b1120;          /* Seriöses Dunkelblau-Grau */
+  --bg-card: #151f32;          /* Karten-Hintergrund */
+  --bg-card-alt: #1e293b;
+  --bg-input: #0f172a;
+  
+  --border-color: #2b3952;
+  --border-subtle: #1e293b;
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --status-ok: #10b981;
+  --status-warn: #f59e0b;
+  --status-alert: #ef4444;
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.app-header {
+  background-color: #0f172a;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.9rem 1.5rem;
+}
+
+.header-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.logo-badge {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.title-group h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.title-group p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.header-progress-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+  flex: 1;
+  max-width: 980px;
+  width: 100%;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* Screen Transitions */
+.view-panel {
+  display: none;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+/* Cards & Containers */
+.content-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.sub-heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+.intro-text {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Resume Alert */
+.resume-alert {
+  background-color: var(--bg-card);
+  border: 1px solid #3b82f6;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* DISCLAIMER BOX */
+.disclaimer-container {
+  background-color: #0b1120;
+  border: 1px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.disclaimer-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.4rem;
+}
+
+.disclaimer-body {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.disclaimer-body h4 {
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.disclaimer-body h4:first-child {
+  margin-top: 0;
+}
+
+.disclaimer-body p {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer-consent {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #1e293b;
+}
+
+.consent-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  cursor: pointer;
+  user-select: none;
+}
+
+.consent-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Mode Selection */
+.mode-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mode-option {
+  background-color: #0f172a;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.mode-option:hover {
+  border-color: #475569;
+  background-color: #172033;
+}
+
+.mode-option.selected {
+  border-color: #3b82f6;
+  background-color: #13233f;
+}
+
+.mode-option .badge-label {
+  display: inline-block;
+  background-color: var(--border-color);
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.mode-option.selected .badge-label {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.mode-option h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: #fff;
+}
+
+.mode-option p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: #2b4ba3;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #1e293b;
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #334155;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.action-bar-center {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* TIMER & TIME SCALE */
+.timer-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+
+.timer-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timer-digits {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #0b1120;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.timer-digits.warning {
+  color: var(--status-warn);
+  border-color: var(--status-warn);
+}
+
+.timer-digits.danger {
+  color: var(--status-alert);
+  border-color: var(--status-alert);
+}
+
+.time-scale-track {
+  width: 100%;
+  height: 8px;
+  background-color: #0b1120;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.time-scale-fill {
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary-hover);
+  transition: width 0.25s linear, background-color 0.3s;
+}
+
+.time-scale-fill.warning {
+  background-color: var(--status-warn);
+}
+
+.time-scale-fill.danger {
+  background-color: var(--status-alert);
+}
+
+/* Question Card */
+.question-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.question-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.question-pill {
+  background-color: #0f172a;
+  color: #94a3b8;
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+}
+
+.competence-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.tag-badge {
+  background-color: #172033;
+  color: #93c5fd;
+  border: 1px solid #283957;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.scenario-box {
+  background-color: #0b1120;
+  border-left: 3px solid var(--primary-hover);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1rem 1.25rem;
+}
+
+.scenario-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+}
+
+#scenario-text {
+  font-size: 1rem;
+  color: #f1f5f9;
+  line-height: 1.55;
+}
+
+/* Mode Instruction */
+.mode-instruction-banner {
+  background-color: #172033;
+  border: 1px solid #283957;
+  color: #cbd5e1;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+}
+
+/* MODE A: Rating (1-7) */
+.rating-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rating-option-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+}
+
+.rating-option-item.completed {
+  border-color: #3b82f6;
+}
+
+.option-text-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.option-letter-badge {
+  background-color: #0b1120;
+  color: #93c5fd;
+  border: 1px solid var(--border-color);
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.option-desc {
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  line-height: 1.45;
+}
+
+.likert-scale-wrapper {
+  background-color: #0b1120;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.scale-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+  font-weight: 500;
+}
+
+.scale-buttons-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.scale-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.15s ease;
+}
+
+.scale-btn:hover {
+  background-color: #24324d;
+  border-color: #4b5f82;
+}
+
+.scale-btn.active {
+  background-color: #2563eb;
+  color: #fff;
+  border-color: #60a5fa;
+}
+
+/* MODE B: Ranking (1-4) */
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ranking-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.15s;
+}
+
+.ranking-item:hover {
+  border-color: #475569;
+}
+
+.ranking-item.dragging {
+  opacity: 0.35;
+  border-style: dashed;
+}
+
+.ranking-item.drag-over {
+  border-color: #3b82f6;
+  background-color: #16243d;
+}
+
+.drag-handle {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  cursor: grab;
+  padding: 0 0.15rem;
+}
+
+.rank-badge-slot {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background-color: #0b1120;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #94a3b8;
+}
+
+.ranking-item:nth-child(1) .rank-badge-slot {
+  color: #93c5fd;
+  border-color: #2563eb;
+}
+
+.ranking-content {
+  flex: 1;
+}
+
+.ranking-letter {
+  display: inline-block;
+  background-color: #0b1120;
+  color: #93c5fd;
+  border: 1px solid var(--border-color);
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  margin-right: 0.4rem;
+}
+
+.ranking-text {
+  font-size: 0.92rem;
+  color: #f1f5f9;
+  line-height: 1.45;
+}
+
+.ranking-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.btn-move {
+  background-color: #0b1120;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 26px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+}
+
+.btn-move:hover:not(:disabled) {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+.btn-move:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Quiz Footer */
+.quiz-footer {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.quiz-info-note {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+/* RESULTS SCREEN */
+.result-summary {
+  text-align: center;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.75rem;
+}
+
+.result-score-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.25rem;
+  border-radius: var(--radius-md);
+  background-color: #0b1120;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.result-score-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+
+.result-score-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.35rem;
+}
+
+.result-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.result-text {
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 0.92rem;
+}
+
+.result-points {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #93c5fd;
+  font-size: 0.92rem;
+}
+
+.results-section {
+  margin-bottom: 2rem;
+}
+
+.results-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.results-subtext {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Competency Grid */
+.competence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.competence-item {
+  background-color: #0b1120;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+}
+
+.comp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.comp-bar-bg {
+  height: 6px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.comp-bar-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: var(--radius-sm);
+}
+
+/* Review List */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.review-item {
+  background-color: #0b1120;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.review-header {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid transparent;
+}
+
+.review-header:hover {
+  background-color: #1a273f;
+}
+
+.review-header.open {
+  border-bottom-color: var(--border-color);
+}
+
+.review-q-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.review-score-tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  background-color: #172033;
+  color: #94a3b8;
+  border: 1px solid var(--border-color);
+}
+
+.review-score-tag.high {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+.review-score-tag.med {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.review-score-tag.low {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.review-body {
+  padding: 1rem;
+  display: none;
+  font-size: 0.88rem;
+  background-color: #090e1a;
+}
+
+.review-body.open {
+  display: block;
+}
+
+.review-scenario {
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+  background-color: #0f172a;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid #3b82f6;
+  color: #cbd5e1;
+}
+
+.review-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.review-column {
+  background-color: var(--bg-card);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.review-column h4 {
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.comparison-list-item {
+  padding: 0.35rem 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.comparison-list-item:last-child {
+  border-bottom: none;
+}
+
+/* Footer & Discrete Copyright Notice */
+.app-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding: 0.75rem 1.5rem;
+}
+
+.footer-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.copyright-notice {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .app-header, .quiz-footer, .action-bar-center, .btn, .time-scale-track {
+    display: none !important;
+  }
+  .content-card, .competence-item, .review-item, .review-body {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #ccc !important;
+    display: block !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .scale-buttons-row {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.2rem;
+  }
+  .scale-btn {
+    padding: 0.4rem 0;
+    font-size: 0.8rem;
+  }
+  .review-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-badge">TAUVE</div>
+        <div class="title-group">
+          <h1>TAUVE Übungstest</h1>
+          <p>Situativer Test zur Vorbereitung auf die 3. Qualifikationsebene</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <span id="quiz-header-progress" class="header-progress-label"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- Resume Banner (Shown only if previous progress was found in localStorage) -->
+    <div id="resume-banner" class="resume-alert" style="display:none;">
+      <div>
+        <strong>Unvollständiger Durchlauf gefunden:</strong> Sie können Ihren vorherigen Stand fortsetzen oder neu beginnen.
+      </div>
+      <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; justify-content: center;">
+        <button id="btn-resume-quiz" class="btn btn-primary btn-sm">Vorherigen Stand fortsetzen</button>
+        <button id="btn-dismiss-resume" class="btn btn-secondary btn-sm">Neu beginnen</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: WELCOME, DISCLAIMER & MODE SELECTION -->
+    <section id="screen-welcome" class="view-panel active">
+      <div class="content-card">
+        <h2 class="section-heading">Hinweise &amp; Durchführung</h2>
+        
+        <p class="intro-text">
+          Dieses Übungsprogramm umfasst <strong>40 praxisnahe Szenarien</strong> aus dem polizeilichen Dienst- und Führungsalltag.
+          Pro Frage steht Ihnen ein Zeitfenster von <strong>3 Minuten</strong> zur Verfügung. Sie können vorzeitig zur nächsten Frage übergehen, sobald Sie Ihre Auswahl getroffen haben.
+        </p>
+
+        <!-- HAFTUNGSAUSSCHLUSS / DISCLAIMER -->
+        <div class="disclaimer-container">
+          <div class="disclaimer-title">Haftungsausschluss &amp; Nutzungshinweise</div>
+          <div class="disclaimer-body">
+            <h4>1. Kein offizielles Programm</h4>
+            <p>
+              Bei dieser Anwendung handelt es sich ausdrücklich um kein offizielles Programm, Tool oder Prüfverfahren des Freistaates Bayern, der Bayerischen Polizei oder des Zentralen Psychologischen Dienstes (ZPD). Die Software wurde von mir als Privatperson in meiner Freizeit entwickelt.
+            </p>
+
+            <h4>2. Zweck der Anwendung</h4>
+            <p>
+              Das Programm dient als reine Simulation und soll Kolleginnen und Kollegen lediglich dabei unterstützen, sich mit dem Format und dem Zeitdruck (3 Minuten pro Frage) des situativen Auswahltests (TAUVE) für die 3. Qualifikationsebene vertraut zu machen.
+            </p>
+
+            <h4>3. Inhalte und Richtigkeit</h4>
+            <p>
+              Die hier verwendeten Szenarien und Handlungsalternativen sind fiktiv und an die Methodik polizeilicher Auswahlverfahren angelehnt. Sie stammen nicht aus aktuellen offiziellen Testkatalogen. Es wird keine Haftung oder Garantie dafür übernommen, dass die hier als "richtig" hinterlegten Antworten den tatsächlichen Auswertungskriterien der Polizei-Führungskräfte (Bewertungsmehrheit) entsprechen.
+            </p>
+            <p style="margin-top: 0.5rem; font-weight: 600;">
+              Ein erfolgreiches Absolvieren dieser Simulation lässt keine Rückschlüsse auf das Bestehen des echten TAUVE-Tests zu.
+            </p>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="disclaimer-consent">
+            <label class="consent-label">
+              <input type="checkbox" id="checkbox-disclaimer-consent">
+              <span>Habe ich gelesen und bin einverstanden</span>
+            </label>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">Bearbeitungsart auswählen:</h3>
+
+        <div class="mode-selection-grid">
+          <!-- Option B (Ranking) -->
+          <div class="mode-option selected" data-mode="B">
+            <span class="badge-label">Modus B</span>
+            <h3>Rangfolge sortieren</h3>
+            <p>Ordnen Sie die 4 Alternativen von Rang 1 (Beste Option) bis Rang 4 (Schlechteste Option) via Drag &amp; Drop oder Pfeiltasten.</p>
+          </div>
+
+          <!-- Option A (Rating) -->
+          <div class="mode-option" data-mode="A">
+            <span class="badge-label">Modus A</span>
+            <h3>Ratingskala (1 bis 7)</h3>
+            <p>Bewerten Sie jede Alternative separat auf einer Skala von 1 (<em>"würde mich ganz bestimmt so verhalten"</em>) bis 7 (<em>"würde mich ganz bestimmt nicht so verhalten"</em>).</p>
+          </div>
+
+          <!-- Option Mixed -->
+          <div class="mode-option" data-mode="MIXED">
+            <span class="badge-label">Kombiniert</span>
+            <h3>Abwechselnd A &amp; B</h3>
+            <p>Ungerade Fragen als Rangfolge (Modus B), gerade Fragen als Ratingskala (Modus A).</p>
+          </div>
+        </div>
+
+        <div class="action-bar-center">
+          <button id="btn-start-quiz" class="btn btn-primary" disabled>
+            Test starten
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ACTIVE QUIZ QUESTION -->
+    <section id="screen-quiz" class="view-panel">
+
+      <!-- Dynamic Time Scale / Countdown -->
+      <div class="timer-container">
+        <div class="timer-header">
+          <span class="timer-title">Verbleibende Bearbeitungszeit</span>
+          <span id="timer-countdown" class="timer-digits">03:00</span>
+        </div>
+        <div class="time-scale-track">
+          <div id="time-scale-bar" class="time-scale-fill"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card">
+        <div class="question-meta">
+          <span id="question-counter" class="question-pill">Frage 1 von 40</span>
+          <div id="competence-tags" class="competence-tags">
+            <!-- Dynamically populated tags -->
+          </div>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-label">Szenario</div>
+          <p id="scenario-text">Lade Szenario...</p>
+        </div>
+      </div>
+
+      <!-- Mode Instructions Banner -->
+      <div class="mode-instruction-banner">
+        <div id="mode-instruction-text">Hinweis zum Bearbeitungsmodus</div>
+      </div>
+
+      <!-- MODE A CONTAINER (Rating 1-7) -->
+      <div id="container-rating-mode" style="display: none;">
+        <div id="rating-options-list" class="rating-options-list">
+          <!-- Dynamically generated options with 1-7 Likert scales -->
+        </div>
+      </div>
+
+      <!-- MODE B CONTAINER (Ranking / Sorting) -->
+      <div id="container-ranking-mode" style="display: none;">
+        <div id="ranking-list" class="ranking-list">
+          <!-- Dynamically generated draggable cards with 1..4 slots -->
+        </div>
+      </div>
+
+      <!-- Quiz Action Navigation -->
+      <div class="quiz-footer">
+        <span class="quiz-info-note">Sie können vor Ablauf der 3 Minuten selbstständig weitergehen.</span>
+        <button id="btn-next-question" class="btn btn-primary">
+          Antwort einreichen &amp; Weiter
+        </button>
+      </div>
+
+    </section>
+
+    <!-- SCREEN 3: RESULTS DASHBOARD -->
+    <section id="screen-results" class="view-panel">
+      <div class="content-card">
+
+        <!-- Score Hero -->
+        <div class="result-summary">
+          <div class="result-score-box">
+            <span id="result-total-percent" class="result-score-val">0%</span>
+            <span class="result-score-label">Gesamtergebnis</span>
+          </div>
+          <h2 id="result-verdict-title" class="result-heading">Auswertung abgeschlossen</h2>
+          <p id="result-verdict-desc" class="result-text"></p>
+          <div class="result-points" id="result-points-text"></div>
+        </div>
+
+        <!-- Competencies Breakdown -->
+        <div class="results-section">
+          <h3 class="results-section-title">Ergebnisse nach Kompetenzfeldern</h3>
+          <div id="competence-grid" class="competence-grid">
+            <!-- Dynamically populated competency cards -->
+          </div>
+        </div>
+
+        <!-- Detailed Review List -->
+        <div class="results-section">
+          <h3 class="results-section-title">Detaillierte Übersicht aller Szenarien</h3>
+          <p class="results-subtext">
+            Klicken Sie auf ein Szenario, um Ihre Antworten im direkten Vergleich mit der hinterlegten Musterlösung einzusehen.
+          </p>
+          <div id="review-list" class="review-list">
+            <!-- Dynamically populated review accordion -->
+          </div>
+        </div>
+
+        <!-- Results Actions -->
+        <div class="action-bar-center" style="margin-top: 2rem; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="btn-print-results" class="btn btn-secondary">
+            Drucken / PDF speichern
+          </button>
+          <button id="btn-restart-quiz" class="btn btn-primary">
+            Neuen Durchlauf starten
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Discrete Copyright Notice -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <span class="copyright-notice">&copy; Nowadnick</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+// questions.js - 40 Situational Judgement Test (SJT) Aufgaben für die Polizei
+const QUIZ_QUESTIONS = [
+  {
+    "id": 1,
+    "kompetenzen": ["Konfliktmanagement", "Kommunikationsfähigkeit"],
+    "szenario": "Ein Kollege, mit dem Sie häufig Streife fahren, riecht in letzter Zeit extrem stark nach Schweiß. Es belastet die Zusammenarbeit im engen Streifenwagen enorm.",
+    "optionen": {
+      "A": "Sie bitten den Dienstgruppenleiter (DGL), einen allgemeinen Dienstunterricht über Körperhygiene zu halten, damit der Kollege es merkt.",
+      "B": "Sie sprechen den Kollegen bei nächster Gelegenheit unter vier Augen respektvoll, aber direkt auf das Problem an.",
+      "C": "Sie machen im Streifenwagen demonstrativ das Fenster auf und sprühen Deo, in der Hoffnung, dass er den Wink versteht.",
+      "D": "Sie ignorieren das Problem, um das gute kollegiale Verhältnis nicht durch eine solch peinliche Thematik zu belasten."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 2,
+    "kompetenzen": ["Führungskompetenz", "Entscheidungskompetenz"],
+    "szenario": "Als DGL bemerken Sie, dass ein erfahrener, älterer Kollege Ihre Arbeitsanweisungen bei der Schichtübergabe vor den jungen Kollegen wiederholt ins Lächerliche zieht.",
+    "optionen": {
+      "A": "Sie weisen ihn sofort vor der gesamten Schicht scharf zurecht, um Ihre Autorität als neuer DGL klarzustellen.",
+      "B": "Sie ignorieren die Kommentare in der Runde, bitten ihn aber direkt nach der Übergabe zu einem Vier-Augen-Gespräch, um die Gründe für sein Verhalten zu klären und Grenzen aufzuzeigen.",
+      "C": "Sie melden den Vorfall umgehend dem Dienststellenleiter und fordern eine offizielle Abmahnung für den Kollegen.",
+      "D": "Sie versuchen, bei seinen Witzen mitzulachen, um Authentizität zu zeigen und sich als 'Teil des Teams' zu etablieren."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 3,
+    "kompetenzen": ["Emotionale Intelligenz", "Belastbarkeit"],
+    "szenario": "Sie kommen als Erstsprecher zu einer Wohnung, um eine Todesnachricht (plötzlicher Kindstod) zu überbringen. Der Vater reagiert extrem aggressiv, schreit Sie an und schlägt gegen die Wand.",
+    "optionen": {
+      "A": "Sie weisen ihn streng an, sich zu beruhigen, da Sie sonst Maßnahmen ergreifen müssen.",
+      "B": "Sie ziehen sich sofort aus der Wohnung zurück und fordern Unterstützung nach, um Eigenschutz zu gewährleisten.",
+      "C": "Sie bewahren absolute Ruhe, halten körperlichen Abstand, zeigen Verständnis für den Ausnahmezustand und warten ab, bis die erste Welle der Wut abebbt.",
+      "D": "Sie versuchen, ihn in den Arm zu nehmen und körperlich zu beruhigen, um Empathie zu signalisieren."
+    },
+    "ranking": "C, B, A, D"
+  },
+  {
+    "id": 4,
+    "kompetenzen": ["Gerechtigkeit", "Teamfähigkeit"],
+    "szenario": "Auf der Dienststelle kursiert das Gerücht, eine Kollegin würde bei Verkehrskontrollen vereinzelt Verwarnungsgelder in die eigene Tasche stecken. Sie haben dafür keine Beweise, hören es aber von mehreren Seiten.",
+    "optionen": {
+      "A": "Sie sprechen die Kollegin direkt auf die Gerüchte an und fragen sie, ob etwas an den Vorwürfen dran ist.",
+      "B": "Sie informieren umgehend Ihren Vorgesetzten oder die interne Ermittlung über die kursierenden Gerüchte, damit diese objektiv geprüft werden.",
+      "C": "Da es nur Gerüchte sind, tun Sie nichts. Kollegen verpfeift man nicht ohne handfeste Beweise.",
+      "D": "Sie meiden die Zusammenarbeit mit der Kollegin und raten auch anderen, nicht mehr mit ihr Streife zu fahren."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 5,
+    "kompetenzen": ["Selbstreflexion", "Authentizität"],
+    "szenario": "Sie haben als Einsatzleiter eine taktische Entscheidung getroffen, die im Nachhinein offensichtlich falsch war. Es gab keine Verletzten, aber der Einsatz dauerte dadurch unnötig lange und stieß auf Unmut im Team.",
+    "optionen": {
+      "A": "Sie besprechen den Einsatz in der Nachbereitung, übernehmen offen die Verantwortung für den Fehler und analysieren gemeinsam mit dem Team, was man künftig besser machen kann.",
+      "B": "Sie rechtfertigen Ihre Entscheidung in der Nachbereitung mit unklaren Informationslagen, um keinen Gesichtsverlust als Führungskraft zu erleiden.",
+      "C": "Sie lassen den Einsatz unkommentiert, da Fehler passieren und Sie das Thema nicht unnötig aufbauschen wollen.",
+      "D": "Sie schieben die Schuld auf die ungenauen Angaben der Einsatzzentrale."
+    },
+    "ranking": "A, B, C, D"
+  },
+  {
+    "id": 6,
+    "kompetenzen": ["Belastbarkeit", "Entscheidungskompetenz"],
+    "szenario": "Sie sind als erste Streife bei einer Massenschlägerei auf einem Volksfest (ca. 30 Beteiligte). Die Situation ist unübersichtlich, Flaschen fliegen.",
+    "optionen": {
+      "A": "Sie stürzen sich sofort ins Getümmel, um den Hauptaggressor festzunehmen und ein Zeichen zu setzen.",
+      "B": "Sie bleiben am Rand, fordern umgehend starke Unterstützung an, beobachten die Lage, melden laufend Erkenntnisse und greifen erst gezielt ein, wenn es der Eigenschutz zulässt.",
+      "C": "Sie fahren ein Stück zurück, schalten Blaulicht und Martinshorn aus und warten in sicherer Entfernung auf die geschlossenen Einheiten.",
+      "D": "Sie nutzen sofort den Mehrzweckstock und Pfefferspray wahllos in die Menge, um diese schnellstmöglich zu zerstreuen."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 7,
+    "kompetenzen": ["Führungskompetenz", "Teamfähigkeit"],
+    "szenario": "Ein Mitglied Ihrer Dienstgruppe, das sonst sehr engagiert ist, wirkt seit Wochen apathisch, macht Leichtsinnsfehler und meldet sich häufig kurzfristig krank.",
+    "optionen": {
+      "A": "Sie ermahnen ihn offiziell wegen der Fehler und der Fehlzeiten, um die Dienstfähigkeit der Gruppe zu sichern.",
+      "B": "Sie bitten ihn zu einem vertraulichen Gespräch, spiegeln Ihre Beobachtungen wider, fragen nach den Ursachen und bieten Hilfsmöglichkeiten (z.B. psychosoziale Unterstützung) an.",
+      "C": "Sie teilen ihn nur noch für unbeliebte Innendienste ein, wo er weniger Schaden anrichten kann.",
+      "D": "Sie ignorieren das Verhalten vorerst in der Hoffnung, dass es sich um eine kurze Phase handelt."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 8,
+    "kompetenzen": ["Kommunikationsfähigkeit", "Authentizität"],
+    "szenario": "Bei einer Routineverkehrskontrolle beginnt der Fahrer sofort, Sie mit seinem Smartphone zu filmen und provoziert Sie verbal ('Scheiß Bullen, habt ihr nichts Besseres zu tun?').",
+    "optionen": {
+      "A": "Sie versuchen, ihm das Handy sofort aus der Hand zu schlagen, da Filmaufnahmen im Dienst unzulässig sind.",
+      "B": "Sie drohen ihm lautstark mit einer Anzeige wegen Beleidigung und fordern aggressiv seine Papiere.",
+      "C": "Sie bleiben ruhig, weisen sachlich auf Ihre rechtlichen Befugnisse hin, ignorieren die Provokation weitgehend und ziehen die Kontrolle professionell und zügig durch.",
+      "D": "Sie brechen die Kontrolle ab und lassen ihn weiterfahren, um eine Eskalation auf Video zu vermeiden."
+    },
+    "ranking": "C, B, D, A"
+  },
+  {
+    "id": 9,
+    "kompetenzen": ["Emotionale Intelligenz", "Kommunikationsfähigkeit"],
+    "szenario": "Sie nehmen die Anzeige einer Frau auf, der gerade die Handtasche geraubt wurde. Sie steht stark unter Schock und weint ununterbrochen.",
+    "optionen": {
+      "A": "Sie fordern sie bestimmt auf, sich zu beruhigen, da Sie sonst die Anzeige nicht ordnungsgemäß aufnehmen können.",
+      "B": "Sie reichen ihr ein Taschentuch, geben ihr Zeit sich zu sammeln, sprechen beruhigend mit ihr und stellen erst danach behutsam die wichtigsten Fragen.",
+      "C": "Sie übergeben die Anzeigenaufnahme an Ihren Kollegen und warten lieber im Streifenwagen.",
+      "D": "Sie rufen sofort den Rettungsdienst, da Sie mit weinenden Opfern grundsätzlich nicht sprechen."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 10,
+    "kompetenzen": ["Entscheidungskompetenz", "Belastbarkeit"],
+    "szenario": "Sie sind als DGL in der Schicht. Es laufen zeitgleich drei Einsätze auf: 1. Eine Ruhestörung, 2. Ein Ladendieb (wird festgehalten), 3. Ein schwerer Verkehrsunfall mit eingeklemmter Person. Sie haben nur zwei Streifen frei.",
+    "optionen": {
+      "A": "Sie schicken eine Streife zur Ruhestörung und eine zum Ladendieb. Den VU lassen Sie durch benachbarte Dienststellen anfahren.",
+      "B": "Sie priorisieren den VU (höchstes Rechtsgut) und entsenden beide Streifen dorthin. Ladendieb und Ruhestörung müssen warten, was Sie den Mitteilern transparent kommunizieren.",
+      "C": "Sie fahren als DGL selbst zur Ruhestörung, um Ressourcen zu sparen.",
+      "D": "Sie schicken jeweils einen Beamten alleine zu den drei Einsätzen, um alles gleichzeitig abzudecken."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 11,
+    "kompetenzen": ["Gerechtigkeit", "Konfliktmanagement"],
+    "szenario": "Während einer gemeinsamen Pause auf der Wache macht ein Kollege einen klar rassistischen Witz über eine bestimmte Bevölkerungsgruppe. Andere lachen.",
+    "optionen": {
+      "A": "Sie lachen mit, um im Team nicht als Spielverderber zu gelten.",
+      "B": "Sie ignorieren den Witz und verlassen stumm den Raum.",
+      "C": "Sie positionieren sich sofort und sachlich, dass Sie solche Witze nicht tolerieren und diese mit den Werten der Polizei unvereinbar sind.",
+      "D": "Sie melden den Kollegen sofort heimlich beim Disziplinarvorgesetzten, ohne vorher mit ihm zu sprechen."
+    },
+    "ranking": "C, D, B, A"
+  },
+  {
+    "id": 12,
+    "kompetenzen": ["Führungskompetenz", "Selbstreflexion"],
+    "szenario": "Sie sind Dienstgruppenleiter. Die Schichtmoral ist am Boden, da in den letzten Wochen extrem viele Überstunden angefallen sind. Die Kollegen beschweren sich lautstark beim Antreten.",
+    "optionen": {
+      "A": "Sie zeigen Verständnis für den Frust, erklären transparent die aktuellen personellen Engpässe und sagen zu, sich bei der Dienststellenleitung für Entlastung (z.B. durch Schwerpunkteinsätze) einzusetzen.",
+      "B": "Sie blocken ab und sagen, dass Polizei eben kein Wunschkonzert ist und Überstunden zum Beruf gehören.",
+      "C": "Sie stimmen den Kollegen voll zu und schimpfen gemeinsam mit ihnen über 'die da oben', um Solidarität zu zeigen.",
+      "D": "Sie sagen den Antritts-Appell ab, da Sie Diskussionen aus dem Weg gehen wollen."
+    },
+    "ranking": "A, B, C, D"
+  },
+  {
+    "id": 13,
+    "kompetenzen": ["Teamfähigkeit", "Kommunikationsfähigkeit"],
+    "szenario": "Bei der Schichtübernahme stellen Sie fest, dass die Vorgängerschicht den Streifenwagen extrem dreckig (Müll, Kaffeeflecken) und mit leerem Tank hinterlassen hat. Das passiert nicht zum ersten Mal.",
+    "optionen": {
+      "A": "Sie putzen das Auto und tanken stumm, um keinen Ärger anzufangen.",
+      "B": "Sie rufen den verantwortlichen Fahrer der Vorgängerschicht an und bitten ihn sachlich, künftig das Auto ordnungsgemäß zu übergeben, andernfalls würden Sie es offiziell melden.",
+      "C": "Sie lassen den Wagen genau so für Ihre Nachfolger stehen, aus Prinzip.",
+      "D": "Sie beschweren sich lautstark beim DGL und weigern sich, mit dem Auto auf Streife zu fahren."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 14,
+    "kompetenzen": ["Kommunikationsfähigkeit", "Authentizität"],
+    "szenario": "An einem Tatort drängt ein Reporter eines Lokalblattes immer wieder auf Informationen und versucht, Fotos von Verletzten zu machen.",
+    "optionen": {
+      "A": "Sie verweisen den Reporter freundlich aber extrem konsequent des Platzes, verweisen auf die Pressestelle und richten einen Sichtschutz ein.",
+      "B": "Sie drohen dem Reporter sofort mit Festnahme und beschlagnahmen seine Kamera.",
+      "C": "Sie geben ihm ein paar harmlose Insider-Informationen, damit er endlich Ruhe gibt.",
+      "D": "Sie ignorieren ihn und hoffen, dass er von selbst geht."
+    },
+    "ranking": "A, D, B, C"
+  },
+  {
+    "id": 15,
+    "kompetenzen": ["Führungskompetenz", "Konfliktmanagement"],
+    "szenario": "Eine junge Beamtin in Ihrer Schicht postet regelmäßig Videos auf Social Media in Uniform, die grenzwertig sind und das Ansehen der Polizei schädigen könnten. Sie sind ihr Vorgesetzter.",
+    "optionen": {
+      "A": "Sie verbieten ihr sofort jegliche Social Media Nutzung.",
+      "B": "Sie führen ein Sensibilisierungsgespräch, erklären die rechtlichen und dienstrechtlichen Grenzen (Neutralitätsgebot) und bitten sie, kritische Videos zu entfernen.",
+      "C": "Sie leiten den Fall anonym an die Pressestelle weiter.",
+      "D": "Sie liken die Videos, um einen guten Draht zu den jungen Kollegen aufzubauen."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 16,
+    "kompetenzen": ["Entscheidungskompetenz", "Teamfähigkeit"],
+    "szenario": "Ein Bürger reicht eine formelle Dienstaufsichtsbeschwerde gegen Ihren Streifenpartner ein, da dieser bei einer Kontrolle unverhältnismäßig grob gewesen sei. Sie waren dabei und fanden das Verhalten Ihres Partners ebenfalls grenzwertig.",
+    "optionen": {
+      "A": "Sie decken Ihren Partner bei der Zeugenaussage zu 100%, Korpsgeist ist am wichtigsten.",
+      "B": "Sie sagen objektiv und wahrheitsgemäß aus, was passiert ist, sprechen aber vorher mit Ihrem Partner über Ihre Sicht der Dinge.",
+      "C": "Sie behaupten, sich an nichts erinnern zu können.",
+      "D": "Sie belasten Ihren Partner schwerer als es war, um sich selbst zu distanzieren."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 17,
+    "kompetenzen": ["Belastbarkeit", "Emotionale Intelligenz"],
+    "szenario": "Nach einem extrem belastenden Einsatz (Suizid auf den Schienen) bemerken Sie, dass Ihr Streifenpartner zittert und extrem still wird. Er lehnt ein Gespräch ab ('Mir gehts gut').",
+    "optionen": {
+      "A": "Sie zwingen ihn, sofort mit einem Polizeiseelsorger zu sprechen.",
+      "B": "Sie akzeptieren seine Grenze im Moment, bleiben aber aufmerksam, schirmen ihn für den Rest der Schicht etwas ab und bieten später behutsam erneut ein Gespräch an.",
+      "C": "Sie machen Witze über den Einsatz, um die Stimmung aufzulockern (Galgenhumor).",
+      "D": "Sie ignorieren es. Jeder muss mit sowas alleine klarkommen."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 18,
+    "kompetenzen": ["Gerechtigkeit", "Konfliktmanagement"],
+    "szenario": "Sie erwischen einen Kollegen dabei, wie er bei einem Bäcker einen Kaffee und ein Gebäck annimmt, ohne zu bezahlen ('Geht aufs Haus für die Polizei').",
+    "optionen": {
+      "A": "Sie nehmen ebenfalls etwas an, um nicht unhöflich zu sein.",
+      "B": "Sie warten, bis Sie draußen sind, weisen ihn auf die Compliance-Regeln (Vorteilsnahme) hin und fordern ihn auf, das künftig zu unterlassen.",
+      "C": "Sie zahlen demonstrativ den Kaffee für ihn mit und machen ihm vor dem Bäcker eine Szene.",
+      "D": "Sie melden ihn sofort wegen Bestechlichkeit an den Staatsanwalt."
+    },
+    "ranking": "B, C, D, A"
+  },
+  {
+    "id": 19,
+    "kompetenzen": ["Führungskompetenz", "Authentizität"],
+    "szenario": "Sie sind neu in der Rolle des Einsatzleiters. Ein lebenserfahrener, aber dienstgradniederer Beamter hinterfragt in einem Einsatz lautstark vor anderen Ihre Taktik.",
+    "optionen": {
+      "A": "Sie stellen klar, dass Sie hier das Sagen haben und dulden keine Widerworte.",
+      "B": "Sie hören sich seinen Einwand kurz an, entscheiden dann (falls der Einwand gut ist, passen Sie die Taktik an; falls nicht, bleiben Sie bei Ihrem Plan) und klären die Art und Weise der Kritik im Nachgang unter vier Augen.",
+      "C": "Sie übergeben ihm die Einsatzleitung, da er anscheinend mehr Erfahrung hat.",
+      "D": "Sie ignorieren ihn komplett und rufen über Funk Ihre Befehle."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 20,
+    "kompetenzen": ["Kommunikationsfähigkeit", "Konfliktmanagement"],
+    "szenario": "Ein bekannter 'Querulant' erscheint zum 5. Mal in dieser Woche auf der Wache und will eine völlig abstruse Anzeige wegen 'Gedankenkontrolle durch Nachbarn' erstatten.",
+    "optionen": {
+      "A": "Sie schmeißen ihn sofort und wortlos von der Wache.",
+      "B": "Sie bleiben sachlich, erklären ihm bestimmt, dass es sich um keinen Straftatbestand handelt und fertigen bei Bedarf einen kurzen Aktenvermerk, weisen ihn dann aber konsequent ab.",
+      "C": "Sie nehmen eine komplette Anzeige auf, um ihn ruhigzustellen, auch wenn es Stunden dauert.",
+      "D": "Sie rufen den sozialpsychiatrischen Dienst, um ihn sofort einweisen zu lassen."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 21,
+    "kompetenzen": ["Belastbarkeit", "Selbstreflexion"],
+    "szenario": "Sie spüren in der Mitte einer 12-Stunden-Nachtschicht eine enorme Müdigkeit, die Ihre Reaktionsfähigkeit beim Fahren einschränkt.",
+    "optionen": {
+      "A": "Sie fahren trotzdem weiter, um keine Schwäche zu zeigen.",
+      "B": "Sie kommunizieren dies offen an Ihren Streifenpartner, bitten ihn, das Steuer zu übernehmen oder machen eine vereinbarte Kurzpause, falls es die Einsatzlage zulässt.",
+      "C": "Sie trinken drei Energydrinks und fahren aggressiver, um wach zu bleiben.",
+      "D": "Sie stellen sich heimlich mit dem Streifenwagen ab und schlafen zwei Stunden, ohne der Einsatzzentrale Bescheid zu geben."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 22,
+    "kompetenzen": ["Teamfähigkeit", "Gerechtigkeit"],
+    "szenario": "Ihre neue Streifenpartnerin ist die einzige Frau in der Dienstgruppe. Sie merken, dass einige Kollegen in der Teeküche hinter ihrem Rücken anzügliche Bemerkungen machen.",
+    "optionen": {
+      "A": "Sie lachen mit, um dazuzugehören.",
+      "B": "Sie schreiten ein, benennen das Verhalten als unkollegial und unangebracht und fordern die Kollegen auf, dies zu unterlassen.",
+      "C": "Sie erzählen der Kollegin detailliert, wer was über sie gesagt hat.",
+      "D": "Sie melden es anonym beim Gleichstellungsbeauftragten, ohne selbst einzugreifen."
+    },
+    "ranking": "B, D, C, A"
+  },
+  {
+    "id": 23,
+    "kompetenzen": ["Entscheidungskompetenz", "Kommunikationsfähigkeit"],
+    "szenario": "Bei einer Verkehrskontrolle stellt sich der Fahrer als lokaler Politiker vor und droht mit Konsequenzen für Ihre Karriere, wenn Sie ihm ein Bußgeld ausstellen.",
+    "optionen": {
+      "A": "Sie ziehen die Kontrolle vollkommen unbeeindruckt, sachlich und formell korrekt durch. Die Drohung protokollieren Sie in einem Vermerk.",
+      "B": "Sie belassen es bei einer mündlichen Verwarnung, um Ärger für die Dienststelle zu vermeiden.",
+      "C": "Sie reagieren emotional, werfen ihm Amtsmissbrauch vor und legen ihm präventiv Handschellen an.",
+      "D": "Sie rufen Ihren DGL an und fragen, ob Sie das Knöllchen schreiben dürfen."
+    },
+    "ranking": "A, D, B, C"
+  },
+  {
+    "id": 24,
+    "kompetenzen": ["Führungskompetenz", "Selbstreflexion"],
+    "szenario": "Sie müssen als Vorgesetzter ein schwieriges Mitarbeitergespräch mit einem Beamten führen, der fachlich exzellent ist, aber ein großes Defizit im Umgang mit Bürgern (oft arrogant) hat.",
+    "optionen": {
+      "A": "Sie loben zuerst seine fachlichen Leistungen und sprechen dann konkret und beispielhaft sein Auftreten an. Sie erarbeiten gemeinsam Lösungswege.",
+      "B": "Sie konzentrieren sich im Gespräch nur auf die Defizite, um ihm die Ernsthaftigkeit klarzumachen.",
+      "C": "Sie schreiben ihm lediglich eine schlechte Beurteilung, ohne das Gespräch zu suchen.",
+      "D": "Sie ignorieren das Problem, da seine fachliche Arbeit für die Dienststelle unverzichtbar ist."
+    },
+    "ranking": "A, B, D, C"
+  },
+  {
+    "id": 25,
+    "kompetenzen": ["Teamfähigkeit", "Kommunikationsfähigkeit"],
+    "szenario": "Sie werden zu einer Dienstgruppe versetzt, die für ihre starke interne Abschottung und ihren rauen Umgangston bekannt ist. Man begegnet Ihnen anfangs mit Misstrauen.",
+    "optionen": {
+      "A": "Sie ordnen sich komplett unter, übernehmen den rauen Ton und versuchen, es allen recht zu machen.",
+      "B": "Sie treten professionell, authentisch und offen auf, erledigen Ihre Arbeit zuverlässig und lassen sich Zeit, durch Leistung Respekt zu erarbeiten, ohne Ihre eigenen Werte aufzugeben.",
+      "C": "Sie beschweren sich nach drei Tagen beim Dienststellenleiter über das schlechte Arbeitsklima.",
+      "D": "Sie isolieren sich bewusst, machen nur Dienst nach Vorschrift und meiden Gespräche."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 26,
+    "kompetenzen": ["Emotionale Intelligenz", "Belastbarkeit"],
+    "szenario": "Nach einer missglückten Reanimation eines Jugendlichen sind Sie und Ihr Partner auf der Rückfahrt zur Wache extrem angespannt. Ihr Partner bricht plötzlich in Tränen aus.",
+    "optionen": {
+      "A": "Sie fahren rechts ran, nehmen sich Zeit für ihn, signalisieren Verständnis und bieten an, den Rest der Schicht die Führung zu übernehmen.",
+      "B": "Sie tun so, als hätten Sie es nicht bemerkt, um ihm keine Scham zu bereiten.",
+      "C": "Sie sagen ihm, er solle sich zusammenreißen, wir sind schließlich bei der Polizei.",
+      "D": "Sie funken sofort an die Einsatzzentrale, dass Ihr Partner dienstunfähig ist."
+    },
+    "ranking": "A, B, D, C"
+  },
+  {
+    "id": 27,
+    "kompetenzen": ["Gerechtigkeit", "Entscheidungskompetenz"],
+    "szenario": "Sie bearbeiten einen Ladendiebstahl. Der Beschuldigte ist offensichtlich obdachlos und hat lediglich eine Dose Suppe gestohlen. Der Filialleiter besteht beharrlich auf eine Strafanzeige.",
+    "optionen": {
+      "A": "Sie verweigern die Anzeigenaufnahme wegen Geringfügigkeit und bezahlen die Suppe selbst.",
+      "B": "Sie nehmen die Anzeige objektiv und formgerecht auf, behandeln den Täter respektvoll und fertigen einen entsprechenden Bericht für die Staatsanwaltschaft, die über die Einstellung entscheidet.",
+      "C": "Sie beschimpfen den Filialleiter wegen seiner Unmenschlichkeit.",
+      "D": "Sie legen dem Obdachlosen Handschellen an, um dem Filialleiter zu imponieren."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 28,
+    "kompetenzen": ["Authentizität", "Kommunikationsfähigkeit"],
+    "szenario": "Sie haben vergessen, eine wichtige Zeugenaussage zeitgerecht weiterzuleiten. Die Staatsanwaltschaft beschwert sich telefonisch bei Ihnen.",
+    "optionen": {
+      "A": "Sie behaupten, die IT habe versagt und das Dokument sei im System verschwunden.",
+      "B": "Sie geben den Fehler offen und ohne Umschweife zu, entschuldigen sich und versichern, das Dokument sofort nachzureichen.",
+      "C": "Sie geben einem jüngeren Kollegen die Schuld, der die Akte angeblich falsch abgelegt hat.",
+      "D": "Sie ignorieren den Anruf der Staatsanwaltschaft und reichen das Dokument stillschweigend nach."
+    },
+    "ranking": "B, D, A, C"
+  },
+  {
+    "id": 29,
+    "kompetenzen": ["Konfliktmanagement", "Teamfähigkeit"],
+    "szenario": "Ihr Streifenpartner übernimmt während einer Personenkontrolle ständig das Wort und lässt Sie wie einen Praktikanten aussehen, obwohl Sie denselben Dienstgrad haben.",
+    "optionen": {
+      "A": "Sie fallen ihm während der nächsten Kontrolle vor dem Bürger hart ins Wort und übernehmen lautstark die Führung.",
+      "B": "Sie sprechen das Thema bei der nächsten Rückfahrt zur Wache an und vereinbaren eine klare Rollenverteilung (Sicherer / Sprecher) für zukünftige Kontrollen.",
+      "C": "Sie lassen ihn künftig alles alleine machen und schalten auf stur.",
+      "D": "Sie beschweren sich beim DGL über ihn."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 30,
+    "kompetenzen": ["Führungskompetenz", "Belastbarkeit"],
+    "szenario": "Sie werden als junger Beamter vorübergehend mit der stellvertretenden Dienstgruppenleitung betraut. Einige ältere Kollegen weigern sich subtil, Ihre Anordnungen ernst zu nehmen.",
+    "optionen": {
+      "A": "Sie suchen das Einzelgespräch, erklären Ihre Aufgabe, fordern Professionalität ein und zeigen gleichzeitig Wertschätzung für deren Erfahrung.",
+      "B": "Sie beginnen sofort, Disziplinarverfahren gegen jeden anzudrohen, der nicht spurt.",
+      "C": "Sie ziehen sich zurück und erledigen nur Verwaltungsarbeit, um Konflikten aus dem Weg zu gehen.",
+      "D": "Sie bitten den Dienstgruppenleiter, Ihnen die Aufgabe wieder abzunehmen, da Sie dem Druck nicht standhalten."
+    },
+    "ranking": "A, B, C, D"
+  },
+  {
+    "id": 31,
+    "kompetenzen": ["Entscheidungskompetenz", "Selbstreflexion"],
+    "szenario": "Während einer Einsatzfahrt mit Sondersignal kommen Sie an eine rote Ampel. Die Kreuzung ist unübersichtlich.",
+    "optionen": {
+      "A": "Sie fahren ungebremst durch, da Sie Vorrang haben und es schnell gehen muss.",
+      "B": "Sie bremsen stark ab, vergewissern sich, dass alle Verkehrsteilnehmer Sie gesehen haben und tasten sich langsam in die Kreuzung, bevor Sie wieder beschleunigen.",
+      "C": "Sie schalten das Martinshorn aus, um niemanden zu erschrecken, und fahren drüber.",
+      "D": "Sie warten an der roten Ampel, bis diese grün wird, um kein Risiko einzugehen."
+    },
+    "ranking": "B, D, A, C"
+  },
+  {
+    "id": 32,
+    "kompetenzen": ["Kommunikationsfähigkeit", "Konfliktmanagement"],
+    "szenario": "Eine hysterische Mutter ruft auf der Wache an. Ihre 15-jährige Tochter ist seit 2 Stunden überfällig. Es liegen keine Hinweise auf eine Straftat vor.",
+    "optionen": {
+      "A": "Sie wimmeln die Mutter ab und sagen ihr, sie soll sich in 24 Stunden wieder melden.",
+      "B": "Sie nehmen die Sorge der Mutter ernst, erfassen sachlich alle Personalien, leiten erste Routineüberprüfungen (Krankenhäuser, Freunde) ein und geben ihr Verhaltenshinweise.",
+      "C": "Sie lösen sofort eine landesweite Großfahndung aus, um die Mutter zu beruhigen.",
+      "D": "Sie legen einfach auf, da das Telefon dauernd klingelt."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 33,
+    "kompetenzen": ["Teamfähigkeit", "Authentizität"],
+    "szenario": "Bei einer Feier der Dienststelle trinkt ein Kollege, der an diesem Abend noch in die Nachtschicht starten soll, offensichtlich Alkohol.",
+    "optionen": {
+      "A": "Sie behalten es für sich, da Sie keine Spaßbremse sein wollen.",
+      "B": "Sie sprechen den Kollegen diskret an, fordern ihn auf, den Dienstantritt zu unterlassen und sich krank/Urlaub zu melden. Zeigt er keine Einsicht, informieren Sie den DGL.",
+      "C": "Sie informieren sofort den Dienststellenleiter vor allen anwesenden Gästen.",
+      "D": "Sie mischen ihm Wasser in sein Getränk, damit er nicht so betrunken wird."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 34,
+    "kompetenzen": ["Führungskompetenz", "Gerechtigkeit"],
+    "szenario": "Als Vorgesetzter müssen Sie Urlaubswünsche koordinieren. Zwei Beamte wollen zeitgleich an Weihnachten frei haben. Personaltechnisch kann nur einer gehen. Beide haben kleine Kinder.",
+    "optionen": {
+      "A": "Sie würfeln die Entscheidung aus, um objektiv zu wirken.",
+      "B": "Sie prüfen die Urlaubslisten der letzten Jahre (Wer hatte letztes Jahr frei?) und suchen das gemeinsame Gespräch mit beiden, um eine faire, nachvollziehbare Lösung (z.B. Splitting) zu finden.",
+      "C": "Sie genehmigen keinem den Urlaub, um Streit zu vermeiden.",
+      "D": "Sie geben dem Beamten frei, der lauter meckert."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 35,
+    "kompetenzen": ["Emotionale Intelligenz", "Kommunikationsfähigkeit"],
+    "szenario": "Sie sichern einen Tatort (schwerer Unfall) ab. Ein Schaulustiger steht weinend am Rand, da das verunglückte Fahrzeug aussieht wie das seines Sohnes.",
+    "optionen": {
+      "A": "Sie erteilen ihm sofort einen strengen Platzverweis wegen Störung.",
+      "B": "Sie gehen empathisch auf ihn zu, überprüfen das Kennzeichen und teilen ihm (falls negativ) schonend mit, dass es nicht sein Sohn ist. Gegebenenfalls binden Sie den Rettungsdienst ein.",
+      "C": "Sie lassen ihn stehen, da Sie den Tatort bewachen müssen.",
+      "D": "Sie lassen ihn zum Fahrzeug vor, damit er sich selbst vergewissern kann."
+    },
+    "ranking": "B, C, A, D"
+  },
+  {
+    "id": 36,
+    "kompetenzen": ["Selbstreflexion", "Belastbarkeit"],
+    "szenario": "Sie haben seit Wochen massive Schlafprobleme aufgrund des Schichtdienstes und merken, dass Sie im Dienst unkonzentriert und reizbar sind.",
+    "optionen": {
+      "A": "Sie nehmen rezeptfreie Schlafmittel, um den Dienst irgendwie zu überstehen.",
+      "B": "Sie wenden sich vertrauensvoll an den Polizeiarzt oder Vorgesetzten, um präventiv nach Lösungen (z.B. vorübergehender Innendienst) zu suchen.",
+      "C": "Sie kompensieren das durch hohen Kaffeekonsum und versuchen, die Schwäche zu verbergen.",
+      "D": "Sie melden sich dauerhaft krank, ohne den Grund zu nennen."
+    },
+    "ranking": "B, A, C, D"
+  },
+  {
+    "id": 37,
+    "kompetenzen": ["Konfliktmanagement", "Gerechtigkeit"],
+    "szenario": "Ein Kollege redet vor Ihnen oft herablassend über die DGL. Eines Tages fordert die DGL Sie auf, die Leistung des besagten Kollegen einzuschätzen.",
+    "optionen": {
+      "A": "Sie nutzen die Chance und erzählen der DGL detailliert von den Lästereien des Kollegen.",
+      "B": "Sie trennen Privates von Dienstlichem und bewerten gegenüber der DGL rein objektiv die fachliche Leistung des Kollegen auf Streife.",
+      "C": "Sie lügen und behaupten, er sei der beste Kollege, um ihn zu schützen.",
+      "D": "Sie weigern sich, eine Aussage über Kollegen zu machen."
+    },
+    "ranking": "B, D, A, C"
+  },
+  {
+    "id": 38,
+    "kompetenzen": ["Entscheidungskompetenz", "Teamfähigkeit"],
+    "szenario": "Sie haben einen Flüchtigen nach langer Verfolgung gestellt. Er wehrt sich massiv, es kommt zum Gerangel. Als der Täter am Boden fixiert ist, will Ihr extrem wütender Kollege nochmal nachtreten.",
+    "optionen": {
+      "A": "Sie lassen ihn gewähren, da der Täter sich auch gewehrt hat.",
+      "B": "Sie schreiten physisch ein, blockieren Ihren Kollegen und rufen ihn lautstark zur Räson, um eine Straftat im Amt zu verhindern.",
+      "C": "Sie schauen weg und behaupten später, nichts gesehen zu haben.",
+      "D": "Sie nehmen die Personalien des Täters auf und ignorieren das Verhalten des Kollegen."
+    },
+    "ranking": "B, D, C, A"
+  },
+  {
+    "id": 39,
+    "kompetenzen": ["Führungskompetenz", "Kommunikationsfähigkeit"],
+    "szenario": "Sie sind Einsatzleiter bei einer angemeldeten Demonstration. Ein Unterführer meldet, dass seine Gruppe von Demonstranten stark provoziert wird und er den Wasserwerfer einsetzen will. Die rechtlichen Voraussetzungen sind noch nicht gegeben.",
+    "optionen": {
+      "A": "Sie vertrauen dem Unterführer blind und geben den Einsatz des Wasserwerfers frei.",
+      "B": "Sie untersagen den Einsatz klar, erinnern sachlich an die Verhältnismäßigkeit und entsenden zusätzliche Kräfte zur verbalen Deeskalation.",
+      "C": "Sie fahren selbst dorthin und spritzen die Demonstranten persönlich nass.",
+      "D": "Sie nehmen dem Unterführer sofort die Führung weg und schicken ihn nach Hause."
+    },
+    "ranking": "B, A, D, C"
+  },
+  {
+    "id": 40,
+    "kompetenzen": ["Authentizität", "Kommunikationsfähigkeit"],
+    "szenario": "Sie werden zu einem Streit unter Nachbarn gerufen. Beide Parteien schreien wild durcheinander. Keiner hört Ihnen zu.",
+    "optionen": {
+      "A": "Sie verschaffen sich durch ein lautes, klares Kommando ('Halt, Polizei!') Gehör, trennen die Parteien räumlich und klären den Sachverhalt dann in Ruhe mit jedem einzeln.",
+      "B": "Sie drehen sich um und fahren wieder, mit der Bemerkung, sie sollen anrufen, wenn sie sich beruhigt haben.",
+      "C": "Sie zücken sofort den Taser, um Ruhe zu erzwingen.",
+      "D": "Sie stellen sich dazwischen und versuchen, während des Geschreis zu schlichten."
+    },
+    "ranking": "A, D, B, C"
+  }
+];
+
+// Helper to parse ranking string e.g. "B, C, A, D" into array ['B', 'C', 'A', 'D']
+QUIZ_QUESTIONS.forEach(q => {
+  q.rankingArray = q.ranking.split(',').map(s => s.trim());
+});
+
+
+// app.js - Controller für den TAUVE Übungstest
+
+const TIME_LIMIT_SECONDS = 180; // 3 Minuten pro Frage
+const STORAGE_KEY = 'tauve_uebungstest_state_v2';
+
+// Sichere Speicher-Hilfsfunktionen für restriktive Umgebungen (z. B. Browser in the Box)
+const safeStorage = {
+  get: function(key) {
+    try {
+      return (typeof window !== 'undefined' && window.localStorage) ? window.localStorage.getItem(key) : null;
+    } catch (e) {
+      console.warn("Speicherzugriff eingeschränkt (BitBox/Sandbox-Modus):", e);
+      return null;
+    }
+  },
+  set: function(key, val) {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) window.localStorage.setItem(key, val);
+    } catch (e) {
+      // Still ignorieren, falls im Sandbox-Modus gesperrt
+    }
+  },
+  remove: function(key) {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) window.localStorage.removeItem(key);
+    } catch (e) {
+      // Still ignorieren
+    }
+  }
+};
+
+// State
+let state = {
+  currentQuestionIndex: 0,
+  activeMode: 'B',           // 'A' (Rating 1-7), 'B' (Ranking 1-4), 'MIXED'
+  selectedModeForStart: 'B', // default selected mode on start screen
+  timeRemaining: TIME_LIMIT_SECONDS,
+  timerInterval: null,
+  answers: [],               // Stores answers for each question
+  isCompleted: false
+};
+
+// Current question temporary inputs
+let currentRating = { A: null, B: null, C: null, D: null };
+let currentRankingOrder = ['A', 'B', 'C', 'D'];
+
+// DOM Elements
+const screenWelcome = document.getElementById('screen-welcome');
+const screenQuiz = document.getElementById('screen-quiz');
+const screenResults = document.getElementById('screen-results');
+
+const timerCountdownEl = document.getElementById('timer-countdown');
+const timeScaleBarEl = document.getElementById('time-scale-bar');
+const questionCounterEl = document.getElementById('question-counter');
+const competenceTagsEl = document.getElementById('competence-tags');
+const scenarioTextEl = document.getElementById('scenario-text');
+const modeInstructionTextEl = document.getElementById('mode-instruction-text');
+
+const containerRatingMode = document.getElementById('container-rating-mode');
+const containerRankingMode = document.getElementById('container-ranking-mode');
+const ratingOptionsListEl = document.getElementById('rating-options-list');
+const rankingListEl = document.getElementById('ranking-list');
+
+const btnNextQuestion = document.getElementById('btn-next-question');
+const progressPercentHeader = document.getElementById('quiz-header-progress');
+
+const checkboxConsent = document.getElementById('checkbox-disclaimer-consent');
+const btnStartQuiz = document.getElementById('btn-start-quiz');
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', () => {
+  setupStartScreen();
+  setupEventListeners();
+  checkSavedProgress();
+});
+
+// Setup Start Screen Mode Selection Cards & Disclaimer Consent
+function setupStartScreen() {
+  const modeCards = document.querySelectorAll('.mode-option');
+  modeCards.forEach(card => {
+    card.addEventListener('click', () => {
+      modeCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      state.selectedModeForStart = card.dataset.mode;
+    });
+  });
+
+  // Disclaimer Checkbox Toggle
+  if (checkboxConsent && btnStartQuiz) {
+    checkboxConsent.addEventListener('change', () => {
+      btnStartQuiz.disabled = !checkboxConsent.checked;
+    });
+  }
+
+  btnStartQuiz.addEventListener('click', () => {
+    if (!checkboxConsent.checked) return;
+    startQuiz(state.selectedModeForStart);
+  });
+}
+
+// Check if there is existing saved progress
+function checkSavedProgress() {
+  const saved = safeStorage.get(STORAGE_KEY);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.answers && parsed.answers.length > 0 && !parsed.isCompleted) {
+        showResumeBanner(parsed);
+      }
+    } catch (e) {
+      console.error("Konnte gespeicherten Stand nicht laden:", e);
+    }
+  }
+}
+
+function showResumeBanner(savedState) {
+  const banner = document.getElementById('resume-banner');
+  if (banner) {
+    banner.style.display = 'block';
+    const resumeBtn = document.getElementById('btn-resume-quiz');
+    const dismissBtn = document.getElementById('btn-dismiss-resume');
+
+    resumeBtn.onclick = () => {
+      state = savedState;
+      banner.style.display = 'none';
+      showScreen('quiz');
+      loadQuestion(state.currentQuestionIndex);
+    };
+
+    dismissBtn.onclick = () => {
+      safeStorage.remove(STORAGE_KEY);
+      banner.style.display = 'none';
+    };
+  }
+}
+
+function setupEventListeners() {
+  btnNextQuestion.addEventListener('click', () => {
+    handleNextQuestion(false);
+  });
+
+  document.getElementById('btn-restart-quiz').addEventListener('click', () => {
+    if (confirm("Möchten Sie den Test wirklich neu starten? Ihr bisheriger Durchlauf wird zurückgesetzt.")) {
+      resetQuiz();
+    }
+  });
+
+  document.getElementById('btn-print-results').addEventListener('click', () => {
+    window.print();
+  });
+}
+
+function showScreen(screenName) {
+  screenWelcome.classList.remove('active');
+  screenQuiz.classList.remove('active');
+  screenResults.classList.remove('active');
+
+  if (screenName === 'welcome') screenWelcome.classList.add('active');
+  if (screenName === 'quiz') screenQuiz.classList.add('active');
+  if (screenName === 'results') screenResults.classList.add('active');
+}
+
+// Start Quiz with chosen mode
+function startQuiz(mode) {
+  state.activeMode = mode;
+  state.currentQuestionIndex = 0;
+  state.answers = [];
+  state.isCompleted = false;
+
+  showScreen('quiz');
+  loadQuestion(0);
+}
+
+// Reset Quiz
+function resetQuiz() {
+  clearInterval(state.timerInterval);
+  safeStorage.remove(STORAGE_KEY);
+  state.currentQuestionIndex = 0;
+  state.answers = [];
+  state.isCompleted = false;
+
+  if (checkboxConsent) {
+    checkboxConsent.checked = false;
+    btnStartQuiz.disabled = true;
+  }
+
+  showScreen('welcome');
+  const banner = document.getElementById('resume-banner');
+  if (banner) banner.style.display = 'none';
+}
+
+// Save to LocalStorage
+function saveProgress() {
+  safeStorage.set(STORAGE_KEY, JSON.stringify(state));
+}
+
+// Load Question by Index
+function loadQuestion(index) {
+  const q = QUIZ_QUESTIONS[index];
+  if (!q) return;
+
+  // Reset Timer
+  startTimer();
+
+  // Determine current mode for this question
+  let currentMode = state.activeMode;
+  if (state.activeMode === 'MIXED') {
+    currentMode = (index % 2 === 0) ? 'B' : 'A';
+  }
+
+  // Header meta
+  questionCounterEl.textContent = `Frage ${q.id} von ${QUIZ_QUESTIONS.length}`;
+  progressPercentHeader.textContent = `${Math.round((index / QUIZ_QUESTIONS.length) * 100)}% abgeschlossen`;
+
+  competenceTagsEl.innerHTML = '';
+  q.kompetenzen.forEach(comp => {
+    const span = document.createElement('span');
+    span.className = 'tag-badge';
+    span.textContent = comp;
+    competenceTagsEl.appendChild(span);
+  });
+
+  scenarioTextEl.textContent = q.szenario;
+
+  // Render question by mode
+  if (currentMode === 'A') {
+    renderRatingMode(q);
+  } else {
+    renderRankingMode(q);
+  }
+
+  // Update Next Button State
+  updateNextButtonState(currentMode);
+  saveProgress();
+}
+
+// ---------------------------------------------------------------------------
+// MODE A: Ratingskala (1 bis 7)
+// ---------------------------------------------------------------------------
+function renderRatingMode(q) {
+  containerRatingMode.style.display = 'block';
+  containerRankingMode.style.display = 'none';
+
+  modeInstructionTextEl.innerHTML = `<strong>Modus A (Ratingskala):</strong> Bewerten Sie jede der 4 Handlungsoptionen auf der Skala von <strong>1</strong> (<em>"würde mich ganz bestimmt so verhalten"</em>) bis <strong>7</strong> (<em>"würde mich ganz bestimmt nicht so verhalten"</em>).`;
+
+  ratingOptionsListEl.innerHTML = '';
+  currentRating = { A: null, B: null, C: null, D: null };
+
+  const optionLetters = ['A', 'B', 'C', 'D'];
+
+  optionLetters.forEach(letter => {
+    const text = q.optionen[letter];
+    const itemCard = document.createElement('div');
+    itemCard.className = 'rating-option-item';
+    itemCard.id = `rating-item-${letter}`;
+
+    itemCard.innerHTML = `
+      <div class="option-text-container">
+        <div class="option-letter-badge">${letter}</div>
+        <div class="option-desc">${escapeHtml(text)}</div>
+      </div>
+      <div class="likert-scale-wrapper">
+        <div class="scale-legend">
+          <span>1 = Ganz bestimmt so</span>
+          <span>4 = Neutral</span>
+          <span>7 = Ganz bestimmt nicht so</span>
+        </div>
+        <div class="scale-buttons-row">
+          ${[1, 2, 3, 4, 5, 6, 7].map(val => `
+            <button type="button" class="scale-btn" data-letter="${letter}" data-value="${val}">
+              ${val}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    ratingOptionsListEl.appendChild(itemCard);
+  });
+
+  // Attach button clicks
+  ratingOptionsListEl.querySelectorAll('.scale-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const letter = btn.dataset.letter;
+      const value = parseInt(btn.dataset.value, 10);
+
+      currentRating[letter] = value;
+
+      const row = btn.parentElement;
+      row.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const card = document.getElementById(`rating-item-${letter}`);
+      if (card) card.classList.add('completed');
+
+      updateNextButtonState('A');
+    });
+  });
+}
+
+// ---------------------------------------------------------------------------
+// MODE B: Rangfolge (1 bis 4 sortieren)
+// ---------------------------------------------------------------------------
+function renderRankingMode(q) {
+  containerRatingMode.style.display = 'none';
+  containerRankingMode.style.display = 'block';
+
+  modeInstructionTextEl.innerHTML = `<strong>Modus B (Rangfolge):</strong> Bringen Sie die 4 Alternativen in eine Rangfolge von <strong>Rang 1 (Beste Option)</strong> bis <strong>Rang 4 (Schlechteste Option)</strong>.`;
+
+  currentRankingOrder = ['A', 'B', 'C', 'D'];
+  renderRankingList(q);
+}
+
+function renderRankingList(q) {
+  rankingListEl.innerHTML = '';
+
+  currentRankingOrder.forEach((letter, index) => {
+    const text = q.optionen[letter];
+    const li = document.createElement('div');
+    li.className = 'ranking-item';
+    li.draggable = true;
+    li.dataset.index = index;
+    li.dataset.letter = letter;
+
+    li.innerHTML = `
+      <div class="drag-handle" title="Ziehen zum Verschieben">:::</div>
+      <div class="rank-badge-slot">
+        <span>${index + 1}.</span>
+      </div>
+      <div class="ranking-content">
+        <span class="ranking-letter">Option ${letter}</span>
+        <span class="ranking-text">${escapeHtml(text)}</span>
+      </div>
+      <div class="ranking-actions">
+        <button type="button" class="btn-move btn-move-up" title="Nach oben" ${index === 0 ? 'disabled' : ''}>▲</button>
+        <button type="button" class="btn-move btn-move-down" title="Nach unten" ${index === 3 ? 'disabled' : ''}>▼</button>
+      </div>
+    `;
+
+    // Move Up/Down buttons
+    const btnUp = li.querySelector('.btn-move-up');
+    const btnDown = li.querySelector('.btn-move-down');
+
+    btnUp.addEventListener('click', (e) => {
+      e.stopPropagation();
+      moveRankingItem(index, index - 1);
+    });
+
+    btnDown.addEventListener('click', (e) => {
+      e.stopPropagation();
+      moveRankingItem(index, index + 1);
+    });
+
+    setupDragAndDrop(li);
+    rankingListEl.appendChild(li);
+  });
+}
+
+function moveRankingItem(fromIndex, toIndex) {
+  if (toIndex < 0 || toIndex >= currentRankingOrder.length) return;
+  const item = currentRankingOrder.splice(fromIndex, 1)[0];
+  currentRankingOrder.splice(toIndex, 0, item);
+  const q = QUIZ_QUESTIONS[state.currentQuestionIndex];
+  renderRankingList(q);
+}
+
+let draggedItem = null;
+
+function setupDragAndDrop(el) {
+  el.addEventListener('dragstart', (e) => {
+    draggedItem = el;
+    el.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  el.addEventListener('dragend', () => {
+    el.classList.remove('dragging');
+    draggedItem = null;
+    document.querySelectorAll('.ranking-item').forEach(i => i.classList.remove('drag-over'));
+  });
+
+  el.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    el.classList.add('drag-over');
+  });
+
+  el.addEventListener('dragleave', () => {
+    el.classList.remove('drag-over');
+  });
+
+  el.addEventListener('drop', (e) => {
+    e.preventDefault();
+    el.classList.remove('drag-over');
+    if (!draggedItem || draggedItem === el) return;
+
+    const fromIndex = parseInt(draggedItem.dataset.index, 10);
+    const toIndex = parseInt(el.dataset.index, 10);
+
+    moveRankingItem(fromIndex, toIndex);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Validation & Next Question Handling
+// ---------------------------------------------------------------------------
+function updateNextButtonState(mode) {
+  if (mode === 'A') {
+    const allRated = ['A', 'B', 'C', 'D'].every(k => currentRating[k] !== null);
+    btnNextQuestion.disabled = false;
+    if (!allRated) {
+      btnNextQuestion.textContent = `Antwort unvollständig (Weiter)`;
+    } else {
+      btnNextQuestion.textContent = `Antwort einreichen & Weiter`;
+    }
+  } else {
+    btnNextQuestion.disabled = false;
+    btnNextQuestion.textContent = `Reihenfolge bestätigen & Weiter`;
+  }
+}
+
+function handleNextQuestion(isTimeOut = false) {
+  const q = QUIZ_QUESTIONS[state.currentQuestionIndex];
+  let currentMode = state.activeMode;
+  if (state.activeMode === 'MIXED') {
+    currentMode = (state.currentQuestionIndex % 2 === 0) ? 'B' : 'A';
+  }
+
+  // If in Mode A and not all items are rated, warn user unless time ran out
+  if (!isTimeOut && currentMode === 'A') {
+    const unrated = ['A', 'B', 'C', 'D'].filter(k => currentRating[k] === null);
+    if (unrated.length > 0) {
+      if (!confirm(`Sie haben Option ${unrated.join(', ')} noch nicht bewertet. Möchten Sie trotzdem zur nächsten Frage fortfahren?`)) {
+        return;
+      }
+    }
+  }
+
+  // Calculate score for this question
+  const evaluation = evaluateQuestion(q, currentMode, currentRating, currentRankingOrder);
+
+  // Store answer record
+  state.answers[state.currentQuestionIndex] = {
+    questionId: q.id,
+    mode: currentMode,
+    userRating: { ...currentRating },
+    userRanking: [...currentRankingOrder],
+    timeSpent: TIME_LIMIT_SECONDS - state.timeRemaining,
+    timeOut: isTimeOut,
+    score: evaluation.score,
+    maxScore: evaluation.maxScore,
+    percentage: evaluation.percentage,
+    details: evaluation
+  };
+
+  saveProgress();
+
+  if (state.currentQuestionIndex + 1 < QUIZ_QUESTIONS.length) {
+    state.currentQuestionIndex++;
+    loadQuestion(state.currentQuestionIndex);
+  } else {
+    finishQuiz();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Scoring Algorithms
+// ---------------------------------------------------------------------------
+function evaluateQuestion(q, mode, userRating, userRanking) {
+  const targetRanking = q.rankingArray; // e.g. ['B', 'C', 'A', 'D']
+
+  if (mode === 'B') {
+    // Pairwise comparison (6 pairs)
+    let pairsCorrect = 0;
+    const totalPairs = 6;
+    const pairAnalysis = [];
+
+    for (let i = 0; i < targetRanking.length; i++) {
+      for (let j = i + 1; j < targetRanking.length; j++) {
+        const item1 = targetRanking[i];
+        const item2 = targetRanking[j];
+        const userPos1 = userRanking.indexOf(item1);
+        const userPos2 = userRanking.indexOf(item2);
+        const isCorrect = userPos1 < userPos2;
+
+        if (isCorrect) pairsCorrect++;
+        pairAnalysis.push({
+          item1,
+          item2,
+          targetOrder: `${item1} vor ${item2}`,
+          userOrder: isCorrect ? `${item1} vor ${item2}` : `${item2} vor ${item1}`,
+          isCorrect
+        });
+      }
+    }
+
+    const percentage = Math.round((pairsCorrect / totalPairs) * 100);
+    return {
+      mode: 'B',
+      score: pairsCorrect,
+      maxScore: totalPairs,
+      percentage,
+      pairAnalysis,
+      targetRanking,
+      userRanking
+    };
+  } else {
+    // Mode A: Rating 1..7
+    const targetScores = {};
+    targetScores[targetRanking[0]] = 1;
+    targetScores[targetRanking[1]] = 3;
+    targetScores[targetRanking[2]] = 5;
+    targetScores[targetRanking[3]] = 7;
+
+    let totalPoints = 0;
+    const maxPoints = 6.0;
+    const optionAnalysis = {};
+
+    ['A', 'B', 'C', 'D'].forEach(letter => {
+      const uVal = userRating[letter] !== null ? userRating[letter] : 4;
+      const tVal = targetScores[letter];
+      const diff = Math.abs(uVal - tVal);
+      const itemScore = Math.max(0, 1.5 - (diff * 0.25));
+      totalPoints += itemScore;
+
+      optionAnalysis[letter] = {
+        userVal: uVal,
+        targetVal: tVal,
+        diff,
+        itemScore
+      };
+    });
+
+    const percentage = Math.round((totalPoints / maxPoints) * 100);
+    return {
+      mode: 'A',
+      score: parseFloat(totalPoints.toFixed(2)),
+      maxScore: maxPoints,
+      percentage,
+      optionAnalysis,
+      targetRanking,
+      userRating
+    };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Timer Implementation (3 Minutes / 180s)
+// ---------------------------------------------------------------------------
+function startTimer() {
+  clearInterval(state.timerInterval);
+  state.timeRemaining = TIME_LIMIT_SECONDS;
+  updateTimerUI();
+
+  state.timerInterval = setInterval(() => {
+    state.timeRemaining--;
+    updateTimerUI();
+
+    if (state.timeRemaining <= 0) {
+      clearInterval(state.timerInterval);
+      handleNextQuestion(true);
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const minutes = Math.floor(state.timeRemaining / 60);
+  const seconds = state.timeRemaining % 60;
+  const timeFormatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+  timerCountdownEl.textContent = timeFormatted;
+
+  const pct = (state.timeRemaining / TIME_LIMIT_SECONDS) * 100;
+  timeScaleBarEl.style.width = `${pct}%`;
+
+  timerCountdownEl.classList.remove('warning', 'danger');
+  timeScaleBarEl.classList.remove('warning', 'danger');
+
+  if (state.timeRemaining <= 30) {
+    timerCountdownEl.classList.add('danger');
+    timeScaleBarEl.classList.add('danger');
+  } else if (state.timeRemaining <= 60) {
+    timerCountdownEl.classList.add('warning');
+    timeScaleBarEl.classList.add('warning');
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Results & Evaluation Screen
+// ---------------------------------------------------------------------------
+function finishQuiz() {
+  clearInterval(state.timerInterval);
+  state.isCompleted = true;
+  saveProgress();
+  showScreen('results');
+  renderResults();
+}
+
+function renderResults() {
+  let totalScore = 0;
+  let totalMaxScore = 0;
+  const compScores = {};
+
+  state.answers.forEach((ans, idx) => {
+    const q = QUIZ_QUESTIONS[idx];
+    totalScore += ans.score;
+    totalMaxScore += ans.maxScore;
+
+    q.kompetenzen.forEach(comp => {
+      if (!compScores[comp]) {
+        compScores[comp] = { score: 0, maxScore: 0, count: 0 };
+      }
+      compScores[comp].score += ans.score;
+      compScores[comp].maxScore += ans.maxScore;
+      compScores[comp].count++;
+    });
+  });
+
+  const totalPercentage = totalMaxScore > 0 ? Math.round((totalScore / totalMaxScore) * 100) : 0;
+
+  // UI
+  document.getElementById('result-total-percent').textContent = `${totalPercentage}%`;
+  document.getElementById('result-points-text').textContent = `${totalScore.toFixed(1)} / ${totalMaxScore} Punkte`;
+
+  const verdictEl = document.getElementById('result-verdict-title');
+  const verdictDescEl = document.getElementById('result-verdict-desc');
+
+  if (totalPercentage >= 85) {
+    verdictEl.textContent = "Überdurchschnittliches Ergebnis";
+    verdictDescEl.textContent = "Ihre Entscheidungen und Priorisierungen weisen eine sehr hohe Übereinstimmung mit den hinterlegten Referenzentscheidungen auf.";
+  } else if (totalPercentage >= 70) {
+    verdictEl.textContent = "Solides / Anforderungsgerechtes Ergebnis";
+    verdictDescEl.textContent = "Die meisten Situationen wurden den polizeilichen Handlungsleitlinien entsprechend beurteilt.";
+  } else if (totalPercentage >= 55) {
+    verdictEl.textContent = "Mittleres Ergebnis (Entwicklungspotenzial)";
+    verdictDescEl.textContent = "In mehreren taktischen oder führungsbezogenen Lagen wichen Ihre Einschätzungen von der Referenz-Rangfolge ab.";
+  } else {
+    verdictEl.textContent = "Deutlicher Nachbereitungsbedarf";
+    verdictDescEl.textContent = "Nutzen Sie die detaillierte Auswertung unten, um die Referenz-Rangfolgen und Handlungsalternativen zu rekapitulieren.";
+  }
+
+  renderCompetencies(compScores);
+  renderReviewList();
+}
+
+function renderCompetencies(compScores) {
+  const compGrid = document.getElementById('competence-grid');
+  compGrid.innerHTML = '';
+
+  const sortedComps = Object.keys(compScores).sort();
+
+  sortedComps.forEach(comp => {
+    const data = compScores[comp];
+    const pct = data.maxScore > 0 ? Math.round((data.score / data.maxScore) * 100) : 0;
+
+    let barColor = '#3b82f6';
+    if (pct >= 80) barColor = '#10b981';
+    else if (pct < 60) barColor = '#f59e0b';
+
+    const card = document.createElement('div');
+    card.className = 'competence-item';
+    card.innerHTML = `
+      <div class="comp-header">
+        <span>${comp}</span>
+        <span style="color: ${barColor}">${pct}%</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: ${pct}%; background-color: ${barColor};"></div>
+      </div>
+      <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.35rem;">
+        ${data.score.toFixed(1)} / ${data.maxScore} Pkt. (${data.count} Fragen)
+      </div>
+    `;
+    compGrid.appendChild(card);
+  });
+}
+
+function renderReviewList() {
+  const reviewContainer = document.getElementById('review-list');
+  reviewContainer.innerHTML = '';
+
+  QUIZ_QUESTIONS.forEach((q, idx) => {
+    const ans = state.answers[idx];
+    if (!ans) return;
+
+    const item = document.createElement('div');
+    item.className = 'review-item';
+
+    let tagClass = 'high';
+    if (ans.percentage < 50) tagClass = 'low';
+    else if (ans.percentage < 80) tagClass = 'med';
+
+    const targetRankingFormatted = q.ranking;
+    let userFormatted = '';
+
+    if (ans.mode === 'B') {
+      userFormatted = ans.userRanking.join(', ');
+    } else {
+      userFormatted = ['A', 'B', 'C', 'D'].map(k => `${k}: ${ans.userRating[k] || '-'}`).join(' | ');
+    }
+
+    item.innerHTML = `
+      <div class="review-header" id="rev-head-${idx}">
+        <div class="review-q-title">
+          <span class="question-pill">#${q.id}</span>
+          <span>${q.szenario.substring(0, 80)}...</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span class="review-score-tag ${tagClass}">${ans.percentage}% (${ans.score}/${ans.maxScore} Pkt)</span>
+          <span style="font-size: 0.75rem; color: var(--text-dim);">&#9662;</span>
+        </div>
+      </div>
+      <div class="review-body" id="rev-body-${idx}">
+        <div class="review-scenario">
+          <strong>Szenario:</strong> ${escapeHtml(q.szenario)}
+        </div>
+        <div style="margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+          <strong>Kompetenzen:</strong> ${q.kompetenzen.join(', ')}
+        </div>
+        
+        <div class="review-comparison-grid">
+          <div class="review-column">
+            <h4>Ihre Eingabe (${ans.mode === 'B' ? 'Reihenfolge' : 'Ratingskala'})</h4>
+            <div style="margin-bottom: 0.5rem; font-weight: 700; color: #93c5fd;">
+              ${userFormatted}
+            </div>
+            ${renderOptionDetails(q, ans)}
+          </div>
+          
+          <div class="review-column">
+            <h4>Hinterlegte Referenzlösung</h4>
+            <div style="margin-bottom: 0.5rem; font-weight: 700; color: #34d399;">
+              ${targetRankingFormatted}
+            </div>
+            <div style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.45;">
+              ${q.rankingArray.map((letter, rank) => `
+                <div class="comparison-list-item">
+                  <span style="font-weight:700; color:#34d399;">Rang ${rank + 1} (${letter}):</span>
+                  <span>${escapeHtml(q.optionen[letter])}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const header = item.querySelector(`#rev-head-${idx}`);
+    const body = item.querySelector(`#rev-body-${idx}`);
+    header.addEventListener('click', () => {
+      const isOpen = body.classList.contains('open');
+      if (isOpen) {
+        body.classList.remove('open');
+        header.classList.remove('open');
+      } else {
+        body.classList.add('open');
+        header.classList.add('open');
+      }
+    });
+
+    reviewContainer.appendChild(item);
+  });
+}
+
+function renderOptionDetails(q, ans) {
+  if (ans.mode === 'B') {
+    return ans.userRanking.map((letter, rank) => `
+      <div class="comparison-list-item">
+        <span style="font-weight:700; color:#93c5fd;">Rang ${rank + 1} (${letter}):</span>
+        <span>${escapeHtml(q.optionen[letter])}</span>
+      </div>
+    `).join('');
+  } else {
+    return ['A', 'B', 'C', 'D'].map(letter => {
+      const val = ans.userRating[letter] || 'Keine Angabe';
+      return `
+        <div class="comparison-list-item">
+          <span style="font-weight:700; color:#93c5fd;">Option ${letter} (Wert: ${val}):</span>
+          <span>${escapeHtml(q.optionen[letter])}</span>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+</script>
+</body>
+</html>

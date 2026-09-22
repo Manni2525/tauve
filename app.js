@@ -3,6 +3,32 @@
 const TIME_LIMIT_SECONDS = 180; // 3 Minuten pro Frage
 const STORAGE_KEY = 'tauve_uebungstest_state_v2';
 
+// Sichere Speicher-Hilfsfunktionen für restriktive Umgebungen (z. B. Browser in the Box)
+const safeStorage = {
+  get: function(key) {
+    try {
+      return (typeof window !== 'undefined' && window.localStorage) ? window.localStorage.getItem(key) : null;
+    } catch (e) {
+      console.warn("Speicherzugriff eingeschränkt (BitBox/Sandbox-Modus):", e);
+      return null;
+    }
+  },
+  set: function(key, val) {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) window.localStorage.setItem(key, val);
+    } catch (e) {
+      // Still ignorieren, falls im Sandbox-Modus gesperrt
+    }
+  },
+  remove: function(key) {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) window.localStorage.removeItem(key);
+    } catch (e) {
+      // Still ignorieren
+    }
+  }
+};
+
 // State
 let state = {
   currentQuestionIndex: 0,
@@ -74,7 +100,7 @@ function setupStartScreen() {
 
 // Check if there is existing saved progress
 function checkSavedProgress() {
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved = safeStorage.get(STORAGE_KEY);
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -102,7 +128,7 @@ function showResumeBanner(savedState) {
     };
 
     dismissBtn.onclick = () => {
-      localStorage.removeItem(STORAGE_KEY);
+      safeStorage.remove(STORAGE_KEY);
       banner.style.display = 'none';
     };
   }
@@ -148,7 +174,7 @@ function startQuiz(mode) {
 // Reset Quiz
 function resetQuiz() {
   clearInterval(state.timerInterval);
-  localStorage.removeItem(STORAGE_KEY);
+  safeStorage.remove(STORAGE_KEY);
   state.currentQuestionIndex = 0;
   state.answers = [];
   state.isCompleted = false;
@@ -165,7 +191,7 @@ function resetQuiz() {
 
 // Save to LocalStorage
 function saveProgress() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  safeStorage.set(STORAGE_KEY, JSON.stringify(state));
 }
 
 // Load Question by Index
