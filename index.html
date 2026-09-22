@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAUVE Übungstest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-badge">TAUVE</div>
+        <div class="title-group">
+          <h1>TAUVE Übungstest</h1>
+          <p>Situativer Test zur Vorbereitung auf die 3. Qualifikationsebene</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <span id="quiz-header-progress" class="header-progress-label"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- Resume Banner (Shown only if previous progress was found in localStorage) -->
+    <div id="resume-banner" class="resume-alert" style="display:none;">
+      <div>
+        <strong>Unvollständiger Durchlauf gefunden:</strong> Sie können Ihren vorherigen Stand fortsetzen oder neu beginnen.
+      </div>
+      <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; justify-content: center;">
+        <button id="btn-resume-quiz" class="btn btn-primary btn-sm">Vorherigen Stand fortsetzen</button>
+        <button id="btn-dismiss-resume" class="btn btn-secondary btn-sm">Neu beginnen</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: WELCOME, DISCLAIMER & MODE SELECTION -->
+    <section id="screen-welcome" class="view-panel active">
+      <div class="content-card">
+        <h2 class="section-heading">Hinweise &amp; Durchführung</h2>
+        
+        <p class="intro-text">
+          Dieses Übungsprogramm umfasst <strong>40 praxisnahe Szenarien</strong> aus dem polizeilichen Dienst- und Führungsalltag.
+          Pro Frage steht Ihnen ein Zeitfenster von <strong>3 Minuten</strong> zur Verfügung. Sie können vorzeitig zur nächsten Frage übergehen, sobald Sie Ihre Auswahl getroffen haben.
+        </p>
+
+        <!-- HAFTUNGSAUSSCHLUSS / DISCLAIMER -->
+        <div class="disclaimer-container">
+          <div class="disclaimer-title">Haftungsausschluss &amp; Nutzungshinweise</div>
+          <div class="disclaimer-body">
+            <h4>1. Kein offizielles Programm</h4>
+            <p>
+              Bei dieser Anwendung handelt es sich ausdrücklich um kein offizielles Programm, Tool oder Prüfverfahren des Freistaates Bayern, der Bayerischen Polizei oder des Zentralen Psychologischen Dienstes (ZPD). Die Software wurde von mir als Privatperson in meiner Freizeit entwickelt.
+            </p>
+
+            <h4>2. Zweck der Anwendung</h4>
+            <p>
+              Das Programm dient als reine Simulation und soll Kolleginnen und Kollegen lediglich dabei unterstützen, sich mit dem Format und dem Zeitdruck (3 Minuten pro Frage) des situativen Auswahltests (TAUVE) für die 3. Qualifikationsebene vertraut zu machen.
+            </p>
+
+            <h4>3. Inhalte und Richtigkeit</h4>
+            <p>
+              Die hier verwendeten Szenarien und Handlungsalternativen sind fiktiv und an die Methodik polizeilicher Auswahlverfahren angelehnt. Sie stammen nicht aus aktuellen offiziellen Testkatalogen. Es wird keine Haftung oder Garantie dafür übernommen, dass die hier als "richtig" hinterlegten Antworten den tatsächlichen Auswertungskriterien der Polizei-Führungskräfte (Bewertungsmehrheit) entsprechen.
+            </p>
+            <p style="margin-top: 0.5rem; font-weight: 600;">
+              Ein erfolgreiches Absolvieren dieser Simulation lässt keine Rückschlüsse auf das Bestehen des echten TAUVE-Tests zu.
+            </p>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="disclaimer-consent">
+            <label class="consent-label">
+              <input type="checkbox" id="checkbox-disclaimer-consent">
+              <span>Habe ich gelesen und bin einverstanden</span>
+            </label>
+          </div>
+        </div>
+
+        <h3 class="sub-heading">Bearbeitungsart auswählen:</h3>
+
+        <div class="mode-selection-grid">
+          <!-- Option B (Ranking) -->
+          <div class="mode-option selected" data-mode="B">
+            <span class="badge-label">Modus B</span>
+            <h3>Rangfolge sortieren</h3>
+            <p>Ordnen Sie die 4 Alternativen von Rang 1 (Beste Option) bis Rang 4 (Schlechteste Option) via Drag &amp; Drop oder Pfeiltasten.</p>
+          </div>
+
+          <!-- Option A (Rating) -->
+          <div class="mode-option" data-mode="A">
+            <span class="badge-label">Modus A</span>
+            <h3>Ratingskala (1 bis 7)</h3>
+            <p>Bewerten Sie jede Alternative separat auf einer Skala von 1 (<em>"würde mich ganz bestimmt so verhalten"</em>) bis 7 (<em>"würde mich ganz bestimmt nicht so verhalten"</em>).</p>
+          </div>
+
+          <!-- Option Mixed -->
+          <div class="mode-option" data-mode="MIXED">
+            <span class="badge-label">Kombiniert</span>
+            <h3>Abwechselnd A &amp; B</h3>
+            <p>Ungerade Fragen als Rangfolge (Modus B), gerade Fragen als Ratingskala (Modus A).</p>
+          </div>
+        </div>
+
+        <div class="action-bar-center">
+          <button id="btn-start-quiz" class="btn btn-primary" disabled>
+            Test starten
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ACTIVE QUIZ QUESTION -->
+    <section id="screen-quiz" class="view-panel">
+
+      <!-- Dynamic Time Scale / Countdown -->
+      <div class="timer-container">
+        <div class="timer-header">
+          <span class="timer-title">Verbleibende Bearbeitungszeit</span>
+          <span id="timer-countdown" class="timer-digits">03:00</span>
+        </div>
+        <div class="time-scale-track">
+          <div id="time-scale-bar" class="time-scale-fill"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card">
+        <div class="question-meta">
+          <span id="question-counter" class="question-pill">Frage 1 von 40</span>
+          <div id="competence-tags" class="competence-tags">
+            <!-- Dynamically populated tags -->
+          </div>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-label">Szenario</div>
+          <p id="scenario-text">Lade Szenario...</p>
+        </div>
+      </div>
+
+      <!-- Mode Instructions Banner -->
+      <div class="mode-instruction-banner">
+        <div id="mode-instruction-text">Hinweis zum Bearbeitungsmodus</div>
+      </div>
+
+      <!-- MODE A CONTAINER (Rating 1-7) -->
+      <div id="container-rating-mode" style="display: none;">
+        <div id="rating-options-list" class="rating-options-list">
+          <!-- Dynamically generated options with 1-7 Likert scales -->
+        </div>
+      </div>
+
+      <!-- MODE B CONTAINER (Ranking / Sorting) -->
+      <div id="container-ranking-mode" style="display: none;">
+        <div id="ranking-list" class="ranking-list">
+          <!-- Dynamically generated draggable cards with 1..4 slots -->
+        </div>
+      </div>
+
+      <!-- Quiz Action Navigation -->
+      <div class="quiz-footer">
+        <span class="quiz-info-note">Sie können vor Ablauf der 3 Minuten selbstständig weitergehen.</span>
+        <button id="btn-next-question" class="btn btn-primary">
+          Antwort einreichen &amp; Weiter
+        </button>
+      </div>
+
+    </section>
+
+    <!-- SCREEN 3: RESULTS DASHBOARD -->
+    <section id="screen-results" class="view-panel">
+      <div class="content-card">
+
+        <!-- Score Hero -->
+        <div class="result-summary">
+          <div class="result-score-box">
+            <span id="result-total-percent" class="result-score-val">0%</span>
+            <span class="result-score-label">Gesamtergebnis</span>
+          </div>
+          <h2 id="result-verdict-title" class="result-heading">Auswertung abgeschlossen</h2>
+          <p id="result-verdict-desc" class="result-text"></p>
+          <div class="result-points" id="result-points-text"></div>
+        </div>
+
+        <!-- Competencies Breakdown -->
+        <div class="results-section">
+          <h3 class="results-section-title">Ergebnisse nach Kompetenzfeldern</h3>
+          <div id="competence-grid" class="competence-grid">
+            <!-- Dynamically populated competency cards -->
+          </div>
+        </div>
+
+        <!-- Detailed Review List -->
+        <div class="results-section">
+          <h3 class="results-section-title">Detaillierte Übersicht aller Szenarien</h3>
+          <p class="results-subtext">
+            Klicken Sie auf ein Szenario, um Ihre Antworten im direkten Vergleich mit der hinterlegten Musterlösung einzusehen.
+          </p>
+          <div id="review-list" class="review-list">
+            <!-- Dynamically populated review accordion -->
+          </div>
+        </div>
+
+        <!-- Results Actions -->
+        <div class="action-bar-center" style="margin-top: 2rem; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="btn-print-results" class="btn btn-secondary">
+            Drucken / PDF speichern
+          </button>
+          <button id="btn-restart-quiz" class="btn btn-primary">
+            Neuen Durchlauf starten
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Discrete Copyright Notice -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <span class="copyright-notice">&copy; Nowadnick</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

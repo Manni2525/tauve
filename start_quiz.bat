@@ -1,0 +1,3 @@
+@echo off
+echo Starte TAUVE Uebungstest (3. Qualifikationsebene)...
+start "" "index.html"
