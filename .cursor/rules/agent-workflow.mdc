@@ -1,0 +1,16 @@
+---
+description: Vor jedem Commit und Push die Test-Suite ausführen
+alwaysApply: true
+---
+
+# Arbeitsweise in diesem Repository
+
+- Vor jedem Commit und vor jedem Push `npm test` im Repository-Root ausführen.
+- Nur committen und pushen, wenn die Tests erfolgreich durchlaufen.
+- Schlagen Tests fehl, den Fehler zuerst beheben und `npm test` erneut ausführen.
+- Tests, Commit oder Push auslassen nur, wenn der User das ausdrücklich verlangt.
+- Geänderte Auswertungs- oder Fragenlogik mit einem Test absichern, der das Verhalten festhält.
+
+```bash
+npm test
+```

@@ -1,0 +1,8 @@
+{
+  "name": "tauve",
+  "private": true,
+  "description": "TAUVE Übungstest – Situationsszenarien für die 3. Qualifikationsebene",
+  "scripts": {
+    "test": "node --test"
+  }
+}

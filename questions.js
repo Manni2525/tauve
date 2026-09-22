@@ -521,3 +521,12 @@ const QUIZ_QUESTIONS = [
     "ranking": "B, A, D, C"
   }
 ];
+
+// "B, C, A, D" -> ['B', 'C', 'A', 'D'] — wird beim Weiterklick zur Auswertung gebraucht
+QUIZ_QUESTIONS.forEach(q => {
+  q.rankingArray = q.ranking.split(',').map(s => s.trim());
+});
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { QUIZ_QUESTIONS };
+}

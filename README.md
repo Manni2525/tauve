@@ -50,4 +50,14 @@ Für die Weitergabe per E-Mail oder USB-Stick gibt es zwei Möglichkeiten:
    - Gesamtergebnis, Kompetenzprofile und detaillierter Abgleich mit der hinterlegten Musterlösung.
 
 ---
+
+## Tests
+
+```bash
+npm test
+```
+
+Die Suite prüft den Fragenkatalog, die Rang- und Rating-Auswertung und dass der Weiter-Pfad die gemeinsame Auswertung verwendet.
+
+---
 *© Nowadnick*
