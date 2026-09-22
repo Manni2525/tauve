@@ -135,7 +135,9 @@ function showResumeBanner(savedState) {
 }
 
 function setupEventListeners() {
-  btnNextQuestion.addEventListener('click', () => {
+  btnNextQuestion.type = 'button';
+  btnNextQuestion.addEventListener('click', (event) => {
+    event.preventDefault();
     handleNextQuestion(false);
   });
 
@@ -232,6 +234,14 @@ function loadQuestion(index) {
   // Update Next Button State
   updateNextButtonState(currentMode);
   saveProgress();
+  revealCurrentQuestion();
+}
+
+function revealCurrentQuestion() {
+  const screen = document.getElementById('screen-quiz');
+  if (screen) screen.style.overflowAnchor = 'none';
+  window.scrollTo(0, 0);
+  if (questionCounterEl) questionCounterEl.scrollIntoView(true);
 }
 
 // ---------------------------------------------------------------------------
@@ -436,8 +446,20 @@ function handleNextQuestion(isTimeOut = false) {
     }
   }
 
-  // Calculate score for this question
-  const evaluation = evaluateQuestion(q, currentMode, currentRating, currentRankingOrder);
+  // Calculate score for this question. A scoring error must not trap the user on this question.
+  let evaluation;
+  try {
+    evaluation = evaluateQuestion(q, currentMode, currentRating, currentRankingOrder);
+  } catch (err) {
+    console.error('Auswertung fehlgeschlagen, Wechsel zur nächsten Frage:', err);
+    evaluation = {
+      mode: currentMode,
+      score: 0,
+      maxScore: 6,
+      percentage: 0,
+      error: String(err && err.message ? err.message : err)
+    };
+  }
 
   // Store answer record
   state.answers[state.currentQuestionIndex] = {

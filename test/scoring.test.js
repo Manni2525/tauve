@@ -61,6 +61,13 @@ describe('Auswertung', () => {
     assert.equal(result.percentage, 67);
   });
 
+  it('leitet eine fehlende rankingArray aus dem Ranking-Text ab', () => {
+    const q = { ranking: 'B, C, A, D' };
+    const result = evaluateQuestion(q, 'B', null, ['B', 'C', 'A', 'D']);
+    assert.deepEqual(q.rankingArray, ['B', 'C', 'A', 'D']);
+    assert.equal(result.percentage, 100);
+  });
+
   it('wertet jede Katalogfrage in beiden Modi aus, ohne beim Weiter abzubrechen', () => {
     for (const q of QUIZ_QUESTIONS) {
       const rankingResult = evaluateQuestion(q, 'B', null, [...q.rankingArray]);

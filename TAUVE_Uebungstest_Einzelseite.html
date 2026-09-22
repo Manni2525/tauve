@@ -119,6 +119,10 @@ body {
   display: block;
 }
 
+#screen-quiz {
+  overflow-anchor: none;
+}
+
 /* Cards & Containers */
 .content-card {
   background-color: var(--bg-card);
@@ -690,12 +694,17 @@ body {
 
 /* Quiz Footer */
 .quiz-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
   margin-top: 1.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
+  gap: 1rem;
+  padding: 0.9rem 0 0.35rem;
   border-top: 1px solid var(--border-color);
+  background-color: var(--bg-main);
 }
 
 .quiz-info-note {
@@ -1147,7 +1156,7 @@ body {
       <!-- Quiz Action Navigation -->
       <div class="quiz-footer">
         <span class="quiz-info-note">Sie können vor Ablauf der 3 Minuten selbstständig weitergehen.</span>
-        <button id="btn-next-question" class="btn btn-primary">
+        <button type="button" id="btn-next-question" class="btn btn-primary">
           Antwort einreichen &amp; Weiter
         </button>
       </div>
@@ -1839,7 +1848,9 @@ function showResumeBanner(savedState) {
 }
 
 function setupEventListeners() {
-  btnNextQuestion.addEventListener('click', () => {
+  btnNextQuestion.type = 'button';
+  btnNextQuestion.addEventListener('click', (event) => {
+    event.preventDefault();
     handleNextQuestion(false);
   });
 
@@ -1936,6 +1947,14 @@ function loadQuestion(index) {
   // Update Next Button State
   updateNextButtonState(currentMode);
   saveProgress();
+  revealCurrentQuestion();
+}
+
+function revealCurrentQuestion() {
+  const screen = document.getElementById('screen-quiz');
+  if (screen) screen.style.overflowAnchor = 'none';
+  window.scrollTo(0, 0);
+  if (questionCounterEl) questionCounterEl.scrollIntoView(true);
 }
 
 // ---------------------------------------------------------------------------
@@ -2140,8 +2159,19 @@ function handleNextQuestion(isTimeOut = false) {
     }
   }
 
-  // Calculate score for this question
-  const evaluation = evaluateQuestion(q, currentMode, currentRating, currentRankingOrder);
+  let evaluation;
+  try {
+    evaluation = evaluateQuestion(q, currentMode, currentRating, currentRankingOrder);
+  } catch (err) {
+    console.error('Auswertung fehlgeschlagen, Wechsel zur nächsten Frage:', err);
+    evaluation = {
+      mode: currentMode,
+      score: 0,
+      maxScore: 6,
+      percentage: 0,
+      error: String(err && err.message ? err.message : err)
+    };
+  }
 
   // Store answer record
   state.answers[state.currentQuestionIndex] = {
@@ -2171,7 +2201,23 @@ function handleNextQuestion(isTimeOut = false) {
 // Scoring Algorithms
 // ---------------------------------------------------------------------------
 function evaluateQuestion(q, mode, userRating, userRanking) {
-  const targetRanking = q.rankingArray; // e.g. ['B', 'C', 'A', 'D']
+  if (!Array.isArray(q.rankingArray) && typeof q.ranking === 'string') {
+    q.rankingArray = q.ranking.split(',').map(s => s.trim());
+  }
+  const targetRanking = q.rankingArray || [];
+  if (!targetRanking.length || (mode === 'B' && !Array.isArray(userRanking))) {
+    return {
+      mode,
+      score: 0,
+      maxScore: 6,
+      percentage: 0,
+      pairAnalysis: [],
+      optionAnalysis: {},
+      targetRanking,
+      userRanking: userRanking || [],
+      userRating: userRating || {}
+    };
+  }
 
   if (mode === 'B') {
     // Pairwise comparison (6 pairs)

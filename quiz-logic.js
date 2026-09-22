@@ -7,8 +7,34 @@
   }
   root.QuizLogic = api;
 })(function () {
+  function targetRankingOf(q) {
+    if (Array.isArray(q.rankingArray) && q.rankingArray.length > 0) {
+      return q.rankingArray;
+    }
+    if (typeof q.ranking === 'string' && q.ranking.trim()) {
+      q.rankingArray = q.ranking.split(',').map(function (part) {
+        return part.trim();
+      });
+      return q.rankingArray;
+    }
+    return [];
+  }
+
   function evaluateQuestion(q, mode, userRating, userRanking) {
-    var targetRanking = q.rankingArray;
+    var targetRanking = targetRankingOf(q);
+    if (!targetRanking.length || (mode === 'B' && !Array.isArray(userRanking))) {
+      return {
+        mode: mode,
+        score: 0,
+        maxScore: mode === 'B' ? 6 : 6,
+        percentage: 0,
+        pairAnalysis: [],
+        optionAnalysis: {},
+        targetRanking: targetRanking,
+        userRanking: userRanking || [],
+        userRating: userRating || {}
+      };
+    }
 
     if (mode === 'B') {
       var pairsCorrect = 0;
