@@ -447,6 +447,12 @@ body {
   border-radius: var(--radius-sm);
 }
 
+.tag-badge-role {
+  background-color: #1e293b;
+  color: #fbbf24;
+  border-color: #475569;
+}
+
 .scenario-box {
   background-color: #0b1120;
   border-left: 3px solid var(--primary-hover);

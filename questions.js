@@ -1,528 +1,808 @@
-// questions.js - 40 Situational Judgement Test (SJT) Aufgaben für die Polizei
+// questions.js - TAUVE Übungstest (3. Qualifikationsebene)
 const QUIZ_QUESTIONS = [
   {
     "id": 1,
     "rolle": "Dienststellenleiter",
-    "kompetenzen": ["Führungskompetenz", "Emotionale Intelligenz", "Entscheidungskompetenz"],
-    "szenario": "Als Dienststellenleiter erfahren Sie über die Einsatzzentrale, dass ein Angehöriger Ihrer Dienststelle bei einer Einsatzfahrt mit Sondersignalen ein kleines Mädchen überfahren hat. Das Mädchen ist sehr schwer verletzt, der Polizeibeamte blieb körperlich unverletzt, steht aber stark unter Schock. Die medizinische Versorgung des Kindes ist durch den Rettungsdienst bereits eingeleitet und Pressevertreter sind auf dem Weg zum Unfallort. Wie verhalten Sie sich?",
+    "kompetenz": "Führungskompetenz",
+    "kompetenzen": [
+      "Führungskompetenz"
+    ],
+    "szenario": "Als Dienststellenleiter erfahren Sie, dass ein Angehöriger Ihrer Dienststelle bei einer Einsatzfahrt mit Sondersignalen ein kleines Mädchen überfahren hat. Das Mädchen ist sehr schwer verletzt, der Polizeibeamte unverletzt. Die medizinische Versorgung des Kindes ist bereits eingeleitet. Wie verhalten Sie sich?",
     "optionen": {
-      "A": "Sobald ich am Unfallort angekommen bin, schirme ich den Beamten von äußeren Einflüssen ab. Ich organisiere eine Betreuung für ihn und versuche ihn für einige Tage vom Dienst zu befreien. Ich sorge außerdem dafür, dass die Eltern des Mädchens informiert werden. Nach dem Einsatz fahre ich zurück zur Dienststelle.",
-      "B": "Ich fahre selbst zur Unfallstelle, kümmere mich um den betroffenen Beamten und biete ihm meine Unterstützung an. Ich sorge dafür, dass er von der Öffentlichkeit abgeschirmt ist. Für die nächsten Tage stelle ich ihn vom Außendienst frei. Dann sorge ich dafür, dass die Eltern des schwer verletzten Mädchens informiert werden. Schließlich kehre ich zur Dienststelle zurück.",
-      "C": "Ich übergebe die Dienstgeschäfte an meinen Stellvertreter und fahre selbst zur Unfallstelle. Dort versuche ich den Beamten von der Öffentlichkeit abzuschirmen und seine Betreuung zu organisieren. Außerdem benachrichtige ich die Eltern des Kindes persönlich. Wenn irgendwie möglich, gewähre ich dem Beamten für die nächsten Tage Dienstbefreiung. Im Anschluss an den Einsatz fahre ich selbst ins Krankenhaus zum verletzten Mädchen.",
-      "D": "Ich beauftrage meinen Stellvertreter, die anfallenden Aufgaben zu übernehmen. Dann fahre ich selbst zur Unfallstelle und schirme zunächst den Beamten von der Öffentlichkeit ab. Ich organisiere für ihn eine professionelle Betreuung und gebe ihm möglichst für einige Tage dienstfrei. Außerdem sorge ich dafür, dass die Verständigung der Eltern des Kindes durchgeführt wird. Nach Beendigung des Einsatzes fahre ich wieder zur Dienststelle."
+      "A": "Ich übergebe die Dienstgeschäfte an meinen Stellvertreter und fahre selbst zur Unfallstelle. Dort versuche ich den Beamten von der Öffentlichkeit abzuschirmen und seine Betreuung zu organisieren. Außerdem benachrichtige ich die Eltern des Kindes persönlich. Wenn irgendwie möglich, gewähre ich dem Beamten für die nächsten Tage Dienstbefreiung. Im Anschluss an den Einsatz fahre ich selbst ins Krankenhaus zum verletzten Mädchen.",
+      "B": "Ich beauftrage meinen Stellvertreter, die anfallenden Aufgaben zu übernehmen. Dann fahre ich selbst zur Unfallstelle und schirme zunächst den Beamten von der Öffentlichkeit ab. Ich organisiere für ihn eine professionelle Betreuung und gebe ihm möglichst für einige Tage dienstfrei. Außerdem sorge ich dafür, dass die Verständigung der Eltern des Kindes durchgeführt wird. Nach Beendigung des Einsatzes fahre ich wieder zur Dienststelle.",
+      "C": "Sobald ich am Unfallort angekommen bin, schirme ich den Beamten von äußeren Einflüssen ab. Ich organisiere eine Betreuung für ihn und versuche ihn für einige Tage vom Dienst zu befreien. Ich sorge außerdem dafür, dass die Eltern des Mädchens informiert werden. Nach dem Einsatz fahre ich zurück zur Dienststelle.",
+      "D": "Ich fahre selbst zur Unfallstelle, kümmere mich um den betroffenen Beamten und biete ihm meine Unterstützung an. Ich sorge dafür, dass er von der Öffentlichkeit abgeschirmt ist. Für die nächsten Tage stelle ich ihn vom Außendienst frei. Dann sorge ich dafür, dass die Eltern des schwer verletzten Mädchens informiert werden. Schließlich kehre ich zur Dienststelle zurück."
     },
-    "ranking": "C, D, A, B"
+    "A": "Ich übergebe die Dienstgeschäfte an meinen Stellvertreter und fahre selbst zur Unfallstelle. Dort versuche ich den Beamten von der Öffentlichkeit abzuschirmen und seine Betreuung zu organisieren. Außerdem benachrichtige ich die Eltern des Kindes persönlich. Wenn irgendwie möglich, gewähre ich dem Beamten für die nächsten Tage Dienstbefreiung. Im Anschluss an den Einsatz fahre ich selbst ins Krankenhaus zum verletzten Mädchen.",
+    "B": "Ich beauftrage meinen Stellvertreter, die anfallenden Aufgaben zu übernehmen. Dann fahre ich selbst zur Unfallstelle und schirme zunächst den Beamten von der Öffentlichkeit ab. Ich organisiere für ihn eine professionelle Betreuung und gebe ihm möglichst für einige Tage dienstfrei. Außerdem sorge ich dafür, dass die Verständigung der Eltern des Kindes durchgeführt wird. Nach Beendigung des Einsatzes fahre ich wieder zur Dienststelle.",
+    "C": "Sobald ich am Unfallort angekommen bin, schirme ich den Beamten von äußeren Einflüssen ab. Ich organisiere eine Betreuung für ihn und versuche ihn für einige Tage vom Dienst zu befreien. Ich sorge außerdem dafür, dass die Eltern des Mädchens informiert werden. Nach dem Einsatz fahre ich zurück zur Dienststelle.",
+    "D": "Ich fahre selbst zur Unfallstelle, kümmere mich um den betroffenen Beamten und biete ihm meine Unterstützung an. Ich sorge dafür, dass er von der Öffentlichkeit abgeschirmt ist. Für die nächsten Tage stelle ich ihn vom Außendienst frei. Dann sorge ich dafür, dass die Eltern des schwer verletzten Mädchens informiert werden. Schließlich kehre ich zur Dienststelle zurück.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 2,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Konfliktmanagement", "Kommunikationsfähigkeit"],
-    "szenario": "Sie sind als erfahrener Streifenbeamter in einer festen Dienstgruppe eingeteilt. Seit mehreren Wochen fällt Ihnen auf, dass ein jüngerer Kollege, mit dem Sie heute auf Streife sind, extrem stark nach Schweiß und ungewaschener Kleidung riecht. Dies ist kein Einzelfall nach einem Einsatz, sondern ein Dauerzustand, der die Zusammenarbeit auf engstem Raum im Streifenwagen nahezu unerträglich macht. Auch Bürger reagieren bei Kontrollen bereits spürbar irritiert. Die Stimmung in der Schicht leidet, aber aus falscher Zurückhaltung hat bisher niemand etwas gesagt. Wie verhalten Sie sich?",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Führungskompetenz",
+    "kompetenzen": [
+      "Führungskompetenz"
+    ],
+    "szenario": "In Ihrer Dienstgruppe gibt es einen besonders ehrgeizigen, selbstständigen Beamten und einen eher trägen, unselbstständigen Beamten. Ein komplexer Schwerpunkteinsatz steht an und Sie müssen die operativen Aufgaben verteilen.",
     "optionen": {
-      "A": "Ich bitte den Dienstgruppenleiter (DGL), bei der nächsten Dienstbesprechung einen allgemeinen Dienstunterricht über Körperhygiene und Außenwirkung zu halten, damit der Kollege den Wink versteht, ohne dass ich ihn direkt bloßstellen muss.",
-      "B": "Ich suche bei der nächsten passenden Gelegenheit ein vertrauliches Vier-Augen-Gespräch. Dabei spreche ich das Problem respektvoll, aber absolut direkt an, erkläre ihm die negativen Auswirkungen auf die Zusammenarbeit sowie die Außenwirkung und bitte ihn, auf seine Hygiene zu achten.",
-      "C": "Ich öffne während der Streifenfahrt demonstrativ beide Fenster, sprühe Raumspray und mache unmissverständliche Andeutungen über den Geruch, in der Hoffnung, dass er sein Verhalten von selbst ändert.",
-      "D": "Ich ignoriere das Problem weiterhin und versuche, die Schicht irgendwie zu überstehen. Die Gefahr, das kollegiale Verhältnis durch eine so intime und peinliche Thematik dauerhaft zu zerstören, ist mir zu hoch."
+      "A": "Ich wende situatives Führen an: Dem ehrgeizigen Beamten übertrage ich mit Vertrauensvorschuss verantwortungsvolle Aufgaben. Den trägen Beamten steuere ich mit klaren Anweisungen und enger Kontrolle.",
+      "B": "Ich teile beiden Beamten exakt die gleichen Aufgaben zu, um niemanden zu bevorzugen und absolute formelle Gleichbehandlung im Team zu gewährleisten.",
+      "C": "Ich gebe dem ehrgeizigen Beamten die Hauptarbeit, da ich weiß, dass es dann fehlerfrei funktioniert, und lasse den trägen Kollegen Innendienst machen.",
+      "D": "Ich überlasse es den beiden, die Aufgaben unter sich aufzuteilen, um als Vorgesetzter Konflikten aus dem Weg zu gehen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich wende situatives Führen an: Dem ehrgeizigen Beamten übertrage ich mit Vertrauensvorschuss verantwortungsvolle Aufgaben. Den trägen Beamten steuere ich mit klaren Anweisungen und enger Kontrolle.",
+    "B": "Ich teile beiden Beamten exakt die gleichen Aufgaben zu, um niemanden zu bevorzugen und absolute formelle Gleichbehandlung im Team zu gewährleisten.",
+    "C": "Ich gebe dem ehrgeizigen Beamten die Hauptarbeit, da ich weiß, dass es dann fehlerfrei funktioniert, und lasse den trägen Kollegen Innendienst machen.",
+    "D": "Ich überlasse es den beiden, die Aufgaben unter sich aufzuteilen, um als Vorgesetzter Konflikten aus dem Weg zu gehen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 3,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Entscheidungskompetenz", "Authentizität"],
-    "szenario": "Sie haben vor kurzem die Leitung einer Dienstgruppe übernommen. Ein sehr erfahrener, älterer Polizeihauptkommissar, der bei den jungen Kollegen ein hohes Standing genießt, zieht Ihre Arbeitsanweisungen beim täglichen Antreten wiederholt ins Lächerliche. Heute unterbricht er Sie vor versammelter Mannschaft bei der Zuweisung eines Schwerpunkteinsatzes mit der Bemerkung: 'Das haben wir hier noch nie so gemacht, das bringt doch eh nichts, Chef.' Die jungen Beamten schauen gespannt auf Ihre Reaktion.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Entscheidungskompetenz",
+    "kompetenzen": [
+      "Entscheidungskompetenz"
+    ],
+    "szenario": "Bei einem Einsatz „Häusliche Gewalt“ sind Sie der ranghöchste Beamte vor Ort. Hinter einer verschlossenen Tür schreit ein weibliches Opfer in vermeintlicher Todesangst. Sie lassen die Tür eintreten. Später erklärt die Frau, der Einsatz sei unnötig gewesen.",
     "optionen": {
-      "A": "Ich weise ihn sofort und scharf vor der gesamten Schicht zurecht, mache klar, dass ich solche Insubordinationen nicht dulde, und untermauere damit meine Autorität als neuer Dienstgruppenleiter unmissverständlich.",
-      "B": "Ich reagiere sachlich, bedanke mich kurz für seinen Einwurf, setze meine Befehlsausgabe aber konsequent fort. Unmittelbar nach dem Antreten bestelle ich ihn zu einem Vier-Augen-Gespräch in mein Büro, um klare Grenzen für sein Verhalten vor der Mannschaft aufzuzeigen.",
-      "C": "Ich melde den Vorfall noch am selben Tag schriftlich an den Dienststellenleiter und fordere eine formelle Abmahnung für den Kollegen, da mein Führungsanspruch andernfalls nachhaltig beschädigt ist.",
-      "D": "Ich versuche, die Situation mit Humor zu überspielen, lache über seinen Kommentar und erkläre meine Anordnung ausführlich, um Authentizität zu zeigen und mich nicht sofort unbeliebt zu machen."
+      "A": "Ich bedaure die Fehleinschätzung, stehe aber zu meiner in der Akutsituation getroffenen Entscheidung, kann diese nachvollziehbar erläutern und übernehme die volle Verantwortung.",
+      "B": "Ich rechtfertige die Maßnahme primär damit, dass die Einsatzzentrale die Lage dramatischer gemeldet hat, weise aber auf die Präventivpflicht hin.",
+      "C": "Ich zweifle an meiner Befähigung, entschuldige mich mehrfach unterwürfig bei der Frau und biete an, den Schaden an der Tür privat zu zahlen.",
+      "D": "Ich weise die Kollegen an, den Bericht so zu schönen, dass unser Handeln rechtlich absolut zwingend wirkt, auch wenn es übertrieben ist."
     },
-    "ranking": "B, A, D, C"
+    "A": "Ich bedaure die Fehleinschätzung, stehe aber zu meiner in der Akutsituation getroffenen Entscheidung, kann diese nachvollziehbar erläutern und übernehme die volle Verantwortung.",
+    "B": "Ich rechtfertige die Maßnahme primär damit, dass die Einsatzzentrale die Lage dramatischer gemeldet hat, weise aber auf die Präventivpflicht hin.",
+    "C": "Ich zweifle an meiner Befähigung, entschuldige mich mehrfach unterwürfig bei der Frau und biete an, den Schaden an der Tür privat zu zahlen.",
+    "D": "Ich weise die Kollegen an, den Bericht so zu schönen, dass unser Handeln rechtlich absolut zwingend wirkt, auch wenn es übertrieben ist.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 4,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Emotionale Intelligenz", "Belastbarkeit", "Kommunikationsfähigkeit"],
-    "szenario": "Sie müssen gemeinsam mit einem jungen Kollegen die Todesnachricht über einen plötzlichen Kindstod überbringen. Als Sie dem Vater in der Wohnung die Nachricht schonend mitteilen, bricht dieser nicht in Tränen aus, sondern reagiert mit unkontrollierbarer, extremer Aggression. Er schreit Sie aus vollstem Hals an, wirft einen Stuhl gegen die Wand und baut sich bedrohlich vor Ihrem jungen Streifenpartner auf, der sichtlich überfordert ist.",
+    "kompetenz": "Authentizität",
+    "kompetenzen": [
+      "Authentizität"
+    ],
+    "szenario": "Eine Kollegin äußert im Pausenraum eine meinungsstarke, politisch äußerst fragwürdige Ansicht zu einer Bevölkerungsgruppe, mit der es oft Einsätze gibt. Die anderen Kollegen schweigen betreten.",
     "optionen": {
-      "A": "Ich baue mich vor dem Vater auf, weise ihn streng an, sich sofort zu beruhigen, und drohe ihm an, dass wir ihn andernfalls in Gewahrsam nehmen müssen, wenn er weiter randaliert.",
-      "B": "Ich befehle meinem Kollegen den sofortigen taktischen Rückzug aus der Wohnung. Wir warten im Treppenhaus, fordern eine zweite Streife zur Eigensicherung an und betreten die Wohnung erst wieder, wenn sich die Lage beruhigt hat.",
-      "C": "Ich bewahre absolute Ruhe, stelle mich schützend vor meinen Kollegen, halte körperlichen Abstand, zeige verbal Verständnis für den völligen Ausnahmezustand des Vaters und warte ab, bis die erste Welle der unkontrollierten Wut abebbt, ohne mich provozieren zu lassen.",
-      "D": "Ich versuche sofort, körperlichen Kontakt herzustellen, nehme den Vater in den Arm und rede ununterbrochen beruhigend auf ihn ein, um größtmögliche Empathie in dieser schweren Stunde zu signalisieren."
+      "A": "Ich beziehe offen Stellung und stelle meine eigene, rechtsstaatliche Position der Meinung der Kollegin sachlich, aber unmissverständlich entgegen.",
+      "B": "Ich weise sie später unter vier Augen darauf hin, dass solche Äußerungen problematisch sind, halte mich aber in der Gruppe zurück, um die Stimmung nicht zu vergiften.",
+      "C": "Ich ignoriere die Aussage demonstrativ und verlasse wortlos den Raum, um meine Missbilligung durch Abwesenheit auszudrücken.",
+      "D": "Ich lache leise mit, um in der eingeschworenen Dienstgruppe nicht als moralisierender Spielverderber zu gelten."
     },
-    "ranking": "C, B, A, D"
+    "A": "Ich beziehe offen Stellung und stelle meine eigene, rechtsstaatliche Position der Meinung der Kollegin sachlich, aber unmissverständlich entgegen.",
+    "B": "Ich weise sie später unter vier Augen darauf hin, dass solche Äußerungen problematisch sind, halte mich aber in der Gruppe zurück, um die Stimmung nicht zu vergiften.",
+    "C": "Ich ignoriere die Aussage demonstrativ und verlasse wortlos den Raum, um meine Missbilligung durch Abwesenheit auszudrücken.",
+    "D": "Ich lache leise mit, um in der eingeschworenen Dienstgruppe nicht als moralisierender Spielverderber zu gelten.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 5,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Gerechtigkeit", "Teamfähigkeit", "Entscheidungskompetenz"],
-    "szenario": "Innerhalb der Wache kursiert das hartnäckige Gerücht, dass eine langjährige Kollegin bei Verkehrskontrollen vereinzelt Verwarnungsgelder in bar kassiert, aber keine Quittungen ausstellt und das Geld in die eigene Tasche steckt. Sie haben dafür selbst keine stichhaltigen Beweise gesehen, hören die Vorwürfe jedoch unabhängig voneinander von mehreren meist jüngeren Kollegen, die nicht wissen, wie sie damit umgehen sollen.",
+    "kompetenz": "Teamfähigkeit",
+    "kompetenzen": [
+      "Teamfähigkeit"
+    ],
+    "szenario": "Nach einem Umbau Ihrer Dienststelle erhalten Sie den Auftrag, einen Vorschlag auszuarbeiten, wie die neuen Büroräume aufgeteilt werden. Sie müssen sich dabei auch selbst ein Zimmer zuteilen.",
     "optionen": {
-      "A": "Ich suche das direkte Gespräch mit der betroffenen Kollegin, konfrontiere sie unter vier Augen mit den kursierenden Gerüchten und frage sie schonungslos, ob an den Vorwürfen etwas dran ist.",
-      "B": "Da der Vorwurf einer Straftat im Amt im Raum steht, informiere ich umgehend meinen Vorgesetzten (DGL) über die Gerüchte und die Aussagen der jungen Kollegen, damit eine objektive und diskrete Prüfung eingeleitet wird.",
-      "C": "Da es sich bislang nur um Hörensagen und Gerüchte handelt, unternehme ich vorerst gar nichts. Ohne handfeste Beweise verpfeift man keine Kollegen und riskiert keine Rufmordkampagne.",
-      "D": "Ich weigere mich ab sofort kategorisch, mit dieser Kollegin auf Streife zu fahren, und rate auch den jüngeren Kollegen heimlich, die Zusammenarbeit mit ihr zu meiden, um nicht mit reingezogen zu werden."
+      "A": "Ich beziehe alle Betroffenen ein, hole mir Anregungen, stelle meine eigenen Interessen zurück und erarbeite ein für das gesamte Team tragfähiges Ergebnis.",
+      "B": "Ich plane sachlich rein nach Dienstgrad und Dienstalter, ohne die Kollegen vorher zu fragen, da Diskussionen die Entscheidungsfindung nur verzögern.",
+      "C": "Ich sichere mir das beste Büro als Ausgleich für den Planungsaufwand und verteile den Rest der Zimmer nach logischen Kriterien.",
+      "D": "Ich delegiere die Aufgabe an einen jüngeren Kollegen, da mir das Konfliktpotenzial bei der Raumverteilung zu hoch ist."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich beziehe alle Betroffenen ein, hole mir Anregungen, stelle meine eigenen Interessen zurück und erarbeite ein für das gesamte Team tragfähiges Ergebnis.",
+    "B": "Ich plane sachlich rein nach Dienstgrad und Dienstalter, ohne die Kollegen vorher zu fragen, da Diskussionen die Entscheidungsfindung nur verzögern.",
+    "C": "Ich sichere mir das beste Büro als Ausgleich für den Planungsaufwand und verteile den Rest der Zimmer nach logischen Kriterien.",
+    "D": "Ich delegiere die Aufgabe an einen jüngeren Kollegen, da mir das Konfliktpotenzial bei der Raumverteilung zu hoch ist.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 6,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Selbstreflexion", "Authentizität", "Führungskompetenz"],
-    "szenario": "Sie haben in der vergangenen Nachtschicht als Einsatzleiter bei einer unklaren Bedrohungslage eine weitreichende taktische Entscheidung getroffen, die sich im Nachhinein als völlig falsch herausstellte. Es kam glücklicherweise niemand zu Schaden, aber der Einsatz dauerte dadurch extrem lange, band unnötig viele Kräfte und stieß bei den eingesetzten Beamten auf starken, spürbaren Unmut. Nun steht die Nachbesprechung des Einsatzes an.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Emotionale Intelligenz",
+    "kompetenzen": [
+      "Emotionale Intelligenz"
+    ],
+    "szenario": "Ein angehaltener Autofahrer wirft Ihnen bei einer Verkehrskontrolle völlig grundlos Schikane vor und behauptet, Sie sollten lieber echte Verbrecher fangen.",
     "optionen": {
-      "A": "Ich eröffne die Nachbesprechung, übernehme sofort und offen die volle persönliche Verantwortung für den Fehler, erkläre kurz meine damaligen Gedankengänge und analysiere dann gemeinsam mit dem Team konstruktiv, wie wir so etwas künftig besser lösen können.",
-      "B": "Ich rechtfertige meine Entscheidung in der Nachbereitung intensiv mit der unklaren und dynamischen Informationslage, um keinen Gesichtsverlust als Führungskraft zu erleiden und das Vertrauen in meine Entscheidungsfähigkeit zu erhalten.",
-      "C": "Ich hake den Einsatz schnell als 'Erfahrungswert' ab, verzichte auf eine tiefgehende Analyse eigener Fehler, da ja niemand verletzt wurde, und lenke das Thema zügig auf die anstehenden Aufgaben der nächsten Schicht.",
-      "D": "Ich schiebe die Hauptschuld auf die ungenauen Angaben der Einsatzzentrale und die mangelhafte Informationsweitergabe durch die Erstsprecher vor Ort, da ich auf Basis dieser Daten handeln musste."
+      "A": "Ich kontrolliere meine Emotionen, thematisiere beruhigend seine wahrgenommene Bedürfnislage und erkläre sachlich unsere polizeilichen Absichten.",
+      "B": "Ich ignoriere seine Vorwürfe komplett, reagiere nicht auf seine Aussagen und spule mein Standardprogramm kühl und distanziert ab.",
+      "C": "Ich erhebe die Stimme, unterbreche ihn scharf und drohe ihm sofort mit einer Anzeige wegen Beleidigung, falls er nicht kooperiert.",
+      "D": "Ich breche die Kontrolle augenblicklich ab und lasse ihn weiterfahren, um einer verbalen Eskalation aus dem Weg zu gehen."
     },
+    "A": "Ich kontrolliere meine Emotionen, thematisiere beruhigend seine wahrgenommene Bedürfnislage und erkläre sachlich unsere polizeilichen Absichten.",
+    "B": "Ich ignoriere seine Vorwürfe komplett, reagiere nicht auf seine Aussagen und spule mein Standardprogramm kühl und distanziert ab.",
+    "C": "Ich erhebe die Stimme, unterbreche ihn scharf und drohe ihm sofort mit einer Anzeige wegen Beleidigung, falls er nicht kooperiert.",
+    "D": "Ich breche die Kontrolle augenblicklich ab und lasse ihn weiterfahren, um einer verbalen Eskalation aus dem Weg zu gehen.",
     "ranking": "A, B, C, D"
   },
   {
     "id": 7,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Belastbarkeit", "Entscheidungskompetenz", "Teamfähigkeit"],
-    "szenario": "Sie und Ihr junger, noch unerfahrener Streifenpartner treffen als erste und einzige Streife bei einer Massenschlägerei auf einem Volksfest ein. Es sind ca. 30 teils stark alkoholisierte Personen beteiligt. Die Lage ist extrem dynamisch und unübersichtlich, es fliegen bereits Flaschen und Stühle. Weitere Unterstützungskräfte haben eine Anfahrtszeit von mindestens 8 Minuten.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Selbstreflexion",
+    "kompetenzen": [
+      "Selbstreflexion"
+    ],
+    "szenario": "Sie treffen als Einsatzleiter eine taktische Fehlentscheidung, die den Ablauf verzögert, aber zu keinem Schaden führt.",
     "optionen": {
-      "A": "Ich ziehe sofort den Einsatzstock, weise meinen Partner an mir zu folgen, und wir stürzen uns gezielt auf den lautesten Aggressor im Getümmel, um durch schnelle Festnahme eine Schockwirkung zu erzielen.",
-      "B": "Ich stoppe das Fahrzeug in sicherer Entfernung, fordere über Funk umgehend alle verfügbaren Kräfte nach, beleuchte die Szenerie ausleuchtend, beobachte die Lage präzise und greife erst gezielt und verhältnismäßig ein, wenn es der Eigenschutz zulässt.",
-      "C": "Ich fahre sofort ein großes Stück zurück, schalte Blaulicht und Martinshorn komplett aus, um keine Aggressionen auf uns zu ziehen, und warte versteckt, bis die geschlossenen Einheiten oder genügend Streifen eintreffen.",
-      "D": "Ich steige aus, sprühe sofort großflächig mit dem RSG (Pfefferspray) in die Menge und rufe laute Kommandos, um die Menge schnellstmöglich und ohne Rücksicht auf Einzelne zu zerstreuen."
+      "A": "Ich reflektiere den Fehler kritisch, übernehme vor der Mannschaft die Verantwortung und analysiere im Team, was wir daraus lernen können.",
+      "B": "Ich hake den Vorfall in der Nachbesprechung schnell ab, da glücklicherweise niemand ernsthaft zu Schaden gekommen ist.",
+      "C": "Ich rechtfertige die Fehlentscheidung intensiv mit unklaren Vorabinformationen, um als Führungskraft keinen Gesichtsverlust zu erleiden.",
+      "D": "Ich verbiete dem Team, den taktischen Fehler im Nachgang weiter zu thematisieren, und gehe sofort zum Tagesgeschäft über."
     },
-    "ranking": "B, C, A, D"
+    "A": "Ich reflektiere den Fehler kritisch, übernehme vor der Mannschaft die Verantwortung und analysiere im Team, was wir daraus lernen können.",
+    "B": "Ich hake den Vorfall in der Nachbesprechung schnell ab, da glücklicherweise niemand ernsthaft zu Schaden gekommen ist.",
+    "C": "Ich rechtfertige die Fehlentscheidung intensiv mit unklaren Vorabinformationen, um als Führungskraft keinen Gesichtsverlust zu erleiden.",
+    "D": "Ich verbiete dem Team, den taktischen Fehler im Nachgang weiter zu thematisieren, und gehe sofort zum Tagesgeschäft über.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 8,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Emotionale Intelligenz", "Konfliktmanagement"],
-    "szenario": "Ein Beamter Ihrer Dienstgruppe, der über Jahre hinweg stets hervorragende Arbeit geleistet hat, fällt seit etwa zwei Monaten massiv ab. Er wirkt apathisch, macht gravierende Leichtsinnsfehler bei einfachen Anzeigenaufnahmen, kapselt sich von den Kollegen ab und meldet sich auffällig häufig kurzfristig krank. Die restliche Dienstgruppe muss seine Arbeit zunehmend auffangen, was zu ersten Beschwerden führt.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Konfliktmanagement",
+    "kompetenzen": [
+      "Konfliktmanagement"
+    ],
+    "szenario": "Es gibt einen schwelenden, lautstarken Konflikt in Ihrer Dienstgruppe bezüglich der Übernahme ungeliebter Vorgänge.",
     "optionen": {
-      "A": "Ich rufe ihn in mein Büro und ermahne ihn offiziell wegen der gehäuften Fehler und Fehlzeiten. Ich fordere eine sofortige Leistungssteigerung, um die Dienstfähigkeit der Gruppe zu sichern und weiteren Unmut zu vermeiden.",
-      "B": "Ich lade ihn zu einem vertraulichen Fürsorgegespräch ein, spiegele ihm konkret und wertfrei meine Beobachtungen wider, frage ihn empathisch nach möglichen privaten oder dienstlichen Ursachen und zeige aktiv Hilfsangebote (z.B. psychosoziale Unterstützung) auf.",
-      "C": "Ich teile ihn bis auf Weiteres kommentarlos nur noch für unbeliebte Innendienste und Aktenablage ein, wo er durch Leichtsinnsfehler den geringsten Schaden für die Dienststelle anrichten kann.",
-      "D": "Ich ignoriere das Verhalten vorerst bewusst, da er jahrelang ein Leistungsträger war, und hoffe darauf, dass es sich nur um eine kurze private Phase handelt, die sich von selbst wieder reguliert."
+      "A": "Ich suche aktiv das Gespräch, analysiere die Ursachen der Unzufriedenheit und zeige Kompromissbereitschaft für eine faire, gemeinsame Lösung.",
+      "B": "Ich warte zunächst ab, ob sich der Konflikt von selbst durch die Gruppendynamik löst, bevor ich als Vorgesetzter formal eingreife.",
+      "C": "Ich ordne die Zuteilung per striktem Losverfahren an, um jede weitere Diskussion sofort im Keim zu ersticken.",
+      "D": "Ich gebe den Kollegen nach, die am lautesten meckern, um Ruhe in die Dienstgruppe zu bringen."
     },
-    "ranking": "B, A, D, C"
+    "A": "Ich suche aktiv das Gespräch, analysiere die Ursachen der Unzufriedenheit und zeige Kompromissbereitschaft für eine faire, gemeinsame Lösung.",
+    "B": "Ich warte zunächst ab, ob sich der Konflikt von selbst durch die Gruppendynamik löst, bevor ich als Vorgesetzter formal eingreife.",
+    "C": "Ich ordne die Zuteilung per striktem Losverfahren an, um jede weitere Diskussion sofort im Keim zu ersticken.",
+    "D": "Ich gebe den Kollegen nach, die am lautesten meckern, um Ruhe in die Dienstgruppe zu bringen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 9,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Kommunikationsfähigkeit", "Authentizität", "Belastbarkeit"],
-    "szenario": "Sie führen zur Nachtzeit eine Routineverkehrskontrolle durch. Der männliche Fahrer reagiert sofort hochaggressiv. Als Sie an das Fenster treten, hält er Ihnen sein Smartphone direkt ins Gesicht, filmt Sie und ruft laut: 'Das stream ich jetzt live, ihr scheiß Bullen! Habt ihr nichts Besseres zu tun, als ehrliche Bürger zu schikanieren?'",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Belastbarkeit",
+    "kompetenzen": [
+      "Belastbarkeit"
+    ],
+    "szenario": "Wegen eines extrem hohen Krankenstandes ist die Arbeitsbelastung in Ihrer Dienstgruppe seit Wochen enorm hoch.",
     "optionen": {
-      "A": "Ich greife blitzschnell durchs Fenster, versuche ihm das Handy aus der Hand zu schlagen oder abzunehmen, da Film- und Tonaufnahmen von Polizeibeamten im Dienst strafbar sind und ich das unterbinden muss.",
-      "B": "Ich erhebe meine Stimme deutlich, drohe ihm sofort mit einer Strafanzeige wegen Beleidigung und Verletzung der Vertraulichkeit des Wortes und fordere hochaggressiv die Herausgabe seiner Papiere.",
-      "C": "Ich bleibe äußerlich völlig ruhig, weise ihn sachlich und bestimmt auf die rechtlichen Grenzen von Filmaufnahmen hin, ignoriere die verbale Provokation professionell und führe die verkehrsrechtliche Kontrolle zügig und konsequent durch.",
-      "D": "Ich breche die Kontrolle augenblicklich ab, steige kommentarlos in den Streifenwagen und lasse ihn weiterfahren, um eine mögliche mediale Eskalation oder ein virales Video im Netz zu vermeiden."
+      "A": "Ich bleibe ruhig, aktiviere meine Ressourcen, organisiere die Abläufe um und zeige meinem Team, dass ich auch unter Druck handlungsfähig bleibe.",
+      "B": "Ich ordne pauschal Überstunden an und erwarte, dass alle ohne Murren mitziehen, da die polizeiliche Lage es erfordert.",
+      "C": "Ich pflichte dem Team bei und schimpfe gemeinsam mit ihnen lautstark über das Versagen der Behördenleitung beim Personalmanagement.",
+      "D": "Ich melde mich präventiv dauerhaft krank, da ich dem Druck nicht standhalte und einen Burnout befürchte."
     },
-    "ranking": "C, B, D, A"
+    "A": "Ich bleibe ruhig, aktiviere meine Ressourcen, organisiere die Abläufe um und zeige meinem Team, dass ich auch unter Druck handlungsfähig bleibe.",
+    "B": "Ich ordne pauschal Überstunden an und erwarte, dass alle ohne Murren mitziehen, da die polizeiliche Lage es erfordert.",
+    "C": "Ich pflichte dem Team bei und schimpfe gemeinsam mit ihnen lautstark über das Versagen der Behördenleitung beim Personalmanagement.",
+    "D": "Ich melde mich präventiv dauerhaft krank, da ich dem Druck nicht standhalte und einen Burnout befürchte.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 10,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Emotionale Intelligenz", "Kommunikationsfähigkeit", "Entscheidungskompetenz"],
-    "szenario": "Sie werden zu einem schweren Raubüberfall gerufen. Das weibliche Opfer, der die Handtasche gewaltsam entrissen wurde, sitzt auf dem Gehweg. Sie ist körperlich unverletzt, steht aber stark unter Schock, zittert am ganzen Körper und weint ununterbrochen. Sie wissen, dass eine zeitnahe Täterbeschreibung für die laufende Ringfahndung essenziell wichtig wäre.",
+    "kompetenz": "Kommunikationsfähigkeit",
+    "kompetenzen": [
+      "Kommunikationsfähigkeit"
+    ],
+    "szenario": "Sie sollen einen aufgebrachten Bürger zu einem komplexen Nachbarschaftsstreit befragen.",
     "optionen": {
-      "A": "Ich spreche sie laut und bestimmt an, fordere sie auf sich sofort zusammenzureißen, da der Täter sonst entkommt, und dränge sie vehement zu einer detaillierten Personenbeschreibung.",
-      "B": "Ich hocke mich auf Augenhöhe zu ihr, gebe ihr Zeit sich kurz zu sammeln, spreche beruhigend auf sie ein und stelle erst danach sehr behutsam die wichtigsten Fragen zur Täterbeschreibung für die Erstmeldung.",
-      "C": "Da sie offensichtlich nicht vernehmungsfähig ist, verzichte ich komplett auf Befragungen, übergebe sie wortlos dem eintreffenden Rettungsdienst und warte im Fahrzeug, bis sie im Krankenhaus ist.",
-      "D": "Ich richte sie auf, nehme sie in den Arm, sage ihr, dass alles wieder gut wird und versuche sie durch Witze aufzumuntern, bevor ich nach dem Täter frage."
+      "A": "Ich drücke mich verständlich aus, passe mein Sprachniveau an, stelle gezielte Fragen und höre aktiv zu, um den Sachverhalt zu strukturieren.",
+      "B": "Ich lasse ihn ausreden, verzichte aber auf Rückfragen, um den Vorgang schnellstmöglich in die Akte aufnehmen zu können.",
+      "C": "Ich verwende bewusst juristische Fachbegriffe, um meine polizeiliche Autorität zu untermauern und ihn zu beruhigen.",
+      "D": "Ich überlasse meinem Partner das Reden, da mir strukturierte Gespräche mit unruhigen Bürgern schwerfallen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich drücke mich verständlich aus, passe mein Sprachniveau an, stelle gezielte Fragen und höre aktiv zu, um den Sachverhalt zu strukturieren.",
+    "B": "Ich lasse ihn ausreden, verzichte aber auf Rückfragen, um den Vorgang schnellstmöglich in die Akte aufnehmen zu können.",
+    "C": "Ich verwende bewusst juristische Fachbegriffe, um meine polizeiliche Autorität zu untermauern und ihn zu beruhigen.",
+    "D": "Ich überlasse meinem Partner das Reden, da mir strukturierte Gespräche mit unruhigen Bürgern schwerfallen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 11,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Entscheidungskompetenz", "Belastbarkeit", "Führungskompetenz"],
-    "szenario": "Es ist Samstagnacht, die Schicht ist unterbesetzt. Sie sitzen als DGL am Funk. Zeitgleich laufen drei Einsätze auf: 1. Eine massive Ruhestörung mit aggressiven Anrufern. 2. Ein Ladendieb, der vom Detektiv im Büro festgehalten wird. 3. Ein schwerer Verkehrsunfall auf der Landstraße mit eingeklemmter Person. Sie haben aktuell nur exakt zwei Streifenwagen zur Verfügung, Nachbardienststellen haben 20 Minuten Anfahrt.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Gerechtigkeit",
+    "kompetenzen": [
+      "Gerechtigkeit"
+    ],
+    "szenario": "Sie müssen zwei Beamte für eine äußerst unbeliebte Bewachungsaufgabe einteilen. Einen der Beamten mögen Sie privat sehr, den anderen eher nicht.",
     "optionen": {
-      "A": "Ich entsende eine Streife zur Ruhestörung und eine zum Ladendieb, da diese Sachverhalte schnell abzuarbeiten sind. Den Verkehrsunfall lasse ich durch die Feuerwehr und Nachbardienststellen anfahren, auch wenn es dauert.",
-      "B": "Ich priorisiere den Verkehrsunfall als höchsten Schutzgut-Einsatz (Leben/Gesundheit) und entsende beide verfügbaren Streifen dorthin. Den Ladendetektiv und die Anrufer der Ruhestörung informiere ich transparent über die Verzögerung.",
-      "C": "Ich fahre als DGL selbst alleine zur Ruhestörung, schicke eine Streife zum Ladendieb und eine Streife zum Verkehrsunfall, um alle Einsätze gleichzeitig abzudecken, auch wenn ich mich in Gefahr begebe.",
-      "D": "Ich schicke jeweils einen Beamten alleine zu den drei Einsätzen, um Präsenz zu zeigen, und weise sie an, auf Eintreffen von Unterstützung zu warten, bevor sie tätig werden."
+      "A": "Ich lasse persönliche Sympathien völlig außen vor und entscheide rein objektiv nach Verfügbarkeit und gerechter Aufgabenrotation.",
+      "B": "Ich teile beide gemeinsam ein, damit es formell gerecht aussieht, auch wenn es taktisch nicht zwingend notwendig ist.",
+      "C": "Ich teile den unbeliebten Kollegen ein und begründe es vage damit, dass der andere letzte Woche schon viel geleistet hat.",
+      "D": "Ich übernehme die ungeliebte Aufgabe kurzerhand selbst, um niemandem in der Dienstgruppe auf die Füße zu treten."
     },
-    "ranking": "B, C, A, D"
+    "A": "Ich lasse persönliche Sympathien völlig außen vor und entscheide rein objektiv nach Verfügbarkeit und gerechter Aufgabenrotation.",
+    "B": "Ich teile beide gemeinsam ein, damit es formell gerecht aussieht, auch wenn es taktisch nicht zwingend notwendig ist.",
+    "C": "Ich teile den unbeliebten Kollegen ein und begründe es vage damit, dass der andere letzte Woche schon viel geleistet hat.",
+    "D": "Ich übernehme die ungeliebte Aufgabe kurzerhand selbst, um niemandem in der Dienstgruppe auf die Füße zu treten.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 12,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Gerechtigkeit", "Konfliktmanagement", "Authentizität"],
-    "szenario": "Während der Nachtschicht sitzen Sie mit mehreren Kollegen im Aufenthaltsraum der Wache zusammen. Ein Kollege, der für seine flapsige Art bekannt ist, erzählt plötzlich einen klar rassistischen Witz über eine bestimmte Bevölkerungsgruppe, mit der es in letzter Zeit häufig Einsätze gab. Zwei andere Kollegen lachen laut auf. Die Stimmung ist ausgelassen, aber die Äußerung überschreitet eindeutig eine rote Linie.",
+    "kompetenz": "Konfliktmanagement",
+    "kompetenzen": [
+      "Konfliktmanagement"
+    ],
+    "szenario": "Ihr langjähriger Streifenpartner übernimmt bei jeder Personenkontrolle sofort dominant das Wort und lässt Sie wie einen Praktikanten aussehen.",
     "optionen": {
-      "A": "Ich lache leise mit, um in der Gruppe nicht als moralisierender Spielverderber zu gelten und das gute Schichtklima nicht durch eine Prinzipiendiskussion zu zerstören.",
-      "B": "Ich ignoriere den Witz demonstrativ, schüttle leicht den Kopf und verlasse stumm den Aufenthaltsraum, um durch meine Abwesenheit Missbilligung zu signalisieren.",
-      "C": "Ich positioniere mich sofort, sachlich aber unmissverständlich vor der gesamten Gruppe, dass ich solche rassistischen Äußerungen nicht toleriere und diese mit unseren polizeilichen Werten unvereinbar sind.",
-      "D": "Ich sage im Raum nichts, schreibe aber direkt danach eine detaillierte Beschwerdemail an den Dienststellenleiter, in der ich den Kollegen wegen Rassismus anschwärze."
+      "A": "Ich spreche das Thema sachlich auf der Wache an, schildere meine Wahrnehmung und vereinbare eine klare Rollenverteilung für künftige Kontrollen.",
+      "B": "Ich falle ihm bei der nächsten Kontrolle vor dem Bürger hart ins Wort und übernehme dominant die Führung, um ein Zeichen zu setzen.",
+      "C": "Ich schalte auf stur, steige bei Kontrollen gar nicht mehr aus dem Auto aus und überlasse ihm die gesamte Arbeit.",
+      "D": "Ich gehe heimlich zum Dienstgruppenleiter, beschwere mich massiv über seine Arroganz und verlange einen neuen Partner."
     },
-    "ranking": "C, B, D, A"
+    "A": "Ich spreche das Thema sachlich auf der Wache an, schildere meine Wahrnehmung und vereinbare eine klare Rollenverteilung für künftige Kontrollen.",
+    "B": "Ich falle ihm bei der nächsten Kontrolle vor dem Bürger hart ins Wort und übernehme dominant die Führung, um ein Zeichen zu setzen.",
+    "C": "Ich schalte auf stur, steige bei Kontrollen gar nicht mehr aus dem Auto aus und überlasse ihm die gesamte Arbeit.",
+    "D": "Ich gehe heimlich zum Dienstgruppenleiter, beschwere mich massiv über seine Arroganz und verlange einen neuen Partner.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 13,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Selbstreflexion", "Kommunikationsfähigkeit"],
-    "szenario": "Die Schichtmoral ist absolut am Boden. Aufgrund von Personalmangel, Großveranstaltungen und Krankenstand sind in den letzten vier Wochen extrem viele Überstunden angefallen. Beim heutigen Antreten entlädt sich der Frust: Die Kollegen beschweren sich lautstark, drohen teilweise offen mit 'Dienst nach Vorschrift' und werfen Ihnen vor, sich als DGL nicht schützend vor die Schicht zu stellen.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Authentizität",
+    "kompetenzen": [
+      "Authentizität"
+    ],
+    "szenario": "Während der Nachtschicht nimmt Ihr Kollege bei einem lokalen Bäcker kostenlos belegte Brötchen an ('Geht aufs Haus für die Polizei').",
     "optionen": {
-      "A": "Ich zeige ehrliches Verständnis für den Frust, erkläre transparent die übergeordneten Gründe für die aktuellen Engpässe und sage verbindlich zu, mich bei der Dienststellenleitung massiv für Entlastungsmaßnahmen einzusetzen.",
-      "B": "Ich blocke die Beschwerden rigoros ab, verweise auf die beamtenrechtliche Treuepflicht und betone hart, dass die Polizei kein Wunschkonzert sei und Überstunden eben zum Berufsbild gehören.",
-      "C": "Ich pflichte den Kollegen bei, schimpfe gemeinsam mit ihnen minutenlang über 'die da oben in der Behördenleitung', um Solidarität zu zeigen und mich beliebt zu machen.",
-      "D": "Ich breche das Antreten sofort ab, verweise die Kollegen auf ihre Fahrzeuge und entziehe mich der Diskussion, um die Gemüter abkühlen zu lassen."
+      "A": "Ich weise den Kollegen unter vier Augen auf die Compliance-Regeln zur Vorteilsnahme hin und fordere ihn auf, dies künftig zu unterlassen.",
+      "B": "Ich bestelle ebenfalls etwas und nehme es kostenlos an, um vor dem Bäcker nicht als undankbar zu erscheinen.",
+      "C": "Ich bezahle demonstrativ den vollen Preis für sein Essen mit und mache ihm vor dem Bäcker eine laute Szene.",
+      "D": "Ich schreibe nach Schichtende sofort eine heimliche Meldung an die interne Ermittlung wegen des Verdachts der Bestechlichkeit."
     },
+    "A": "Ich weise den Kollegen unter vier Augen auf die Compliance-Regeln zur Vorteilsnahme hin und fordere ihn auf, dies künftig zu unterlassen.",
+    "B": "Ich bestelle ebenfalls etwas und nehme es kostenlos an, um vor dem Bäcker nicht als undankbar zu erscheinen.",
+    "C": "Ich bezahle demonstrativ den vollen Preis für sein Essen mit und mache ihm vor dem Bäcker eine laute Szene.",
+    "D": "Ich schreibe nach Schichtende sofort eine heimliche Meldung an die interne Ermittlung wegen des Verdachts der Bestechlichkeit.",
     "ranking": "A, B, C, D"
   },
   {
     "id": 14,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Teamfähigkeit", "Kommunikationsfähigkeit", "Konfliktmanagement"],
-    "szenario": "Sie kommen zum Frühdienst. Bei der Übernahme des Streifenwagens stellen Sie fest, dass die Vorgängerschicht das Fahrzeug in einem desolaten Zustand hinterlassen hat: Der Tank ist fast leer, auf den Sitzen kleben Kaffeeflecken und im Fußraum liegt Müll. Es ist nicht das erste Mal, dass speziell diese Dienstgruppe die Fahrzeuge so hinterlässt. Sie ärgern sich massiv, da Sie nun erst putzen und tanken müssen.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Entscheidungskompetenz",
+    "kompetenzen": [
+      "Entscheidungskompetenz"
+    ],
+    "szenario": "Es laufen zeitgleich eine Ruhestörung, ein Ladendiebstahl (Täter festgehalten) und ein schwerer Verkehrsunfall auf. Sie haben nur zwei Streifen frei.",
     "optionen": {
-      "A": "Ich putze das Auto wortlos und fahre tanken. Um des lieben Friedens willen fange ich keinen Streit mit der anderen Schicht an, da wir uns ohnehin selten sehen.",
-      "B": "Ich rufe den verantwortlichen Fahrzeugführer der Vorgängerschicht direkt an, schildere sachlich das Problem, fordere ihn auf, dies künftig zu unterlassen, und kündige an, bei Wiederholung den DGL einzuschalten.",
-      "C": "Ich räume den gröbsten Müll weg, lasse die Kaffeeflecken aber absichtlich für unsere Nachfolger so, aus Prinzip, damit auch andere den Zustand bemerken.",
-      "D": "Ich eskaliere sofort: Ich fotografiere das Auto, stürme ins Büro des DGL der Vorgängerschicht, brülle ihn an und weigere mich, das Fahrzeug in diesem Zustand zu übernehmen."
+      "A": "Ich priorisiere den Verkehrsunfall als höchsten Schutzgut-Einsatz, entsende beide Streifen dorthin und kommuniziere die Verzögerung an die anderen Mitteiler.",
+      "B": "Ich entsende eine Streife zur Ruhestörung und eine zum Ladendieb. Den Verkehrsunfall lasse ich durch Nachbardienststellen anfahren.",
+      "C": "Ich fahre als DGL selbst zur Ruhestörung, um Ressourcen zu sparen, und schicke die Streifen zu den anderen Einsätzen.",
+      "D": "Ich schicke jeweils einen Beamten alleine zu den drei Einsätzen, um überall Präsenz zu zeigen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich priorisiere den Verkehrsunfall als höchsten Schutzgut-Einsatz, entsende beide Streifen dorthin und kommuniziere die Verzögerung an die anderen Mitteiler.",
+    "B": "Ich entsende eine Streife zur Ruhestörung und eine zum Ladendieb. Den Verkehrsunfall lasse ich durch Nachbardienststellen anfahren.",
+    "C": "Ich fahre als DGL selbst zur Ruhestörung, um Ressourcen zu sparen, und schicke die Streifen zu den anderen Einsätzen.",
+    "D": "Ich schicke jeweils einen Beamten alleine zu den drei Einsätzen, um überall Präsenz zu zeigen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 15,
-    "rolle": "Dienststellenleiter",
-    "kompetenzen": ["Führungskompetenz", "Kommunikationsfähigkeit", "Gerechtigkeit"],
-    "szenario": "Ein lokaler Journalist veröffentlicht einen äußerst kritischen und in weiten Teilen fehlerhaften Zeitungsartikel über Ihre Dienststelle. Darin wird einem Ihrer Beamten namentlich übermäßige Polizeigewalt bei einer Festnahme vorgeworfen. Die internen Prüfungen haben jedoch zweifelsfrei ergeben, dass das Verhalten des Beamten rechtmäßig und absolut verhältnismäßig war. Der Beamte ist psychisch sehr stark durch den Artikel belastet.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Führungskompetenz",
+    "kompetenzen": [
+      "Führungskompetenz"
+    ],
+    "szenario": "Ein lebenserfahrener, aber dienstgradniederer Beamter hinterfragt vor der geschlossenen Einheit lautstark Ihre Einsatztaktik.",
     "optionen": {
-      "A": "Ich suche sofort das persönliche Gespräch mit dem betroffenen Beamten, sichere ihm meine volle dienstliche und moralische Rückendeckung zu, und beauftrage die Pressestelle mit einer offiziellen Gegendarstellung.",
-      "B": "Ich verbiete dem Beamten sowie der gesamten Dienststelle strikt, mit der Presse zu sprechen, und sitze die mediale Empörungswelle aus, da sich solche Dinge meist nach wenigen Tagen von selbst erledigen.",
-      "C": "Ich versetze den Beamten vorübergehend in den Innendienst, um ihn aus der Schusslinie zu nehmen, und gebe eine Presseerklärung heraus, dass wir die Vorwürfe ernst nehmen und prüfen, um die Wogen zu glätten.",
-      "D": "Ich rufe den Journalisten persönlich an, beschimpfe ihn wegen seiner unsauberen Recherche und drohe ihm mit einer Anzeige wegen Verleumdung, falls er den Artikel nicht sofort löscht."
+      "A": "Ich höre den Einwand kurz an, entscheide dann sachlich über Anpassung oder Beibehaltung der Taktik und kläre die Art der Kritik im Nachgang.",
+      "B": "Ich stelle sofort unmissverständlich klar, dass ich das Sagen habe, und dulde keinerlei Widerworte vor der Mannschaft.",
+      "C": "Ich übergebe ihm kurzerhand die Einsatzleitung, da er offensichtlich mehr operative Erfahrung besitzt.",
+      "D": "Ich ignoriere seinen Einwurf komplett und funke meine Befehle an ihn vorbei direkt an die Trupps."
     },
-    "ranking": "A, C, B, D"
+    "A": "Ich höre den Einwand kurz an, entscheide dann sachlich über Anpassung oder Beibehaltung der Taktik und kläre die Art der Kritik im Nachgang.",
+    "B": "Ich stelle sofort unmissverständlich klar, dass ich das Sagen habe, und dulde keinerlei Widerworte vor der Mannschaft.",
+    "C": "Ich übergebe ihm kurzerhand die Einsatzleitung, da er offensichtlich mehr operative Erfahrung besitzt.",
+    "D": "Ich ignoriere seinen Einwurf komplett und funke meine Befehle an ihn vorbei direkt an die Trupps.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 16,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Konfliktmanagement", "Authentizität"],
-    "szenario": "Eine frisch ausgebildete, junge Beamtin in Ihrer Schicht postet regelmäßig kurze Videos auf Social Media in Uniform. Die Inhalte sind nicht direkt strafbar, aber grenzwertig (Tänze vor dem Streifenwagen, flapsige Kommentare über Einsätze). Mehrere ältere Kollegen haben sich bei Ihnen bereits negativ darüber geäußert und fürchten um das Ansehen der bayerischen Polizei. Sie müssen als ihr Vorgesetzter handeln.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Belastbarkeit",
+    "kompetenzen": [
+      "Belastbarkeit"
+    ],
+    "szenario": "Nach einer missglückten Reanimation eines Kindes ist Ihr Streifenpartner auf der Rückfahrt extrem angespannt und zittert.",
     "optionen": {
-      "A": "Ich erteile ihr sofort ein striktes, weisungsgebundenes Verbot jeglicher Social Media Nutzung in Uniform und drohe bei Zuwiderhandlung sofortige Disziplinarmaßnahmen an.",
-      "B": "Ich führe ein intensives Sensibilisierungsgespräch mit ihr, erkläre die dienstrechtlichen Grenzen (Neutralitätsgebot) sowie die Außenwirkung und fordere sie verbindlich auf, kritische Videos umgehend zu löschen.",
-      "C": "Da ich keine Konflikte möchte, leite ich den Social-Media-Account anonym an die zentrale Pressestelle weiter, damit diese den Vorfall bewertet und übernimmt.",
-      "D": "Ich abonniere ihren Kanal und like die Videos, um einen 'guten Draht' zur jungen Generation aufzubauen und zu zeigen, dass ich ein moderner Chef bin."
+      "A": "Ich akzeptiere seine verbale Grenze im Moment, übernehme die Einsatzführung und biete ihm später auf der Wache behutsam ein Gespräch an.",
+      "B": "Ich zwinge ihn sofort auf dem Hof der Dienststelle, sich krankzumelden und mit der Polizeiseelsorge zu telefonieren.",
+      "C": "Ich mache zynische Witze über den Einsatzort (Galgenhumor), um die Stimmung im Fahrzeug aufzulockern.",
+      "D": "Ich ignoriere sein Zittern komplett, da in unserem Beruf jeder mit solchen Dingen alleine klarkommen muss."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich akzeptiere seine verbale Grenze im Moment, übernehme die Einsatzführung und biete ihm später auf der Wache behutsam ein Gespräch an.",
+    "B": "Ich zwinge ihn sofort auf dem Hof der Dienststelle, sich krankzumelden und mit der Polizeiseelsorge zu telefonieren.",
+    "C": "Ich mache zynische Witze über den Einsatzort (Galgenhumor), um die Stimmung im Fahrzeug aufzulockern.",
+    "D": "Ich ignoriere sein Zittern komplett, da in unserem Beruf jeder mit solchen Dingen alleine klarkommen muss.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 17,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Entscheidungskompetenz", "Teamfähigkeit", "Gerechtigkeit"],
-    "szenario": "Sie waren zusammen mit Ihrem langjährigen Streifenpartner bei einer nächtlichen Personenkontrolle. Ein stark betrunkener Bürger reicht nun eine formelle Dienstaufsichtsbeschwerde (DAB) gegen Ihren Partner ein, da dieser ihn grundlos gegen die Motorhaube gedrückt habe. Sie waren direkt daneben und müssen intern zugeben: Das Verhalten Ihres Partners war tatsächlich unverhältnismäßig grob, wenn auch nicht direkt körperverletzend. Sie werden nun als Zeuge vernommen.",
+    "kompetenz": "Gerechtigkeit",
+    "kompetenzen": [
+      "Gerechtigkeit"
+    ],
+    "szenario": "Ein offensichtlich obdachloser Mann hat eine Dose Suppe (1,50 €) gestohlen. Der Filialleiter tobt und besteht beharrlich auf einer Strafanzeige.",
     "optionen": {
-      "A": "Korpsgeist geht vor: Ich decke meinen Partner bei der Zeugenaussage zu 100%, behaupte, der Bürger habe aktiv Widerstand geleistet und das Handeln sei absolut gerechtfertigt gewesen.",
-      "B": "Ich sage objektiv und wahrheitsgemäß aus, wie ich die Situation wahrgenommen habe, suche aber zwingend vorher das Gespräch mit meinem Partner, um ihm meine Sicht der Dinge und meine geplante Aussage offen mitzuteilen.",
-      "C": "Ich mache von meinem Aussageverweigerungsrecht Gebrauch oder behaupte pauschal, ich könne mich aufgrund der Dunkelheit und des Stresses an die genauen Details nicht mehr erinnern.",
-      "D": "Ich belaste meinen Partner in der Vernehmung schwerer, als es tatsächlich war, um mich selbst maximal von der Situation zu distanzieren und gut vor den Ermittlern dazustehen."
+      "A": "Ich nehme den Sachverhalt objektiv auf, behandle den Täter respektvoll und schildere im Bericht die Lebensumstände für die Staatsanwaltschaft.",
+      "B": "Ich weigere mich wegen Geringfügigkeit, zahle die Suppe privat und lasse den Mann gehen.",
+      "C": "Ich beschimpfe den Filialleiter vor den Kunden wegen seiner Unmenschlichkeit in diesem Bagatellfall.",
+      "D": "Ich lege dem Obdachlosen zur Abschreckung vor den Kunden Handschellen an, um Härte zu demonstrieren."
     },
-    "ranking": "B, C, A, D"
+    "A": "Ich nehme den Sachverhalt objektiv auf, behandle den Täter respektvoll und schildere im Bericht die Lebensumstände für die Staatsanwaltschaft.",
+    "B": "Ich weigere mich wegen Geringfügigkeit, zahle die Suppe privat und lasse den Mann gehen.",
+    "C": "Ich beschimpfe den Filialleiter vor den Kunden wegen seiner Unmenschlichkeit in diesem Bagatellfall.",
+    "D": "Ich lege dem Obdachlosen zur Abschreckung vor den Kunden Handschellen an, um Härte zu demonstrieren.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 18,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Belastbarkeit", "Emotionale Intelligenz", "Kommunikationsfähigkeit"],
-    "szenario": "Sie und Ihr Partner mussten nach einem Personenunfall auf der Bahnstrecke grauenhafte Bilder ansehen. Auf der Rückfahrt zur Dienststelle bemerken Sie, dass Ihr Partner extrem angespannt ist, leicht zittert und völlig verstummt ist. Als Sie ihn fragen, ob alles okay sei, antwortet er nur kurz und gepresst: 'Lass mich einfach in Ruhe, mir gehts gut.'",
+    "kompetenz": "Emotionale Intelligenz",
+    "kompetenzen": [
+      "Emotionale Intelligenz"
+    ],
+    "szenario": "Sie sichern ein ausgebranntes Unfallwrack ab. Ein älterer Mann weint am Flatterband: 'Das ist das Auto meines Sohnes!' Sie wissen sicher, dass das Kennzeichen nicht stimmt.",
     "optionen": {
-      "A": "Ich fahre sofort auf den Hof der Dienststelle, hole den DGL ans Auto und zwinge meinen Partner, sich umgehend krankzumelden und mit dem Polizeiseelsorger zu telefonieren.",
-      "B": "Ich akzeptiere seine verbale Grenze im aktuellen Moment, bleibe aber extrem aufmerksam. Ich übernehme für den Rest der Schicht die Federführung und biete ihm später auf der Wache behutsam erneut ein Gespräch an.",
-      "C": "Ich fange an, zynische Witze über den Einsatzort zu machen (Galgenhumor), in der Hoffnung, die angespannte Stimmung im Auto dadurch aufzulockern.",
-      "D": "Ich nehme seine Antwort wörtlich, ignoriere sein Zittern komplett und gehe davon aus, dass in unserem Beruf jeder mit solchen Dingen alleine klarkommen muss."
+      "A": "Ich gehe empathisch auf ihn zu, teile ihm beruhigend mit, dass es definitiv nicht das Fahrzeug ist, und begleite ihn kurz aus dem Gefahrenbereich.",
+      "B": "Ich erteile ihm sofort einen strengen Platzverweis wegen Störung der polizeilichen Maßnahmen.",
+      "C": "Ich ignoriere ihn komplett, da es nicht meine primäre Aufgabe ist, mich um unbeteiligte Passanten zu kümmern.",
+      "D": "Ich lasse ihn nah an das Wrack heran, damit er sich selbst mit eigenen Augen davon überzeugen kann."
     },
-    "ranking": "B, A, D, C"
+    "A": "Ich gehe empathisch auf ihn zu, teile ihm beruhigend mit, dass es definitiv nicht das Fahrzeug ist, und begleite ihn kurz aus dem Gefahrenbereich.",
+    "B": "Ich erteile ihm sofort einen strengen Platzverweis wegen Störung der polizeilichen Maßnahmen.",
+    "C": "Ich ignoriere ihn komplett, da es nicht meine primäre Aufgabe ist, mich um unbeteiligte Passanten zu kümmern.",
+    "D": "Ich lasse ihn nah an das Wrack heran, damit er sich selbst mit eigenen Augen davon überzeugen kann.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 19,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Gerechtigkeit", "Konfliktmanagement", "Authentizität"],
-    "szenario": "Während der Nachtschicht machen Sie und Ihr Kollege kurz Halt bei einem lokalen Bäcker. Ihr Kollege bestellt zwei belegte Brötchen und einen großen Kaffee. Als er bezahlen will, winkt der Bäcker ab: 'Geht aufs Haus für die Polizei, ihr passt ja auf uns auf.' Ihr Kollege bedankt sich freudig und nimmt das Essen an, obwohl Sie wissen, dass dies als Vorteilsnahme strengstens untersagt ist.",
+    "rolle": "Dienststellenleiter",
+    "kompetenz": "Führungskompetenz",
+    "kompetenzen": [
+      "Führungskompetenz"
+    ],
+    "szenario": "Eine Bürgerinitiative wirft Ihren Beamten in der Presse Polizeigewalt vor. Ihre interne Prüfung ergab jedoch, dass der Einsatz absolut rechtmäßig war.",
     "optionen": {
-      "A": "Ich bestelle ebenfalls etwas und nehme es kostenlos an, um vor dem Bäcker nicht als unhöflich oder undankbar gegenüber seiner guten Absicht zu erscheinen.",
-      "B": "Ich warte, bis wir den Laden verlassen haben. Im Auto weise ich den Kollegen klar auf die Compliance-Regeln (Vorteilsnahme/Korruption) hin und fordere ihn auf, dieses Verhalten in Zukunft bei gemeinsamen Streifen zu unterlassen.",
-      "C": "Ich zücke mein Portemonnaie, bezahle demonstrativ den vollen Preis für sein Essen mit und mache ihm noch im Laden vor dem Bäcker eine laute Szene über Korruption.",
-      "D": "Ich notiere mir heimlich Uhrzeit und Ort und schreibe direkt nach Schichtende eine Meldung an die interne Ermittlung wegen des Verdachts der Bestechlichkeit."
+      "A": "Ich stelle mich bei einer öffentlichen Stellungnahme uneingeschränkt vor meine Beamten und verteidige die Verhältnismäßigkeit gegen den Druck.",
+      "B": "Ich bitte die Politik um Entschuldigung und versetze die Beamten intern, um den Druck von der Behörde zu nehmen.",
+      "C": "Ich gebe kein Statement ab und hoffe, dass das Thema medial schnell in Vergessenheit gerät.",
+      "D": "Ich schiebe die Verantwortung öffentlich auf den Einsatzleiter vor Ort ab, da ich nicht im Dienst war."
     },
-    "ranking": "B, C, D, A"
+    "A": "Ich stelle mich bei einer öffentlichen Stellungnahme uneingeschränkt vor meine Beamten und verteidige die Verhältnismäßigkeit gegen den Druck.",
+    "B": "Ich bitte die Politik um Entschuldigung und versetze die Beamten intern, um den Druck von der Behörde zu nehmen.",
+    "C": "Ich gebe kein Statement ab und hoffe, dass das Thema medial schnell in Vergessenheit gerät.",
+    "D": "Ich schiebe die Verantwortung öffentlich auf den Einsatzleiter vor Ort ab, da ich nicht im Dienst war.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 20,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Authentizität", "Kommunikationsfähigkeit"],
-    "szenario": "Sie sind recht neu in der Rolle des Einsatzleiters einer geschlossenen Einheit. Bei einer brenzligen Versammlungslage ordnen Sie eine taktische Maßnahme an. Ein lebenserfahrener, aber dienstgradniederer Gruppenführer, der schon hundert solcher Lagen erlebt hat, hinterfragt Ihren Befehl vor anderen Einsatzkräften lautstark und hält Ihre Taktik für falsch und gefährlich.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Selbstreflexion",
+    "kompetenzen": [
+      "Selbstreflexion"
+    ],
+    "szenario": "Sie haben vergessen, eine wichtige Zeugenvernehmung fristgerecht weiterzuleiten. Der zuständige Staatsanwalt ruft extrem wütend bei Ihnen an.",
     "optionen": {
-      "A": "Ich stelle sofort laut und unmissverständlich klar, dass ich hier das Sagen habe, dulde keinerlei Widerworte und setze meinen ursprünglichen Befehl ohne weitere Diskussion durch.",
-      "B": "Ich höre mir seinen Einwand kurz und konzentriert an. Wenn er taktisch recht hat, passe ich den Plan an; wenn nicht, bleibe ich bei meinem Befehl. Die Art und Weise seiner Kritik kläre ich zwingend im Nachgang unter vier Augen.",
-      "C": "Ich bin verunsichert, übergebe ihm kurzerhand die Einsatzleitung, da er offensichtlich mehr Erfahrung hat, und ziehe mich in die zweite Reihe zurück.",
-      "D": "Ich ignoriere seinen Einwurf komplett, drehe mich weg und funke meine Befehle direkt an die einzelnen Trupps durch, um ihn zu übergehen."
+      "A": "Ich gebe den Fehler sofort offen zu, entschuldige mich für die Schlamperei und versichere, die Akte unverzüglich nachzureichen.",
+      "B": "Ich behaupte, das IT-System habe gehangen und die digitale Akte sei auf dem Weg verloren gegangen.",
+      "C": "Ich schiebe die Schuld auf einen jungen Kollegen, der die Akte angeblich falsch abgelegt hat.",
+      "D": "Ich lege auf, melde mich krank und lasse meinen Streifenpartner die Rückrufe bearbeiten."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich gebe den Fehler sofort offen zu, entschuldige mich für die Schlamperei und versichere, die Akte unverzüglich nachzureichen.",
+    "B": "Ich behaupte, das IT-System habe gehangen und die digitale Akte sei auf dem Weg verloren gegangen.",
+    "C": "Ich schiebe die Schuld auf einen jungen Kollegen, der die Akte angeblich falsch abgelegt hat.",
+    "D": "Ich lege auf, melde mich krank und lasse meinen Streifenpartner die Rückrufe bearbeiten.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 21,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Kommunikationsfähigkeit", "Konfliktmanagement", "Belastbarkeit"],
-    "szenario": "Ein stadtbekannter 'Querulant', der psychisch auffällig, aber harmlos ist, erscheint zum fünften Mal in dieser Woche im Wachraum. Er möchte erneut eine völlig abstruse Strafanzeige erstatten, diesmal wegen 'illegaler Gedankenkontrolle durch Satelliten des Nachbarn'. Der Wachraum ist voll, Sie haben eigentlich Wichtigeres zu tun und er redet laut auf Sie ein.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Authentizität",
+    "kompetenzen": [
+      "Authentizität"
+    ],
+    "szenario": "Eine frisch ausgebildete Beamtin postet grenzwertige Videos (Tänze) in Uniform auf Social Media, was intern zu Beschwerden führt.",
     "optionen": {
-      "A": "Ich rufe zwei Kollegen, packe ihn an den Armen und schmeiße ihn wortlos und mit Nachdruck aus der Dienststelle, notfalls mit Hausverbot.",
-      "B": "Ich bleibe ruhig und sachlich, erkläre ihm konsequent, dass es sich um keinen Straftatbestand handelt. Ich fertige bei Bedarf einen kurzen Aktenvermerk, weise ihn dann aber bestimmt ab und fordere ihn auf zu gehen.",
-      "C": "Ich setze mich mit ihm hin und nehme eine komplette, formelle Strafanzeige auf, auch wenn es eine Stunde dauert, nur um ihn ruhigzustellen und aus dem Wachraum zu bekommen.",
-      "D": "Ich greife zum Telefon, rufe den sozialpsychiatrischen Dienst an und versuche ihn sofort wegen Eigen- und Fremdgefährdung zwangseinweisen zu lassen."
+      "A": "Ich führe ein Sensibilisierungsgespräch über das Neutralitätsgebot und fordere sie verbindlich auf, kritische Videos zu löschen.",
+      "B": "Ich erteile ihr sofort ein weisungsgebundenes Verbot jeglicher Social Media Nutzung in Uniform unter Androhung von Disziplinarmaßnahmen.",
+      "C": "Ich leite den Account anonym an die Pressestelle weiter, damit diese den Konflikt übernimmt.",
+      "D": "Ich like die Videos, um einen guten Draht zur jungen Generation aufzubauen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich führe ein Sensibilisierungsgespräch über das Neutralitätsgebot und fordere sie verbindlich auf, kritische Videos zu löschen.",
+    "B": "Ich erteile ihr sofort ein weisungsgebundenes Verbot jeglicher Social Media Nutzung in Uniform unter Androhung von Disziplinarmaßnahmen.",
+    "C": "Ich leite den Account anonym an die Pressestelle weiter, damit diese den Konflikt übernimmt.",
+    "D": "Ich like die Videos, um einen guten Draht zur jungen Generation aufzubauen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 22,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Selbstreflexion", "Belastbarkeit", "Entscheidungskompetenz"],
-    "szenario": "Es ist 04:00 Uhr morgens, mitten in einer extrem anstrengenden 12-Stunden-Nachtschicht. Sie sitzen am Steuer des Streifenwagens und spüren plötzlich eine massive Übermüdung (Sekundenschlaf-Gefahr), die Ihre Reaktionsfähigkeit beim Fahren massiv einschränkt. Ihr Partner tippt neben Ihnen am Tablet Berichte.",
+    "kompetenz": "Gerechtigkeit",
+    "kompetenzen": [
+      "Gerechtigkeit"
+    ],
+    "szenario": "Ein Bürger reicht eine Dienstaufsichtsbeschwerde gegen Ihren Partner ein. Sie wissen, dass das Verhalten Ihres Partners tatsächlich grenzwertig grob war. Sie werden vernommen.",
     "optionen": {
-      "A": "Ich kneife mich, mache das Radio lauter und fahre tapfer weiter, da ich vor meinem Kollegen keine Schwäche zeigen und als 'harter Hund' gelten will.",
-      "B": "Ich kommuniziere meine Übermüdung offen an meinen Partner, fahre rechts ran und bitte ihn, das Steuer zu übernehmen, oder wir machen eine 15-minütige Bewegungspause, falls keine Einsätze offen sind.",
-      "C": "Ich halte am nächsten Kiosk, trinke hastig drei Energydrinks und fahre absichtlich etwas rasanter, weil mich das Adrenalin wachhält.",
-      "D": "Ich stelle den Streifenwagen heimlich in einen abgelegenen Waldweg, schlafe ohne Meldung an die Zentrale für zwei Stunden und überlasse meinen Partner sich selbst."
+      "A": "Ich sage objektiv und wahrheitsgemäß aus, suche aber vorher das Gespräch mit meinem Partner, um ihm meine geplante Aussage offen mitzuteilen.",
+      "B": "Ich decke meinen Partner zu 100% und behaupte, das Handeln sei absolut gerechtfertigt gewesen (Korpsgeist).",
+      "C": "Ich mache von meinem Aussageverweigerungsrecht Gebrauch oder behaupte, mich nicht zu erinnern.",
+      "D": "Ich belaste meinen Partner schwerer als nötig, um mich selbst maximal zu distanzieren."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich sage objektiv und wahrheitsgemäß aus, suche aber vorher das Gespräch mit meinem Partner, um ihm meine geplante Aussage offen mitzuteilen.",
+    "B": "Ich decke meinen Partner zu 100% und behaupte, das Handeln sei absolut gerechtfertigt gewesen (Korpsgeist).",
+    "C": "Ich mache von meinem Aussageverweigerungsrecht Gebrauch oder behaupte, mich nicht zu erinnern.",
+    "D": "Ich belaste meinen Partner schwerer als nötig, um mich selbst maximal zu distanzieren.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 23,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Teamfähigkeit", "Gerechtigkeit", "Authentizität"],
-    "szenario": "Ihre neue Streifenpartnerin ist die einzige junge Frau in Ihrer Dienstgruppe. Sie merken an mehreren Tagen, wie einige ältere männliche Kollegen in der Teeküche der Wache hinter ihrem Rücken anzügliche Bemerkungen über ihre Figur machen und spekulieren, wie sie den Einstellungstest geschafft hat. Die Kollegin selbst bekommt das nicht mit.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Kommunikationsfähigkeit",
+    "kompetenzen": [
+      "Kommunikationsfähigkeit"
+    ],
+    "szenario": "Eine völlig aufgelöste Mutter meldet nachts ihre 15-jährige Tochter als vermisst. Es gibt keine Hinweise auf eine Straftat.",
     "optionen": {
-      "A": "Ich lache leise mit, um in der 'Männerrunde' der Schicht dazuzugehören und mich nicht als unliebsamer Moralapostel auszugrenzen.",
-      "B": "Ich schreite sofort ein, benenne das Verhalten klar als unkollegial, sexistisch und unangebracht. Ich fordere die Kollegen auf, dies umgehend zu unterlassen.",
-      "C": "Ich gehe im Anschluss direkt zu der Kollegin und erzähle ihr detailliert und ungefiltert, wer genau was Schlimmes über sie gesagt hat, damit sie gewarnt ist.",
-      "D": "Ich schreibe eine anonyme E-Mail an den Gleichstellungsbeauftragten des Präsidiums, ohne selbst im Kollegenkreis Farbe zu bekennen."
+      "A": "Ich nehme die Sorge ernst, erfasse sachlich alle Personalien, leite Routineüberprüfungen ein und berate die Mutter ohne unrealistische Versprechungen.",
+      "B": "Ich wimmle sie sachlich ab und erkläre, dass sie in frühestens 24 Stunden wiederkommen soll.",
+      "C": "Ich alarmiere sofort den Hubschrauber, um die Mutter psychologisch zu beruhigen.",
+      "D": "Ich ignoriere sie im Wachraum, da ich einen Bericht schreiben muss, und hoffe auf einen anderen Kollegen."
     },
-    "ranking": "B, D, C, A"
+    "A": "Ich nehme die Sorge ernst, erfasse sachlich alle Personalien, leite Routineüberprüfungen ein und berate die Mutter ohne unrealistische Versprechungen.",
+    "B": "Ich wimmle sie sachlich ab und erkläre, dass sie in frühestens 24 Stunden wiederkommen soll.",
+    "C": "Ich alarmiere sofort den Hubschrauber, um die Mutter psychologisch zu beruhigen.",
+    "D": "Ich ignoriere sie im Wachraum, da ich einen Bericht schreiben muss, und hoffe auf einen anderen Kollegen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 24,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Entscheidungskompetenz", "Kommunikationsfähigkeit", "Konfliktmanagement"],
-    "szenario": "Sie kontrollieren nachts einen SUV, der eine durchgezogene Linie überfahren hat. Der Fahrer ist alkoholisiert. Als Sie ihn mitnehmen wollen, stellt er sich als einflussreicher lokaler Politiker vor. Er wird herablassend und droht Ihnen ganz offen: 'Wenn Sie das jetzt durchziehen, sorge ich persönlich dafür, dass Sie in diesem Präsidium keine Karriere mehr machen!'",
+    "kompetenz": "Teamfähigkeit",
+    "kompetenzen": [
+      "Teamfähigkeit"
+    ],
+    "szenario": "Bei der Übernahme stellen Sie fest, dass die Vorgängerschicht den Streifenwagen extrem dreckig und mit leerem Tank hinterlassen hat.",
     "optionen": {
-      "A": "Ich bleibe vollkommen unbeeindruckt, führe die Maßnahme sachlich, formell korrekt und konsequent durch. Die ausgesprochene Drohung halte ich später akribisch in einem Aktenvermerk fest.",
-      "B": "Ich werde unsicher, belasse es bei einer strengen mündlichen Verwarnung und lasse das Fahrzeug stehen, um mir und der Dienststellenleitung massiven politischen Ärger zu ersparen.",
-      "C": "Ich werde emotional, werfe ihm lautstark Amtsmissbrauch vor, lege ihm sofort präventiv Handschellen an und drücke ihn unnötig hart in den Streifenwagen.",
-      "D": "Ich rufe verängstigt über Handy meinen Dienststellenleiter aus dem Bett an und frage ihn, ob ich bei diesem Mann wirklich die Blutentnahme anordnen darf."
+      "A": "Ich rufe den Fahrzeugführer direkt an, schildere sachlich das Problem und kündige an, bei Wiederholung den DGL einzuschalten.",
+      "B": "Ich putze das Auto wortlos, um des lieben Friedens willen keinen Streit mit der anderen Schicht anzufangen.",
+      "C": "Ich lasse die Kaffeeflecken absichtlich für unsere Nachfolger so, aus Prinzip.",
+      "D": "Ich brülle den DGL der Vorgängerschicht an und weigere mich, das Fahrzeug zu übernehmen."
     },
-    "ranking": "A, D, B, C"
+    "A": "Ich rufe den Fahrzeugführer direkt an, schildere sachlich das Problem und kündige an, bei Wiederholung den DGL einzuschalten.",
+    "B": "Ich putze das Auto wortlos, um des lieben Friedens willen keinen Streit mit der anderen Schicht anzufangen.",
+    "C": "Ich lasse die Kaffeeflecken absichtlich für unsere Nachfolger so, aus Prinzip.",
+    "D": "Ich brülle den DGL der Vorgängerschicht an und weigere mich, das Fahrzeug zu übernehmen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 25,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Selbstreflexion", "Emotionale Intelligenz"],
-    "szenario": "Sie müssen als Vorgesetzter ein schwieriges jährliches Beurteilungsgespräch mit einem erfahrenen Kriminalbeamten führen. Fachlich ist er exzellent und hat die beste Aufklärungsquote der Abteilung. Er hat jedoch ein gewaltiges Defizit im Umgang mit Menschen: Er tritt Bürgern gegenüber extrem arrogant auf und bevormundet jüngere Kollegen. Das Teamklima leidet darunter.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Belastbarkeit",
+    "kompetenzen": [
+      "Belastbarkeit"
+    ],
+    "szenario": "Sie spüren in der Mitte einer 12-Stunden-Nachtschicht am Steuer eine massive Übermüdung (Sekundenschlaf-Gefahr).",
     "optionen": {
-      "A": "Ich lobe im Gespräch zunächst aufrichtig seine fachlichen Erfolge. Danach spreche ich sein Auftreten anhand konkreter Beispiele klar an, erkläre die negative Wirkung auf Team und Bürger und erarbeite mit ihm verbindliche Entwicklungsziele.",
-      "B": "Da er weiß, dass er fachlich gut ist, konzentriere ich mich im Gespräch ausschließlich auf seine menschlichen Defizite und rede ihm heftig ins Gewissen, um die Ernsthaftigkeit klarzumachen.",
-      "C": "Ich bewerte ihn einfach in allen Punkten (auch sozial) mit der Bestnote. Seine fachliche Arbeit ist für die Quote der Dienststelle zu wichtig, um ihn durch Kritik zu demotivieren.",
-      "D": "Ich delegiere das Gespräch an meinen Stellvertreter, da ich Konflikten mit dominanten Mitarbeitern grundsätzlich lieber aus dem Weg gehe."
+      "A": "Ich kommuniziere dies offen an meinen Partner, fahre rechts ran und bitte ihn zu fahren oder mache eine Kurzpause.",
+      "B": "Ich fahre tapfer weiter, da ich vor meinem Kollegen keine Schwäche zeigen will.",
+      "C": "Ich trinke hastig Energydrinks und fahre aggressiver, weil mich das Adrenalin wachhält.",
+      "D": "Ich schlafe heimlich zwei Stunden auf einem Waldweg, ohne der Zentrale Bescheid zu geben."
     },
+    "A": "Ich kommuniziere dies offen an meinen Partner, fahre rechts ran und bitte ihn zu fahren oder mache eine Kurzpause.",
+    "B": "Ich fahre tapfer weiter, da ich vor meinem Kollegen keine Schwäche zeigen will.",
+    "C": "Ich trinke hastig Energydrinks und fahre aggressiver, weil mich das Adrenalin wachhält.",
+    "D": "Ich schlafe heimlich zwei Stunden auf einem Waldweg, ohne der Zentrale Bescheid zu geben.",
     "ranking": "A, B, C, D"
   },
   {
     "id": 26,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Teamfähigkeit", "Kommunikationsfähigkeit", "Authentizität"],
-    "szenario": "Sie werden nach der Ausbildung in eine neue Dienstgruppe versetzt. Diese Gruppe ist dafür bekannt, ein sehr eingeschworener Haufen zu sein, der eine raue Sprache pflegt und 'Neuen' gegenüber extrem misstrauisch ist. In den ersten Schichten spüren Sie deutlich, wie man Sie bei Gesprächen schneidet und Ihnen nur Hilfsarbeiten (Auto waschen, Akten lochen) aufträgt.",
+    "kompetenz": "Entscheidungskompetenz",
+    "kompetenzen": [
+      "Entscheidungskompetenz"
+    ],
+    "szenario": "Bei einer Verkehrskontrolle droht ein alkoholisierter lokaler Politiker massiv mit Konsequenzen für Ihre Karriere.",
     "optionen": {
-      "A": "Ich ordne mich komplett unter, übernehme sofort den rauen Jargon, lache über jeden Witz und versuche mit allen Mitteln, es den Platzhirschen recht zu machen, um dazuzugehören.",
-      "B": "Ich trete weiterhin professionell, authentisch und freundlich auf, erledige meine Aufgaben zuverlässig und lasse mir Zeit, mir durch gute fachliche Leistung und Charakterfestigkeit den Respekt zu erarbeiten.",
-      "C": "Ich gehe bereits nach der dritten Schicht zum Dienststellenleiter und beschwere mich offiziell über Mobbing und das schlechte Arbeitsklima in meiner neuen Gruppe.",
-      "D": "Ich isoliere mich bewusst, spreche nur das absolut Nötigste, mache stur Dienst nach Vorschrift und warte ab, bis ich in eine andere Gruppe wechseln kann."
+      "A": "Ich bleibe vollkommen unbeeindruckt, führe die Maßnahme formell korrekt durch und halte die Drohung in einem Vermerk fest.",
+      "B": "Ich belasse es bei einer strengen mündlichen Verwarnung, um mir und der Behörde Ärger zu ersparen.",
+      "C": "Ich werfe ihm lautstark Amtsmissbrauch vor und drücke ihn unnötig hart in den Streifenwagen.",
+      "D": "Ich rufe verängstigt meinen Dienststellenleiter an und frage, ob ich wirklich Blut abnehmen darf."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich bleibe vollkommen unbeeindruckt, führe die Maßnahme formell korrekt durch und halte die Drohung in einem Vermerk fest.",
+    "B": "Ich belasse es bei einer strengen mündlichen Verwarnung, um mir und der Behörde Ärger zu ersparen.",
+    "C": "Ich werfe ihm lautstark Amtsmissbrauch vor und drücke ihn unnötig hart in den Streifenwagen.",
+    "D": "Ich rufe verängstigt meinen Dienststellenleiter an und frage, ob ich wirklich Blut abnehmen darf.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 27,
-    "rolle": "Dienststellenleiter",
-    "kompetenzen": ["Führungskompetenz", "Gerechtigkeit", "Konfliktmanagement"],
-    "szenario": "Eine Bürgerinitiative hat sich über das Vorgehen Ihrer Beamten bei einer kürzlichen Hausbesetzung beschwert. In der Lokalpolitik wird nun gefordert, dass Sie als Dienststellenleiter sich öffentlich für die 'Polizeigewalt' entschuldigen. Sie haben die Einsatzberichte und Bodycam-Videos geprüft und sind zu 100% überzeugt, dass der Einsatz rechtmäßig, taktisch sauber und verhältnismäßig war.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Konfliktmanagement",
+    "kompetenzen": [
+      "Konfliktmanagement"
+    ],
+    "szenario": "Zwei Beamte wollen zwingend an Heiligabend Urlaub haben. Die Mindeststärke lässt nur einen zu. Die Stimmung kippt.",
     "optionen": {
-      "A": "Ich stelle mich bei einer öffentlichen Stellungnahme uneingeschränkt vor meine Beamten, präsentiere sachlich die Einsatzgründe und verteidige die Verhältnismäßigkeit der Maßnahme gegen jeden politischen Druck.",
-      "B": "Ich bitte die Politik um Entschuldigung und kündige an, die beteiligten Beamten intern zu disziplinieren, um den öffentlichen Druck von der Behörde und mir zu nehmen.",
-      "C": "Ich gebe überhaupt kein Statement ab, verbiete der Pressestelle jede Kommunikation und hoffe, dass das Thema durch das nächste große Nachrichtenereignis verdrängt wird.",
-      "D": "Ich schiebe die Verantwortung öffentlich auf den Einsatzleiter vor Ort ab, betone, dass ich an diesem Tag nicht im Dienst war, und verspreche lückenlose Aufklärung."
+      "A": "Ich lade beide zu einem Gespräch ein, moderiere die Lösungsfindung und strebe anhand der Vorjahreslisten einen fairen Kompromiss an.",
+      "B": "Ich würfle die Entscheidung vor versammelter Mannschaft öffentlich aus, um objektiv zu wirken.",
+      "C": "Ich streiche kurzerhand beiden den Urlaub, da sie sich nicht einigen können.",
+      "D": "Ich gebe dem Beamten frei, der am längsten auf der Dienststelle ist."
     },
-    "ranking": "A, C, D, B"
+    "A": "Ich lade beide zu einem Gespräch ein, moderiere die Lösungsfindung und strebe anhand der Vorjahreslisten einen fairen Kompromiss an.",
+    "B": "Ich würfle die Entscheidung vor versammelter Mannschaft öffentlich aus, um objektiv zu wirken.",
+    "C": "Ich streiche kurzerhand beiden den Urlaub, da sie sich nicht einigen können.",
+    "D": "Ich gebe dem Beamten frei, der am längsten auf der Dienststelle ist.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 28,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Entscheidungskompetenz", "Gerechtigkeit", "Kommunikationsfähigkeit"],
-    "szenario": "Sie werden zu einem Supermarkt gerufen. Der Filialleiter hält einen offensichtlich verwahrlosten, älteren obdachlosen Mann fest. Er hat eine kleine Dose Gulaschsuppe im Wert von 1,50 Euro in der Tasche versteckt, da er tagelang nichts gegessen hat. Der Filialleiter ist extrem wütend, schreit den Mann an und besteht auf einer harten Strafanzeige und Hausverbot.",
+    "kompetenz": "Kommunikationsfähigkeit",
+    "kompetenzen": [
+      "Kommunikationsfähigkeit"
+    ],
+    "szenario": "Ein stadtbekannter Querulant will zum fünften Mal eine abstruse Anzeige wegen 'Gedankenkontrolle' erstatten.",
     "optionen": {
-      "A": "Ich weigere mich schlichtweg, die Anzeige aufzunehmen, verweise auf die Geringfügigkeit, bezahle die Suppe aus meiner eigenen Tasche und lasse den Mann gehen.",
-      "B": "Ich nehme den Sachverhalt objektiv auf, beruhige den Filialleiter, behandle den Täter menschlich und respektvoll. Im Bericht für die Staatsanwaltschaft schildere ich detailliert die Lebensumstände, die für eine Einstellung des Verfahrens sprechen.",
-      "C": "Ich fange an, den Filialleiter vor den Kunden anzuschreien, nenne ihn einen herzlosen Kapitalisten und drohe ihm, wegen Freiheitsberaubung zu ermitteln.",
-      "D": "Ich lege dem weinenden Obdachlosen zur Abschreckung vor den Supermarktkunden demonstrativ Handschellen an und führe ihn ab, um dem Filialleiter mein hartes Durchgreifen zu beweisen."
+      "A": "Ich bleibe sachlich, erkläre konsequent, dass es kein Straftatbestand ist, fertige einen Aktenvermerk und weise ihn dann bestimmt ab.",
+      "B": "Ich schmeiße ihn sofort und wortlos mit Nachdruck aus der Dienststelle.",
+      "C": "Ich nehme eine formelle Anzeige auf, auch wenn es eine Stunde dauert, um ihn ruhigzustellen.",
+      "D": "Ich versuche ihn sofort wegen Eigengefährdung zwangseinweisen zu lassen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich bleibe sachlich, erkläre konsequent, dass es kein Straftatbestand ist, fertige einen Aktenvermerk und weise ihn dann bestimmt ab.",
+    "B": "Ich schmeiße ihn sofort und wortlos mit Nachdruck aus der Dienststelle.",
+    "C": "Ich nehme eine formelle Anzeige auf, auch wenn es eine Stunde dauert, um ihn ruhigzustellen.",
+    "D": "Ich versuche ihn sofort wegen Eigengefährdung zwangseinweisen zu lassen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 29,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Authentizität", "Kommunikationsfähigkeit", "Selbstreflexion"],
-    "szenario": "Sie haben in der Hektik der Schichtarbeit vergessen, das wichtige Protokoll einer Zeugenvernehmung fristgerecht an die Staatsanwaltschaft weiterzuleiten. Es geht um eine schwere Körperverletzung und der Haftprüfungstermin droht zu platzen. Der zuständige Staatsanwalt ruft nun stinksauer direkt bei Ihnen im Büro an und fragt, wo die Akte bleibt.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Führungskompetenz",
+    "kompetenzen": [
+      "Führungskompetenz"
+    ],
+    "szenario": "Ein fachlich exzellenter Top-Ermittler tritt Bürgern gegenüber extrem arrogant auf. Sie müssen das jährliche Beurteilungsgespräch führen.",
     "optionen": {
-      "A": "Ich behaupte, das System habe mal wieder gehangen und die Akte sei auf dem digitalen Weg ins Justizzentrum verloren gegangen. Das sei ein bekanntes IT-Problem.",
-      "B": "Ich gebe meinen Fehler am Telefon sofort, offen und ohne Umschweife zu, entschuldige mich für die Schlamperei und versichere, die Akte innerhalb der nächsten 5 Minuten per Eilbote/Fax nachzureichen.",
-      "C": "Ich behaupte, ich hätte die Akte an einen jungen Kollegen zur Ablage gegeben und dieser habe sie verschlampt, um von meinem eigenen Fehler abzulenken.",
-      "D": "Ich lege einfach auf, melde mich für den Rest des Tages krank und lasse meinen Streifenpartner die wütenden Rückrufe des Staatsanwalts bearbeiten."
+      "A": "Ich lobe seine Erfolge, spreche das Auftreten anhand konkreter Beispiele klar an und erarbeite verbindliche Entwicklungsziele.",
+      "B": "Ich konzentriere mich ausschließlich auf seine menschlichen Defizite und rede ihm heftig ins Gewissen.",
+      "C": "Ich bewerte ihn in allen Punkten mit Bestnote, da seine Aufklärungsquote zu wichtig ist.",
+      "D": "Ich delegiere das Gespräch an meinen Stellvertreter, um dem Konflikt aus dem Weg zu gehen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich lobe seine Erfolge, spreche das Auftreten anhand konkreter Beispiele klar an und erarbeite verbindliche Entwicklungsziele.",
+    "B": "Ich konzentriere mich ausschließlich auf seine menschlichen Defizite und rede ihm heftig ins Gewissen.",
+    "C": "Ich bewerte ihn in allen Punkten mit Bestnote, da seine Aufklärungsquote zu wichtig ist.",
+    "D": "Ich delegiere das Gespräch an meinen Stellvertreter, um dem Konflikt aus dem Weg zu gehen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 30,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Konfliktmanagement", "Teamfähigkeit", "Kommunikationsfähigkeit"],
-    "szenario": "Ihr langjähriger Streifenpartner hat die Angewohnheit, bei jeder Bürgerkontrolle sofort das Wort an sich zu reißen. Selbst wenn Sie den Bürger zuerst ansprechen, fällt er Ihnen ins Wort, stellt die Fragen und lässt Sie danebenstehen wie einen unmündigen Praktikanten, obwohl Sie den gleichen Dienstgrad haben. Das ärgert Sie schon lange.",
+    "kompetenz": "Teamfähigkeit",
+    "kompetenzen": [
+      "Teamfähigkeit"
+    ],
+    "szenario": "Ein Kollege, der bald in die Nachtschicht startet, trinkt auf einer privaten Feier hörbar angetrunken sein drittes Bier.",
     "optionen": {
-      "A": "Ich falle ihm bei der nächsten Verkehrskontrolle vor dem Bürger lautstark ins Wort, ermahne ihn, mich ausreden zu lassen, und übernehme dann dominant die Führung des Gesprächs.",
-      "B": "Ich warte, bis wir wieder alleine im Streifenwagen sitzen. Dort spreche ich das Thema sachlich an, schildere, wie ich mich dabei fühle, und rege an, vor künftigen Kontrollen klarer abzusprechen, wer die Gesprächsführung übernimmt.",
-      "C": "Ich schalte auf stur, steige bei den nächsten Kontrollen gar nicht erst aus dem Auto aus und überlasse ihm einfach die gesamte Arbeit.",
-      "D": "Ich gehe hinter seinem Rücken zum Dienstgruppenleiter, beschwere mich massiv über seine Arroganz und verlange sofort einen neuen Streifenpartner."
+      "A": "Ich ziehe ihn diskret zur Seite, fordere ihn auf, sich krankzumelden, und kündige an, bei Antritt den DGL zu informieren.",
+      "B": "Ich mische mich nicht ein, da es seine private Verantwortung ist und ich kein Spielverderber sein will.",
+      "C": "Ich rufe heimlich den Dienststellenleiter an und sorge für einen Alkoholtest beim Antritt.",
+      "D": "Ich lasse ihm heimlich nur noch alkoholfreies Bier ausschenken, damit er wieder nüchtern wird."
     },
-    "ranking": "B, A, D, C"
+    "A": "Ich ziehe ihn diskret zur Seite, fordere ihn auf, sich krankzumelden, und kündige an, bei Antritt den DGL zu informieren.",
+    "B": "Ich mische mich nicht ein, da es seine private Verantwortung ist und ich kein Spielverderber sein will.",
+    "C": "Ich rufe heimlich den Dienststellenleiter an und sorge für einen Alkoholtest beim Antritt.",
+    "D": "Ich lasse ihm heimlich nur noch alkoholfreies Bier ausschenken, damit er wieder nüchtern wird.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 31,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Belastbarkeit", "Authentizität"],
-    "szenario": "Sie sind frisch zum Polizeikommissar befördert worden und übernehmen mit 25 Jahren als stellvertretender DGL eine Schicht. Mehrere lebenserfahrene Polizeihauptmeister (Anfang 50), die schon alles gesehen haben, prüfen Sie ausgiebig. Sie merken, wie Ihre Anweisungen bei der Einsatzverteilung belächelt, diskutiert oder nur sehr widerwillig und langsam ausgeführt werden.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Authentizität",
+    "kompetenzen": [
+      "Authentizität"
+    ],
+    "szenario": "Die DGL fordert Sie unter vier Augen auf, die Leistung eines Kollegen zu bewerten, der oft herablassend über eben diese DGL lästert.",
     "optionen": {
-      "A": "Ich suche das persönliche Gespräch mit den Meinungsführern, erkläre meine Erwartungen an eine professionelle Zusammenarbeit und zeige gleichzeitig aufrichtigen Respekt vor ihrer massiven Einsatzerfahrung, die ich in meine Führung einbinden möchte.",
-      "B": "Ich verfasse sofort schriftliche Aktenvermerke, fange an, Dienstaufsichtsbeschwerden wegen Ungehorsams zu prüfen, und drohe jedem mit disziplinarischen Konsequenzen, der meine Befehle anzweifelt.",
-      "C": "Ich ziehe mich enttäuscht ins Büro zurück, kümmere mich nur noch um die Sachbearbeitung am PC und lasse die alten Hasen auf der Straße einfach machen, was sie wollen.",
-      "D": "Ich bitte den Dienststellenleiter weinend, mich wieder als einfachen Sachbearbeiter einzusetzen, da ich dem psychischen Druck der Führung nicht standhalte."
+      "A": "Ich bewerte rein objektiv die fachliche Leistung auf Streife und lasse das Geläster unerwähnt.",
+      "B": "Ich erzähle der DGL detailliert von den ständigen Lästereien, um ihm die Beförderung zu verbauen.",
+      "C": "Ich präsentiere den Kollegen als absoluten Musterbeamten, um ihn zu schützen.",
+      "D": "Ich weigere mich kategorisch, Aussagen über die Leistung eines Kollegen zu machen."
     },
+    "A": "Ich bewerte rein objektiv die fachliche Leistung auf Streife und lasse das Geläster unerwähnt.",
+    "B": "Ich erzähle der DGL detailliert von den ständigen Lästereien, um ihm die Beförderung zu verbauen.",
+    "C": "Ich präsentiere den Kollegen als absoluten Musterbeamten, um ihn zu schützen.",
+    "D": "Ich weigere mich kategorisch, Aussagen über die Leistung eines Kollegen zu machen.",
     "ranking": "A, B, C, D"
   },
   {
     "id": 32,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Entscheidungskompetenz", "Selbstreflexion", "Belastbarkeit"],
-    "szenario": "Sie befinden sich auf einer Einsatzfahrt mit eingeschaltetem Blaulicht und Martinshorn zu einem in Gange befindlichen Wohnungseinbruch. Es eilt sehr. Sie nähern sich mit hoher Geschwindigkeit einer großen, recht unübersichtlichen Kreuzung. Ihre Fahrtrichtung hat Rotlicht, der Querverkehr hat Grün. Sie sehen, wie sich von links ein Linienbus nähert.",
+    "kompetenz": "Gerechtigkeit",
+    "kompetenzen": [
+      "Gerechtigkeit"
+    ],
+    "szenario": "Männliche Kollegen machen in der Teeküche hinter dem Rücken Ihrer einzigen weiblichen Streifenpartnerin sexistische Bemerkungen.",
     "optionen": {
-      "A": "Ich verlasse mich auf mein Sonder- und Wegerecht, bleibe auf dem Gas und fahre ungebremst in die Kreuzung ein, da die anderen Verkehrsteilnehmer verpflichtet sind, mir sofort Platz zu machen.",
-      "B": "Ich bremse den Streifenwagen stark bis auf Schrittgeschwindigkeit ab, stelle durch Blickkontakt sicher, dass der Busfahrer und alle anderen mich wahrgenommen haben und anhalten, und taste mich dann langsam und sicher in die Kreuzung hinein.",
-      "C": "Um den Busfahrer nicht durch Lärm zu erschrecken, schalte ich kurz vor der Kreuzung das Martinshorn aus und versuche, schnell durch eine Lücke vor dem Bus hindurchzuhuschen.",
-      "D": "Ich bremse ab, schalte Blaulicht und Horn komplett aus und warte an der Haltelinie wie ein normaler Verkehrsteilnehmer auf die nächste Grünphase, um absolut kein Risiko einzugehen."
+      "A": "Ich schreite sofort ein, benenne das Verhalten als unkollegial und fordere sie auf, dies umgehend zu unterlassen.",
+      "B": "Ich lache leise mit, um in der 'Männerrunde' der Schicht dazuzugehören.",
+      "C": "Ich erzähle der Kollegin ungefiltert, wer was über sie gesagt hat, damit sie gewarnt ist.",
+      "D": "Ich schreibe eine anonyme E-Mail an den Gleichstellungsbeauftragten, ohne selbst Farbe zu bekennen."
     },
-    "ranking": "B, D, C, A"
+    "A": "Ich schreite sofort ein, benenne das Verhalten als unkollegial und fordere sie auf, dies umgehend zu unterlassen.",
+    "B": "Ich lache leise mit, um in der 'Männerrunde' der Schicht dazuzugehören.",
+    "C": "Ich erzähle der Kollegin ungefiltert, wer was über sie gesagt hat, damit sie gewarnt ist.",
+    "D": "Ich schreibe eine anonyme E-Mail an den Gleichstellungsbeauftragten, ohne selbst Farbe zu bekennen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 33,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Emotionale Intelligenz", "Kommunikationsfähigkeit", "Entscheidungskompetenz"],
-    "szenario": "Eine völlig aufgelöste Mutter steht nachts um 01:00 Uhr auf der Wache. Ihre 15-jährige Tochter ist seit vier Stunden überfällig, geht nicht ans Handy und war am Nachmittag mit einem unzuverlässigen Freund unterwegs. Es gibt derzeit keine konkreten Hinweise auf eine Straftat oder Suizidalität. Die Mutter weint hysterisch und fleht Sie an, einen Hubschrauber zur Suche loszuschicken.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Selbstreflexion",
+    "kompetenzen": [
+      "Selbstreflexion"
+    ],
+    "szenario": "Sie leiden seit Wochen unter stressbedingten Schlafproblemen, sind reizbar und haben im Dienst fast Ihre Waffe liegenlassen.",
     "optionen": {
-      "A": "Ich wimmle die Mutter sachlich ab, verweise auf die Vorschriften und erkläre ihr, dass Jugendliche abhauen können und sie in frühestens 24 Stunden wiederkommen soll, wenn das Mädchen immer noch weg ist.",
-      "B": "Ich nehme die Sorge der Mutter ernst, lasse sie in einem ruhigen Raum Platz nehmen. Ich erfasse alle Personalien, leite erste Routineüberprüfungen (Krankenhäuser, bekannte Aufenthaltsorte) ein, informiere die Streifen und berate die Mutter über das weitere Vorgehen, ohne unrealistische Hoffnungen auf Großeinsätze zu machen.",
-      "C": "Ich alarmiere sofort den Polizeihubschrauber, die Hundestaffel und alle verfügbaren Einsatzkräfte der Region, um die Mutter psychologisch zu beruhigen und ihr zu zeigen, dass wir handeln.",
-      "D": "Ich ignoriere die Frau im Wachraum, da ich gerade einen wichtigen Einsatzbericht schreiben muss, und hoffe, dass ein anderer Kollege sich erbarmt."
+      "A": "Ich wende mich vertrauensvoll an den DGL oder Polizeiarzt und bitte präventiv um Unterstützung (z.B. Innendienst).",
+      "B": "Ich besorge mir rezeptfreie Schlafmittel, um den Dienstbetrieb irgendwie weiter aufrechtzuerhalten.",
+      "C": "Ich kompensiere durch hohen Kaffeekonsum und verheimliche meine Probleme vor allen.",
+      "D": "Ich melde mich dauerhaft krank, teile der Dienststelle aber nie die wahren Gründe mit."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich wende mich vertrauensvoll an den DGL oder Polizeiarzt und bitte präventiv um Unterstützung (z.B. Innendienst).",
+    "B": "Ich besorge mir rezeptfreie Schlafmittel, um den Dienstbetrieb irgendwie weiter aufrechtzuerhalten.",
+    "C": "Ich kompensiere durch hohen Kaffeekonsum und verheimliche meine Probleme vor allen.",
+    "D": "Ich melde mich dauerhaft krank, teile der Dienststelle aber nie die wahren Gründe mit.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 34,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Teamfähigkeit", "Authentizität", "Konfliktmanagement"],
-    "szenario": "Es ist Samstagabend, 20:00 Uhr. Sie sind auf einer privaten Geburtstagsfeier eines Kollegen. Ein anderer Kollege, der an diesem Abend um 22:00 Uhr noch zum Nachtdienst auf der Wache antreten muss, steht an der Bar und trinkt bereits das dritte Bier. Er ist hörbar angetrunken und sagt lachend: 'Ach was, so ein bisschen Restalkohol merkt doch auf der Streife keiner.'",
+    "kompetenz": "Belastbarkeit",
+    "kompetenzen": [
+      "Belastbarkeit"
+    ],
+    "szenario": "Ein Raubopfer weint ununterbrochen und zittert am Boden. Eine Täterbeschreibung für die Ringfahndung wäre essenziell.",
     "optionen": {
-      "A": "Ich behalte es für mich, drehe mich weg und mische mich nicht ein, da es seine eigene private Verantwortung ist und ich auf der Party nicht als Spielverderber gelten will.",
-      "B": "Ich ziehe ihn sofort diskret zur Seite, mache ihm unmissverständlich klar, dass ein Dienstantritt in diesem Zustand absolut inakzeptabel ist, und fordere ihn auf, sich sofort krank oder urlaub zu melden. Sollte er dennoch antreten wollen, kündige ich an, den DGL zu informieren.",
-      "C": "Ich rufe noch von der Feier aus heimlich den Dienststellenleiter an, schildere den Vorfall in vollem Umfang und sorge dafür, dass der Kollege beim Dienstantritt direkt zum Alkoholtest gebeten wird.",
-      "D": "Ich gehe heimlich zur Bar und lasse dem Kollegen ab sofort nur noch alkoholfreies Bier ausschenken, ohne dass er es merkt, in der Hoffnung, dass er bis 22 Uhr wieder nüchtern ist."
+      "A": "Ich hocke mich zu ihr, spreche beruhigend auf sie ein und stelle erst danach behutsam die wichtigsten Fragen für die Erstmeldung.",
+      "B": "Ich fordere sie bestimmt auf, sich zusammenzureißen, da der Täter sonst entkommt.",
+      "C": "Ich verzichte komplett auf Befragungen und übergebe sie wortlos dem Rettungsdienst.",
+      "D": "Ich versuche sie durch Witze aufzumuntern, bevor ich nach dem Täter frage."
     },
-    "ranking": "B, C, A, D"
+    "A": "Ich hocke mich zu ihr, spreche beruhigend auf sie ein und stelle erst danach behutsam die wichtigsten Fragen für die Erstmeldung.",
+    "B": "Ich fordere sie bestimmt auf, sich zusammenzureißen, da der Täter sonst entkommt.",
+    "C": "Ich verzichte komplett auf Befragungen und übergebe sie wortlos dem Rettungsdienst.",
+    "D": "Ich versuche sie durch Witze aufzumuntern, bevor ich nach dem Täter frage.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 35,
-    "rolle": "Dienstgruppenleiter (DGL)",
-    "kompetenzen": ["Führungskompetenz", "Gerechtigkeit", "Kommunikationsfähigkeit"],
-    "szenario": "Als DGL müssen Sie die Urlaubsplanung für Weihnachten koordinieren. Zwei Ihrer Beamten (beide Väter von kleinen Kindern) wollen unbedingt an Heiligabend frei haben. Die Mindeststärke der Schicht lässt es jedoch zwingend nur zu, dass einer von beiden Urlaub bekommt. Beide beharren stark auf ihrem Wunsch und die Stimmung in der Dienstgruppe beginnt zu kippen.",
+    "rolle": "Normaler Beamter",
+    "kompetenz": "Emotionale Intelligenz",
+    "kompetenzen": [
+      "Emotionale Intelligenz"
+    ],
+    "szenario": "Ihr Partner holt nach einer harten Verfolgung mit dem Stiefel aus, um einem bereits fixierten Täter in den Magen zu treten.",
     "optionen": {
-      "A": "Ich würfle die Entscheidung beim Antreten vor versammelter Mannschaft öffentlich aus. Das ist absolut transparent, objektiv und niemand kann mir als Vorgesetzten eine Bevorzugung vorwerfen.",
-      "B": "Ich prüfe zunächst die Urlaubslisten der letzten Jahre (Wer hatte letztes Jahr an Weihnachten frei?). Dann lade ich beide zu einem gemeinsamen Gespräch ein, moderiere die Lösungsfindung und strebe einen fairen Kompromiss (z.B. Schicht-Splitting, einer Heiligabend, einer Silvester) an.",
-      "C": "Da sie sich nicht einigen können, streiche ich kurzerhand beiden den Urlaub. So gibt es keinen Gewinner, aber auch keinen Bevorzugten, und die Schichtstärke ist auf jeden Fall gesichert.",
-      "D": "Ich gebe dem Beamten frei, der am längsten auf der Dienststelle ist, und sage dem anderen einfach, dass er Pech gehabt hat."
+      "A": "Ich schreite sofort physisch ein, dränge ihn weg, rufe ihn zur Räson und verhindere aktiv eine Straftat im Amt.",
+      "B": "Ich drehe mich um und lasse ihn gewähren, da der Täter sich auch massiv gewehrt hat.",
+      "C": "Ich schaue zu und behaupte später vor Gericht, ich hätte aufgrund der Dunkelheit nichts gesehen.",
+      "D": "Ich funke die Leitstelle an, ignoriere sein Verhalten aber völlig."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich schreite sofort physisch ein, dränge ihn weg, rufe ihn zur Räson und verhindere aktiv eine Straftat im Amt.",
+    "B": "Ich drehe mich um und lasse ihn gewähren, da der Täter sich auch massiv gewehrt hat.",
+    "C": "Ich schaue zu und behaupte später vor Gericht, ich hätte aufgrund der Dunkelheit nichts gesehen.",
+    "D": "Ich funke die Leitstelle an, ignoriere sein Verhalten aber völlig.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 36,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Emotionale Intelligenz", "Kommunikationsfähigkeit", "Belastbarkeit"],
-    "szenario": "Sie sichern spätnachts einen schrecklichen Verkehrsunfallort ab. Ein Fahrzeug ist bis zur Unkenntlichkeit ausgebrannt. Hinter dem Flatterband steht plötzlich ein älterer Mann im Bademantel. Er weint herzzerreißend, zittert und ruft: 'Das ist das Auto meines Sohnes, ich weiß es, lassen Sie mich durch!' Sie kennen das abgelesene Kennzeichen und wissen, dass es sich definitiv um ein ganz anderes Fahrzeug handelt.",
+    "rolle": "Dienststellenleiter",
+    "kompetenz": "Entscheidungskompetenz",
+    "kompetenzen": [
+      "Entscheidungskompetenz"
+    ],
+    "szenario": "Bei einer Demo bittet ein Unterführer hitzig um Freigabe der Wasserwerfer, obwohl die rechtlichen Voraussetzungen noch nicht vorliegen.",
     "optionen": {
-      "A": "Ich brülle ihn an, erteile ihm wegen Störung der polizeilichen Maßnahmen sofort einen Platzverweis und drohe mit Ingewahrsamnahme, falls er das Flatterband überschreitet.",
-      "B": "Ich gehe zügig und empathisch auf ihn zu, halte ihn sanft zurück und teile ihm sofort und beruhigend mit, dass es definitiv nicht das Fahrzeug seines Sohnes ist. Ich bleibe kurz bei ihm, bis er sich vom ersten Schock erholt hat, und weise ihn dann aus dem Gefahrenbereich.",
-      "C": "Ich ignoriere ihn komplett, drehe ihm den Rücken zu und bewache stur mein Flatterband. Es ist nicht meine Aufgabe, mich um Passanten zu kümmern.",
-      "D": "Ich hebe das Flatterband an und lasse ihn ganz nah an das ausgebrannte Wrack herantreten, damit er sich selbst mit eigenen Augen davon überzeugen kann, dass es nicht das Auto seines Sohnes ist."
+      "A": "Ich untersage den Einsatz klar, erinnere an die Verhältnismäßigkeit und entsende stattdessen Kommunikationsteams.",
+      "B": "Ich vertraue dem Unterführer blind und erteile die uneingeschränkte Freigabe.",
+      "C": "Ich fahre selbst an die Front und erteile den Befehl direkt an die Besatzung.",
+      "D": "Ich entziehe dem Unterführer sofort das Kommando und beordere ihn zurück."
     },
-    "ranking": "B, C, A, D"
+    "A": "Ich untersage den Einsatz klar, erinnere an die Verhältnismäßigkeit und entsende stattdessen Kommunikationsteams.",
+    "B": "Ich vertraue dem Unterführer blind und erteile die uneingeschränkte Freigabe.",
+    "C": "Ich fahre selbst an die Front und erteile den Befehl direkt an die Besatzung.",
+    "D": "Ich entziehe dem Unterführer sofort das Kommando und beordere ihn zurück.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 37,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Selbstreflexion", "Belastbarkeit", "Entscheidungskompetenz"],
-    "szenario": "Sie leiden seit mehreren Wochen unter massiven, stressbedingten Schlafproblemen, die durch den ständigen Wechsel im Schichtdienst ausgelöst werden. Sie merken zunehmend, dass Sie auf Streife extrem unkonzentriert, vergesslich und gegenüber Bürgern ungerechtfertigt reizbar werden. Gestern haben Sie im Einsatz fast Ihre Dienstwaffe im Streifenwagen liegengelassen. Es wird gefährlich.",
+    "kompetenz": "Kommunikationsfähigkeit",
+    "kompetenzen": [
+      "Kommunikationsfähigkeit"
+    ],
+    "szenario": "Sie kommen mit Sondersignal an eine unübersichtliche rote Ampel. Ein Linienbus nähert sich von links.",
     "optionen": {
-      "A": "Ich besorge mir über Bekannte starke, rezeptfreie Beruhigungs- und Schlafmittel, um mich in den Freischichten auszuknocken und den Dienstbetrieb irgendwie weiter aufrechtzuerhalten.",
-      "B": "Ich erkenne die Gefahr für mich und Kollegen, wende mich vertrauensvoll an meinen DGL oder den Polizeiarzt, schildere meine Symptome offen und bitte präventiv um Unterstützung, z.B. durch eine vorübergehende Zuweisung in den Tag- oder Innendienst, bis ich gesundheitlich wieder stabil bin.",
-      "C": "Ich versuche das Defizit durch extremen Kaffeekonsum auszugleichen, reiße mich noch mehr zusammen und verheimliche meine Probleme vor allen, um nicht als 'schwach' oder 'nicht belastbar' abgestempelt zu werden.",
-      "D": "Ich melde mich einfach dauerhaft krank, reiche eine Arbeitsunfähigkeitsbescheinigung nach der anderen ein, teile der Dienststelle aber bewusst nie die wahren psychischen Gründe mit."
+      "A": "Ich bremse stark ab, stelle durch Blickkontakt sicher, dass alle mich wahrgenommen haben, und taste mich langsam vor.",
+      "B": "Ich bleibe auf dem Gas, da die anderen verpflichtet sind, mir Platz zu machen.",
+      "C": "Ich schalte das Martinshorn aus und versuche schnell durch eine Lücke zu huschen.",
+      "D": "Ich warte an der Haltelinie auf die nächste Grünphase, um absolut kein Risiko einzugehen."
     },
-    "ranking": "B, A, C, D"
+    "A": "Ich bremse stark ab, stelle durch Blickkontakt sicher, dass alle mich wahrgenommen haben, und taste mich langsam vor.",
+    "B": "Ich bleibe auf dem Gas, da die anderen verpflichtet sind, mir Platz zu machen.",
+    "C": "Ich schalte das Martinshorn aus und versuche schnell durch eine Lücke zu huschen.",
+    "D": "Ich warte an der Haltelinie auf die nächste Grünphase, um absolut kein Risiko einzugehen.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 38,
     "rolle": "Normaler Beamter",
-    "kompetenzen": ["Konfliktmanagement", "Gerechtigkeit", "Authentizität"],
-    "szenario": "Ein Kollege Ihrer Dienstgruppe lästert in Anwesenheit anderer Beamter häufig und sehr herablassend über die Führungsqualitäten der Dienstgruppenleiterin (DGL). Eines Tages bittet Sie diese DGL unter vier Augen in ihr Büro und fordert Sie auf, die fachliche Einsatzleistung genau dieses Kollegen offen und ehrlich einzuschätzen, da eine Beförderung ansteht.",
+    "kompetenz": "Teamfähigkeit",
+    "kompetenzen": [
+      "Teamfähigkeit"
+    ],
+    "szenario": "Sie kommen in eine neue Dienstgruppe, die einen rauen Ton pflegt und Ihnen misstrauisch nur Hilfsarbeiten zuweist.",
     "optionen": {
-      "A": "Ich nutze die willkommene Gelegenheit und erzähle der DGL sehr detailliert von den ständigen Lästereien und der Respektlosigkeit des Kollegen, um ihm die Beförderung zu verbauen.",
-      "B": "Ich trenne Privates strikt von Dienstlichem. Ich bewerte gegenüber der DGL rein objektiv und professionell die fachliche und polizeitaktische Leistung des Kollegen auf Streife, lasse sein Geläster unerwähnt, da es hier um die Fachkompetenz geht.",
-      "C": "Ich lüge der DGL dreist ins Gesicht und präsentiere den Kollegen in den allerhöchsten Tönen als absoluten Musterbeamten, um ihn vor möglichen negativen Konsequenzen zu schützen.",
-      "D": "Ich weigere mich kategorisch, als einfacher Beamter Aussagen über die Leistung eines Kollegen zu machen, und verlasse das Büro der DGL."
+      "A": "Ich trete weiterhin professionell auf, erledige meine Aufgaben und erarbeite mir durch fachliche Leistung Respekt.",
+      "B": "Ich übernehme sofort den rauen Jargon, um es den Platzhirschen recht zu machen.",
+      "C": "Ich beschwere mich nach drei Schichten beim Leiter über das schlechte Arbeitsklima.",
+      "D": "Ich isoliere mich bewusst und mache stur Dienst nach Vorschrift."
     },
-    "ranking": "B, D, A, C"
+    "A": "Ich trete weiterhin professionell auf, erledige meine Aufgaben und erarbeite mir durch fachliche Leistung Respekt.",
+    "B": "Ich übernehme sofort den rauen Jargon, um es den Platzhirschen recht zu machen.",
+    "C": "Ich beschwere mich nach drei Schichten beim Leiter über das schlechte Arbeitsklima.",
+    "D": "Ich isoliere mich bewusst und mache stur Dienst nach Vorschrift.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 39,
-    "rolle": "Normaler Beamter",
-    "kompetenzen": ["Entscheidungskompetenz", "Teamfähigkeit", "Emotionale Intelligenz"],
-    "szenario": "Sie und Ihr Partner haben einen flüchtigen Einbrecher nach einer extrem anstrengenden Fußverfolgung gestellt. Der Täter hat sich massiv gewehrt und Ihrem Partner ins Gesicht geschlagen. Nun liegt der Täter fixiert und in Handschellen auf dem Boden und leistet keinerlei Widerstand mehr. Ihr Partner, der aus der Nase blutet und vor Adrenalin kocht, holt plötzlich mit dem Stiefel aus, um dem wehrlosen Täter noch einmal kräftig in den Magen zu treten.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Belastbarkeit",
+    "kompetenzen": [
+      "Belastbarkeit"
+    ],
+    "szenario": "Die Schichtmoral ist wegen Überstunden am Boden. Beim Antreten beschweren sich die Kollegen lautstark bei Ihnen.",
     "optionen": {
-      "A": "Ich drehe mich um, lasse ihn gewähren, da der Täter schließlich angefangen hat, sich gewehrt hat und mein Partner ein Recht auf emotionale Entladung hat.",
-      "B": "Ich schreite sofort physisch ein, dränge meinen Partner mit vollem Körpereinsatz weg, rufe ihn lautstark zur Räson ('Schluss jetzt!') und verhindere so aktiv eine schwere Straftat im Amt durch meinen Kollegen.",
-      "C": "Ich tue gar nichts, schaue zu und behaupte später in jedem Bericht und vor Gericht standhaft, ich hätte aufgrund der Dunkelheit nichts gesehen.",
-      "D": "Ich funke ganz ruhig die Leitstelle an, fordere einen Rettungswagen, ignoriere das Verhalten meines Partners aber völlig und konzentriere mich nur auf die Personalienfeststellung."
+      "A": "Ich zeige ehrliches Verständnis, erkläre die Engpässe transparent und sage zu, mich bei der Leitung für Entlastung einzusetzen.",
+      "B": "Ich blocke rigoros ab und betone, dass die Polizei kein Wunschkonzert sei.",
+      "C": "Ich schimpfe gemeinsam mit ihnen über 'die da oben', um mich beliebt zu machen.",
+      "D": "Ich breche das Antreten sofort ab und entziehe mich der Diskussion."
     },
-    "ranking": "B, D, C, A"
+    "A": "Ich zeige ehrliches Verständnis, erkläre die Engpässe transparent und sage zu, mich bei der Leitung für Entlastung einzusetzen.",
+    "B": "Ich blocke rigoros ab und betone, dass die Polizei kein Wunschkonzert sei.",
+    "C": "Ich schimpfe gemeinsam mit ihnen über 'die da oben', um mich beliebt zu machen.",
+    "D": "Ich breche das Antreten sofort ab und entziehe mich der Diskussion.",
+    "ranking": "A, B, C, D"
   },
   {
     "id": 40,
-    "rolle": "Dienststellenleiter",
-    "kompetenzen": ["Führungskompetenz", "Kommunikationsfähigkeit", "Entscheidungskompetenz"],
-    "szenario": "Sie leiten den Großeinsatz bei einer politischen Demonstration, die zu eskalieren droht. Ein Ihnen unterstellter Abschnittsleiter (Unterführer) an der vordersten Front meldet über Funk, dass seine Kette von Demonstranten extrem provoziert und verbal beleidigt wird. Obwohl noch keine Steine oder Flaschen fliegen, bittet er eindringlich um die Freigabe für den sofortigen Einsatz der Wasserwerfer, 'um Stärke zu zeigen und den Platz zu räumen'.",
+    "rolle": "Dienstgruppenleiter",
+    "kompetenz": "Authentizität",
+    "kompetenzen": [
+      "Authentizität"
+    ],
+    "szenario": "Sie übernehmen mit 25 Jahren als DGL eine Schicht. Ältere Kollegen (Anfang 50) belächeln Ihre Anweisungen.",
     "optionen": {
-      "A": "Ich vertraue meinem Abschnittsleiter vor Ort blind und erteile ihm sofort die uneingeschränkte Freigabe für den Wasserwerfereinsatz, da er die Lage an der Front am besten einschätzen kann.",
-      "B": "Ich untersage den Einsatz des Wasserwerfers klar und unmissverständlich, erinnere den Abschnittsleiter sachlich an die rechtlichen Vorraussetzungen und die Verhältnismäßigkeit, und entsende stattdessen sofort Kommunikationsteams (Anti-Konflikt-Team) zur verbalen Deeskalation.",
-      "C": "Ich verlasse meine Befehlsstelle, fahre mit dem Einsatzwagen selbst an die Front und erteile den Befehl direkt an die Besatzung des Wasserwerfers, die Demonstranten nass zu spritzen.",
-      "D": "Ich entziehe dem Abschnittsleiter sofort vor allen anderen am Funknetz das Kommando, da er offensichtlich überfordert ist, und beordere ihn unverzüglich zurück zur Einsatzleitung."
+      "A": "Ich suche das persönliche Gespräch, erkläre meine Erwartungen und zeige aufrichtigen Respekt vor ihrer Einsatzerfahrung.",
+      "B": "Ich drohe sofort jedem mit disziplinarischen Konsequenzen, der meine Befehle anzweifelt.",
+      "C": "Ich kümmere mich nur noch um die Verwaltung und lasse die alten Hasen machen, was sie wollen.",
+      "D": "Ich bitte den Chef, mich wieder als Sachbearbeiter einzusetzen, da ich dem Druck nicht standhalte."
     },
-    "ranking": "B, A, D, C"
+    "A": "Ich suche das persönliche Gespräch, erkläre meine Erwartungen und zeige aufrichtigen Respekt vor ihrer Einsatzerfahrung.",
+    "B": "Ich drohe sofort jedem mit disziplinarischen Konsequenzen, der meine Befehle anzweifelt.",
+    "C": "Ich kümmere mich nur noch um die Verwaltung und lasse die alten Hasen machen, was sie wollen.",
+    "D": "Ich bitte den Chef, mich wieder als Sachbearbeiter einzusetzen, da ich dem Druck nicht standhalte.",
+    "ranking": "A, B, C, D"
   }
 ];
 
-// "B, C, A, D" -> ['B', 'C', 'A', 'D'] — wird beim Weiterklick zur Auswertung gebraucht
+// "A, B, C, D" -> ['A', 'B', 'C', 'D'] — wird bei der Auswertung gebraucht
 QUIZ_QUESTIONS.forEach(q => {
   q.rankingArray = q.ranking.split(',').map(s => s.trim());
 });

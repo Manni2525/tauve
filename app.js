@@ -215,6 +215,12 @@ function loadQuestion(index) {
   progressPercentHeader.textContent = `${Math.round((index / QUIZ_QUESTIONS.length) * 100)}% abgeschlossen`;
 
   competenceTagsEl.innerHTML = '';
+  if (q.rolle) {
+    const roleSpan = document.createElement('span');
+    roleSpan.className = 'tag-badge tag-badge-role';
+    roleSpan.textContent = `Rolle: ${q.rolle}`;
+    competenceTagsEl.appendChild(roleSpan);
+  }
   q.kompetenzen.forEach(comp => {
     const span = document.createElement('span');
     span.className = 'tag-badge';
@@ -663,7 +669,7 @@ function renderReviewList() {
           <strong>Szenario:</strong> ${escapeHtml(q.szenario)}
         </div>
         <div style="margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
-          <strong>Kompetenzen:</strong> ${q.kompetenzen.join(', ')}
+          ${q.rolle ? `<strong>Rolle:</strong> ${escapeHtml(q.rolle)} &nbsp;|&nbsp; ` : ''}<strong>Kompetenz:</strong> ${q.kompetenzen.join(', ')}
         </div>
         
         <div class="review-comparison-grid">
