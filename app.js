@@ -348,7 +348,9 @@ function renderRankingMode(q) {
 
   modeInstructionTextEl.innerHTML = `<strong>Modus B (Rangfolge):</strong> Bringen Sie die 4 Alternativen in eine Rangfolge von <strong>Rang 1 (Beste Option)</strong> bis <strong>Rang 4 (Schlechteste Option)</strong>.`;
 
-  currentRankingOrder = ['A', 'B', 'C', 'D'];
+  const letters = ['A', 'B', 'C', 'D'];
+  const orderIdx = QuizLogic.createRandomOrder(letters.length);
+  currentRankingOrder = orderIdx.map(i => letters[i]);
   renderRankingList(q);
 }
 
