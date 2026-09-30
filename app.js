@@ -32,6 +32,7 @@ const safeStorage = {
 // State
 let state = {
   currentQuestionIndex: 0,
+  questionOrder: [],         // Zufällige Reihenfolge der Fragen
   activeMode: 'B',           // 'A' (Rating 1-7), 'B' (Ranking 1-4), 'MIXED'
   selectedModeForStart: 'B', // default selected mode on start screen
   timeRemaining: TIME_LIMIT_SECONDS,
@@ -39,6 +40,25 @@ let state = {
   answers: [],               // Stores answers for each question
   isCompleted: false
 };
+
+// Hilfsfunktionen für zufällige Fragenreihenfolge
+function getQuestionIndex(stepIndex) {
+  if (Array.isArray(state.questionOrder) && state.questionOrder[stepIndex] !== undefined) {
+    return state.questionOrder[stepIndex];
+  }
+  return stepIndex;
+}
+
+function findQuestion(ans) {
+  if (ans && ans.questionId) {
+    const found = QUIZ_QUESTIONS.find(item => item.id === ans.questionId);
+    if (found) return found;
+  }
+  if (ans && ans.questionIndex !== undefined && QUIZ_QUESTIONS[ans.questionIndex]) {
+    return QUIZ_QUESTIONS[ans.questionIndex];
+  }
+  return QUIZ_QUESTIONS[0];
+}
 
 // Current question temporary inputs
 let currentRating = { A: null, B: null, C: null, D: null };
@@ -166,6 +186,9 @@ function showScreen(screenName) {
 function startQuiz(mode) {
   state.activeMode = mode;
   state.currentQuestionIndex = 0;
+  state.questionOrder = (typeof QuizLogic !== 'undefined' && QuizLogic.createRandomOrder)
+    ? QuizLogic.createRandomOrder(QUIZ_QUESTIONS.length)
+    : Array.from({ length: QUIZ_QUESTIONS.length }, (_, i) => i);
   state.answers = [];
   state.isCompleted = false;
 
@@ -178,6 +201,7 @@ function resetQuiz() {
   clearInterval(state.timerInterval);
   safeStorage.remove(STORAGE_KEY);
   state.currentQuestionIndex = 0;
+  state.questionOrder = [];
   state.answers = [];
   state.isCompleted = false;
 
@@ -196,9 +220,10 @@ function saveProgress() {
   safeStorage.set(STORAGE_KEY, JSON.stringify(state));
 }
 
-// Load Question by Index
-function loadQuestion(index) {
-  const q = QUIZ_QUESTIONS[index];
+// Load Question by Step Index
+function loadQuestion(stepIndex) {
+  const qIndex = getQuestionIndex(stepIndex);
+  const q = QUIZ_QUESTIONS[qIndex];
   if (!q) return;
 
   // Reset Timer
@@ -207,12 +232,12 @@ function loadQuestion(index) {
   // Determine current mode for this question
   let currentMode = state.activeMode;
   if (state.activeMode === 'MIXED') {
-    currentMode = (index % 2 === 0) ? 'B' : 'A';
+    currentMode = (stepIndex % 2 === 0) ? 'B' : 'A';
   }
 
-  // Header meta
-  questionCounterEl.textContent = `Frage ${q.id} von ${QUIZ_QUESTIONS.length}`;
-  progressPercentHeader.textContent = `${Math.round((index / QUIZ_QUESTIONS.length) * 100)}% abgeschlossen`;
+  // Header meta: 1 bis 40 im Ablauf
+  questionCounterEl.textContent = `Frage ${stepIndex + 1} von ${QUIZ_QUESTIONS.length}`;
+  progressPercentHeader.textContent = `${Math.round((stepIndex / QUIZ_QUESTIONS.length) * 100)}% abgeschlossen`;
 
   competenceTagsEl.innerHTML = '';
   if (q.rolle) {
@@ -376,7 +401,8 @@ function moveRankingItem(fromIndex, toIndex) {
   if (toIndex < 0 || toIndex >= currentRankingOrder.length) return;
   const item = currentRankingOrder.splice(fromIndex, 1)[0];
   currentRankingOrder.splice(toIndex, 0, item);
-  const q = QUIZ_QUESTIONS[state.currentQuestionIndex];
+  const qIndex = getQuestionIndex(state.currentQuestionIndex);
+  const q = QUIZ_QUESTIONS[qIndex];
   renderRankingList(q);
 }
 
@@ -436,7 +462,8 @@ function updateNextButtonState(mode) {
 }
 
 function handleNextQuestion(isTimeOut = false) {
-  const q = QUIZ_QUESTIONS[state.currentQuestionIndex];
+  const qIndex = getQuestionIndex(state.currentQuestionIndex);
+  const q = QUIZ_QUESTIONS[qIndex];
   let currentMode = state.activeMode;
   if (state.activeMode === 'MIXED') {
     currentMode = (state.currentQuestionIndex % 2 === 0) ? 'B' : 'A';
@@ -470,6 +497,7 @@ function handleNextQuestion(isTimeOut = false) {
   // Store answer record
   state.answers[state.currentQuestionIndex] = {
     questionId: q.id,
+    questionIndex: qIndex,
     mode: currentMode,
     userRating: { ...currentRating },
     userRanking: [...currentRankingOrder],
@@ -555,8 +583,9 @@ function renderResults() {
   let totalMaxScore = 0;
   const compScores = {};
 
-  state.answers.forEach((ans, idx) => {
-    const q = QUIZ_QUESTIONS[idx];
+  state.answers.forEach((ans) => {
+    if (!ans) return;
+    const q = findQuestion(ans);
     totalScore += ans.score;
     totalMaxScore += ans.maxScore;
 
@@ -633,9 +662,9 @@ function renderReviewList() {
   const reviewContainer = document.getElementById('review-list');
   reviewContainer.innerHTML = '';
 
-  QUIZ_QUESTIONS.forEach((q, idx) => {
-    const ans = state.answers[idx];
+  state.answers.forEach((ans, stepIdx) => {
     if (!ans) return;
+    const q = findQuestion(ans);
 
     const item = document.createElement('div');
     item.className = 'review-item';
@@ -654,9 +683,9 @@ function renderReviewList() {
     }
 
     item.innerHTML = `
-      <div class="review-header" id="rev-head-${idx}">
+      <div class="review-header" id="rev-head-${stepIdx}">
         <div class="review-q-title">
-          <span class="question-pill">#${q.id}</span>
+          <span class="question-pill">#${stepIdx + 1} (Szenario ${q.id})</span>
           <span>${q.szenario.substring(0, 80)}...</span>
         </div>
         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -664,7 +693,7 @@ function renderReviewList() {
           <span style="font-size: 0.75rem; color: var(--text-dim);">&#9662;</span>
         </div>
       </div>
-      <div class="review-body" id="rev-body-${idx}">
+      <div class="review-body" id="rev-body-${stepIdx}">
         <div class="review-scenario">
           <strong>Szenario:</strong> ${escapeHtml(q.szenario)}
         </div>
@@ -699,8 +728,8 @@ function renderReviewList() {
       </div>
     `;
 
-    const header = item.querySelector(`#rev-head-${idx}`);
-    const body = item.querySelector(`#rev-body-${idx}`);
+    const header = item.querySelector(`#rev-head-${stepIdx}`);
+    const body = item.querySelector(`#rev-body-${stepIdx}`);
     header.addEventListener('click', () => {
       const isOpen = body.classList.contains('open');
       if (isOpen) {

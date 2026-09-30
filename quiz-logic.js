@@ -108,5 +108,24 @@
     };
   }
 
-  return { evaluateQuestion: evaluateQuestion };
+  function createRandomOrder(length, rng) {
+    if (typeof length !== 'number' || length <= 0) return [];
+    var random = typeof rng === 'function' ? rng : Math.random;
+    var order = [];
+    for (var i = 0; i < length; i++) {
+      order.push(i);
+    }
+    for (var j = order.length - 1; j > 0; j--) {
+      var k = Math.floor(random() * (j + 1));
+      var temp = order[j];
+      order[j] = order[k];
+      order[k] = temp;
+    }
+    return order;
+  }
+
+  return {
+    evaluateQuestion: evaluateQuestion,
+    createRandomOrder: createRandomOrder
+  };
 });
