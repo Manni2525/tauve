@@ -1,7 +1,7 @@
 // app.js - Controller für den TAUVE Übungstest
 
 const TIME_LIMIT_SECONDS = 180; // 3 Minuten pro Frage
-const STORAGE_KEY = 'tauve_uebungstest_state_v2';
+const STORAGE_KEY = 'tauve_uebungstest_state_v3';
 
 // Sichere Speicher-Hilfsfunktionen für restriktive Umgebungen (z. B. Browser in the Box)
 const safeStorage = {
@@ -186,9 +186,8 @@ function showScreen(screenName) {
 function startQuiz(mode) {
   state.activeMode = mode;
   state.currentQuestionIndex = 0;
-  state.questionOrder = (typeof QuizLogic !== 'undefined' && QuizLogic.createRandomOrder)
-    ? QuizLogic.createRandomOrder(QUIZ_QUESTIONS.length)
-    : Array.from({ length: QUIZ_QUESTIONS.length }, (_, i) => i);
+  safeStorage.remove(STORAGE_KEY);
+  state.questionOrder = QuizLogic.createRandomOrder(QUIZ_QUESTIONS.length);
   state.answers = [];
   state.isCompleted = false;
 
@@ -338,6 +337,7 @@ function renderRatingMode(q) {
     });
   });
 }
+
 
 // ---------------------------------------------------------------------------
 // MODE B: Rangfolge (1 bis 4 sortieren)

@@ -108,9 +108,23 @@
     };
   }
 
+  var shuffleNonce = 0;
+
+  function mixedRandom() {
+    shuffleNonce = (shuffleNonce + 1) >>> 0;
+    var x = (Date.now() + shuffleNonce) >>> 0;
+    if (!x) x = 1;
+    x ^= x << 13;
+    x ^= x >>> 17;
+    x ^= x << 5;
+    var fromClock = ((x >>> 0) + 1) / 4294967297;
+    var fromMath = (typeof Math.random === 'function') ? Math.random() : 0;
+    return (fromClock + fromMath) % 1;
+  }
+
   function createRandomOrder(length, rng) {
     if (typeof length !== 'number' || length <= 0) return [];
-    var random = typeof rng === 'function' ? rng : Math.random;
+    var random = typeof rng === 'function' ? rng : mixedRandom;
     var order = [];
     for (var i = 0; i < length; i++) {
       order.push(i);

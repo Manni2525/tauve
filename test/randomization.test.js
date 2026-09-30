@@ -17,6 +17,19 @@ describe('Zufällige Fragenreihenfolge', () => {
     assert.notDeepEqual(run1, run2, 'Zwei Durchläufe sollten nicht die identische Reihenfolge haben');
   });
 
+  it('mischt auch dann neu, wenn Math.random bei jedem Start konstant 0 liefert', () => {
+    const original = Math.random;
+    Math.random = () => 0;
+    try {
+      const run1 = createRandomOrder(40);
+      const run2 = createRandomOrder(40);
+      assert.notDeepEqual(run1, run2);
+      assert.notDeepEqual(run1, Array.from({ length: 40 }, (_, i) => i));
+    } finally {
+      Math.random = original;
+    }
+  });
+
   it('funktioniert deterministisch mit vorgegebenem Pseudozufallsgenerator', () => {
     let seed = 42;
     function pseudoRandom() {
