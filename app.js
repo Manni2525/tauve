@@ -719,9 +719,12 @@ function renderReviewList() {
             </div>
             <div style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.45;">
               ${q.rankingArray.map((letter, rank) => `
-                <div class="comparison-list-item">
-                  <span style="font-weight:700; color:#34d399;">Rang ${rank + 1} (${letter}):</span>
-                  <span>${escapeHtml(q.optionen[letter])}</span>
+                <div class="comparison-list-item explanation-item">
+                  <div class="comparison-line">
+                    <span style="font-weight:700; color:#34d399;">Rang ${rank + 1} (${letter}):</span>
+                    <span>${escapeHtml(q.optionen[letter])}</span>
+                  </div>
+                  ${renderReason(q, letter)}
                 </div>
               `).join('')}
             </div>
@@ -745,6 +748,12 @@ function renderReviewList() {
 
     reviewContainer.appendChild(item);
   });
+}
+
+function renderReason(q, letter) {
+  const text = q.begruendungen && q.begruendungen[letter];
+  if (!text) return '';
+  return `<p class="option-reason">${escapeHtml(text)}</p>`;
 }
 
 function renderOptionDetails(q, ans) {

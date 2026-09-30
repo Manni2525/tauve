@@ -26,6 +26,16 @@ describe('Fragenkatalog', () => {
     }
   });
 
+  it('begründet jede Option, damit die Auswertung den Rang erklären kann', () => {
+    for (const q of QUIZ_QUESTIONS) {
+      for (const letter of LETTERS) {
+        const text = q.begruendungen && q.begruendungen[letter];
+        assert.equal(typeof text, 'string', `Frage ${q.id} Option ${letter} ohne Begründung`);
+        assert.ok(text.trim().length > 40, `Frage ${q.id} Option ${letter} Begründung zu kurz`);
+      }
+    }
+  });
+
   it('parst die Musterlösung in rankingArray, damit Weiter auswerten kann', () => {
     for (const q of QUIZ_QUESTIONS) {
       const parsed = q.ranking.split(',').map(s => s.trim());

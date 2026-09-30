@@ -934,6 +934,24 @@ body {
   gap: 0.4rem;
 }
 
+.explanation-item {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+}
+
+.comparison-line {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.option-reason {
+  margin: 0.15rem 0 0.35rem;
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 .comparison-list-item:last-child {
   border-bottom: none;
 }
